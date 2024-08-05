@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "183077435261",
+    "firebase_url": "https://storeapp-5f88d-default-rtdb.firebaseio.com",
+    "project_id": "storeapp-5f88d",
+    "storage_bucket": "storeapp-5f88d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183077435261:android:14066b95b9e0ebbd2cfe14",
+        "android_client_info": {
+          "package_name": "com.example.funny_baby"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183077435261-fgr94vaa53p913q0sl5er8rgerl9gd0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyasvNqP1-TTUsZkX93gRVQVBBnJzHx3I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183077435261-fgr94vaa53p913q0sl5er8rgerl9gd0g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "183077435261-bfp8s911osihh3g6lbrp44j74u6cv3bj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.funnyBaby"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

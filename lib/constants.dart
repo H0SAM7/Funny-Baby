@@ -1,0 +1,15 @@
+import 'dart:ui';
+
+List<Color> background=[
+                Color.fromRGBO(246, 245, 242, 1.0), // rgb(246, 245, 242)
+              Color.fromRGBO(240, 235, 227, 1.0), // rgb(240, 235, 227)
+               // Color.fromRGBO(243, 208, 215, 1.0), // rgb(243, 208, 215)
+               // Color.fromRGBO(255, 239, 239, 1.0), // rgb(255, 239, 239)
+              ];
+
+Color mainColor= Color.fromARGB(255, 222, 74, 123);
+Color moveColor= Color.fromARGB(255, 247, 109, 233);
+Color blueColor= Color.fromARGB(255, 38, 70, 83);
+Color blueWhiteColor= Color(0xFFCAF0F8);         
+
+// Color mainColor=Color.fromARGB(255, 244, 204, 212);              
