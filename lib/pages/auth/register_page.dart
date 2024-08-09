@@ -7,7 +7,7 @@ import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/helper/auth_firebase.dart';
 import 'package:funny_baby/helper/helper_functions.dart';
 
-import 'package:funny_baby/pages/home.dart';
+import 'package:funny_baby/pages/my_home.dart';
 
 import 'package:funny_baby/widgets/custom_button.dart';
 import 'package:funny_baby/widgets/custom_progress.dart';

@@ -16,6 +16,7 @@ import 'package:funny_baby/widgets/adv_widget.dart';
 import 'package:funny_baby/widgets/card_sliver_grid.dart';
 import 'package:funny_baby/widgets/custom_card.dart';
 import 'package:funny_baby/widgets/custom_progress.dart';
+import 'package:funny_baby/widgets/custom_title_appbar.dart';
 import 'package:funny_baby/widgets/drawer.dart';
 
 class MyHome extends StatefulWidget {
@@ -29,13 +30,6 @@ class MyHome extends StatefulWidget {
 class _MyHomeState extends State<MyHome> {
   int _selectedIndex = 0;
 
-  static final List<Widget> _widgetOptions = <Widget>[
-    const HomeScreen(),
-    const SearchPage(),
-    const SalesPage(),
-    const CategoriesPage(),
-    ProfilePage(),
-  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -75,7 +69,7 @@ class _MyHomeState extends State<MyHome> {
           ),
         ],
         body: Center(
-          child: _widgetOptions.elementAt(_selectedIndex),
+          child: widgetOptions.elementAt(_selectedIndex),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -114,89 +108,6 @@ class _MyHomeState extends State<MyHome> {
         selectedItemColor: !isDarkMode ? blueColor : Colors.black,
         onTap: _onItemTapped,
       ),
-    );
-  }
-}
-
-class TitleAppBar extends StatelessWidget {
-  const TitleAppBar({
-    super.key,
-    required this.isarabic,
-    required this.s,
-  });
-
-  final bool isarabic;
-  final S s;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          !isarabic ? s.funny : s.baby,
-          style: TextStyle(
-              color: blueColor,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Inter',
-              fontSize: 28),
-        ),
-        const SizedBox(
-          width: 5,
-        ),
-        Text(
-          isarabic ? s.funny : s.baby,
-          style: const TextStyle(
-              color: Color.fromARGB(255, 247, 109, 233),
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Inter',
-              fontSize: 28),
-        ),
-      ],
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    double itemSpacing = size.width * 0.002; // Responsive item spacing
-    double childAspectRatio =
-        (size.width / 2) / (size.height * .53); // Adjust aspect ratio
-    return BlocBuilder<GetProductCubit, StoreStates>(
-      builder: (context, state) {
-        var cubit = BlocProvider.of<GetProductCubit>(context);
-        cubit.getProducts();
-
-        if (state is ProductsLoadedSucccessfuly) {
-          List<ProductModel> products = state.listProducts;
-          return CustomScrollView(
-            clipBehavior: Clip.none,
-            slivers: [
-              SliverToBoxAdapter(
-                  child: SizedBox(
-                      height: size.height * .188,
-                      width: size.width,
-                      child: Advarticements(
-                          color: const Color(0xFFCAF0F8),
-                          image: 'assets/Images/boyy.png',
-                          text: S.of(context).New_collection))),
-              CardSliverGrid(
-                  size: size,
-                  childAspectRatio: childAspectRatio,
-                  itemSpacing: itemSpacing,
-                  products: products),
-            ],
-          );
-        } else if (state is ProductErrorLoading) {
-          return Center(child: Text(S.of(context).Error_loading_products));
-        } else {
-          return Center(child: CustomLoadingIndicator());
-        }
-      },
     );
   }
 }

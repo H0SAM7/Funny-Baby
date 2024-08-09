@@ -1,5 +1,13 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+import 'package:funny_baby/pages/categories_page.dart';
+import 'package:funny_baby/pages/home_page.dart';
+import 'package:funny_baby/pages/my_home.dart';
+import 'package:funny_baby/pages/profile.dart';
+import 'package:funny_baby/pages/sales.dart';
+import 'package:funny_baby/pages/search.dart';
+
 List<Color> background=[
                 const Color(0xFFCAF0F8), // rgb(246, 245, 242)
               const Color.fromRGBO(240, 235, 227, 1.0), // rgb(240, 235, 227)
@@ -26,3 +34,12 @@ Color blueWhiteColor= const Color(0xFFCAF0F8);
       "احذية",
       "سواريه",
     ];
+
+    
+   final List<Widget> widgetOptions = <Widget>[
+    const HomeScreen(),
+    const SearchPage(),
+    const SalesPage(),
+    const CategoriesPage(),
+    ProfilePage(),
+  ];

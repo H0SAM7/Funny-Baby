@@ -17,7 +17,7 @@ import 'package:funny_baby/pages/auth/update_profile.dart';
 import 'package:funny_baby/pages/categories_page.dart';
 import 'package:funny_baby/pages/category_page.dart';
 import 'package:funny_baby/pages/product_details.dart';
-import 'package:funny_baby/pages/home.dart';
+import 'package:funny_baby/pages/my_home.dart';
 import 'package:funny_baby/pages/start_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
@@ -88,7 +88,7 @@ class FunnyBaby extends StatelessWidget {
     
             },
             debugShowCheckedModeBanner: false,
-            initialRoute:StartPage.id
+            initialRoute:MyHome.id
           );
         },
       ),
