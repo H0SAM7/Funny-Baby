@@ -82,13 +82,13 @@ class _SearchPageState extends State<SearchPage> {
 
 class HistoryCard extends StatelessWidget {
  final ProductModel productModel;
-  HistoryCard({super.key, 
+  const HistoryCard({super.key, 
 
     required this.productModel,
     required this.onTap
  
   });
-  VoidCallback onTap;
+ final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     bool arabic=isArabic(context);

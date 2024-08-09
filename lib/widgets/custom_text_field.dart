@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:funny_baby/constants.dart';
 
 // ignore: must_be_immutable
@@ -17,7 +15,7 @@ class CustomTextField extends StatefulWidget {
       this.onSaved,
       this.controller,
       this.onTap});
-      final TextEditingController? controller;
+  final TextEditingController? controller;
   final String label;
   final String hint;
   bool hide;
@@ -33,11 +31,10 @@ class CustomTextField extends StatefulWidget {
 class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
-     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
       child: TextFormField(
-       
           onSaved: widget.onSaved,
           showCursor: true,
           obscureText: widget.hide,
@@ -46,13 +43,17 @@ class _CustomTextFieldState extends State<CustomTextField> {
             if (data!.isEmpty) {
               return 'Field is required';
             }
+            return null;
           },
-          
           onChanged: widget.onchage,
-          style: TextStyle(color:!isDarkMode? Colors.black:Colors.white, fontFamily: 'Inter',),
+          style: TextStyle(
+            color: !isDarkMode ? Colors.black : Colors.white,
+            fontFamily: 'Inter',
+          ),
           cursorColor: blueColor,
           decoration: InputDecoration(
-            contentPadding:const EdgeInsets.symmetric(vertical: 20,horizontal: 20) ,
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
             prefixIcon: widget.icon,
             suffixIcon: widget.hide
                 ? IconButton(
@@ -76,12 +77,18 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     : null,
             label: Text(
               widget.label,
-              style: TextStyle(color:!isDarkMode? blueColor:moveColor, fontFamily: 'Inter',),
+              style: TextStyle(
+                color: !isDarkMode ? blueColor : moveColor,
+                fontFamily: 'Inter',
+              ),
             ),
             hintText: widget.hint,
             fillColor: blueColor,
             hoverColor: blueColor,
-            hintStyle: const TextStyle(color: Colors.grey, fontFamily: 'Inter',),
+            hintStyle: const TextStyle(
+              color: Colors.grey,
+              fontFamily: 'Inter',
+            ),
             border: OutlineInputBorder(
               borderSide: BorderSide(color: blueColor),
               borderRadius: const BorderRadius.all(Radius.circular(16)),
