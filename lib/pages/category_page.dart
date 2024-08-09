@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:funny_baby/models/product_model.dart';
 import 'package:funny_baby/services/fire_base.dart';
 import 'package:funny_baby/widgets/category_grid_view.dart';
-import 'package:funny_baby/widgets/custom_card.dart';
 import 'package:funny_baby/widgets/custom_progress.dart';
 
 class CategoryPage extends StatelessWidget {
