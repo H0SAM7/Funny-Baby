@@ -7,14 +7,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 // ignore: must_be_immutable
 class CustomCard extends StatefulWidget {
-  CustomCard({
+  const CustomCard({
     super.key,
     required this.productModel,
     this.details = true,
   });
 
-  bool details;
-  bool favo = false;
+ final bool details;
+ final bool favo = false;
   final ProductModel productModel;
 
   @override

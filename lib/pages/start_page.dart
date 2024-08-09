@@ -23,7 +23,7 @@ class StartPage extends StatelessWidget {
             Container(
               width: size.width,
               height: size.height,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/Images/start.jpg'),
                   fit: BoxFit.cover,
@@ -43,11 +43,11 @@ class StartPage extends StatelessWidget {
                       fontSize: 50,
                     ),
                   ),
-                  SizedBox(height: 5), // Use `height` for vertical spacing
+                  const SizedBox(height: 5), // Use `height` for vertical spacing
                   Text(
                     s.baby,
                     style: TextStyle(
-                      color: Color.fromARGB(255, 247, 109, 233),
+                      color: const Color.fromARGB(255, 247, 109, 233),
                       fontWeight: FontWeight.bold,
                       fontFamily: GoogleFonts.lalezar().fontFamily,
                       fontSize: 50,

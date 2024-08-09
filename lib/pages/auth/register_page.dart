@@ -12,12 +12,11 @@ import 'package:funny_baby/pages/home.dart';
 import 'package:funny_baby/widgets/custom_button.dart';
 import 'package:funny_baby/widgets/custom_progress.dart';
 import 'package:funny_baby/widgets/custom_text_field.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:funny_baby/widgets/custom_widgets.dart';
 
 class RegisterPage extends StatefulWidget {
-  RegisterPage({super.key});
+  const RegisterPage({super.key});
   static String id = 'RegisterPage';
 
   @override
@@ -55,13 +54,13 @@ class _RegisterPageState extends State<RegisterPage> {
                     fontFamily: 'Inter',
                     fontSize: 20),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               Text(
                 isarabic ? s.funny : s.baby,
-                style: TextStyle(
-                    color: const Color.fromARGB(255, 247, 109, 233),
+                style: const TextStyle(
+                    color: Color.fromARGB(255, 247, 109, 233),
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Inter',
                     fontSize: 20),
@@ -94,8 +93,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         color: blueColor),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Row(
                     children: [
                       // Text('Log In: ',style: TextStyle(color: Colors.white,fontSize: 26),),

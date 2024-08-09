@@ -4,74 +4,90 @@ import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/helper/helper_functions.dart';
 
 class DrawerWidget extends StatelessWidget {
+  const DrawerWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    Color backgroundColor = isDarkMode ? Colors.black : blueWhiteColor;
+    Color textColor = isDarkMode ? Colors.white : Colors.black;
+
     return Drawer(
       surfaceTintColor: mainColor,
       shadowColor: mainColor,
-      backgroundColor: blueWhiteColor,
+      backgroundColor: backgroundColor,
       child: ListView(
-        // padding: EdgeInsets.only(top: 50),
         children: <Widget>[
-          DrawerHeader(
-            child: Container(
-              decoration: BoxDecoration(
-                color: blueWhiteColor,
-                  image: DecorationImage(
-                      image: AssetImage('assets/Images/flogo.png'),
-                      fit: BoxFit.fill,
-                      filterQuality: FilterQuality.high,
-                      )),
+          Container(height: 60,),
+          ListTile(
+            textColor: textColor,
+            leading: const Icon(
+              Icons.facebook,
+              color: Colors.blue,
             ),
+            title: Text(
+              'Facebook',
+              style: TextStyle(color: textColor),
+            ),
+            onTap: () async {
+              final Uri _uri = Uri.parse('https://www.facebook.com/funnybabysohag');
+              await launchUrlMethod(_uri);
+            }
           ),
           ListTile(
-              leading: Icon(
-                Icons.facebook,
-                color: Colors.blue,
-              ),
-              title: Text(
-                'Facebook',
-              ),
-              onTap: () async {
-                final Uri _uri =
-                    Uri.parse('https://www.facebook.com/funnybabysohag');
-                await launchUrlMethod(_uri);
-              }),
+            textColor: textColor,
+            leading: const Icon(
+              FontAwesomeIcons.whatsapp,
+              color: Colors.green,
+            ),
+            title: Text(
+              "What's App",
+              style: TextStyle(color: textColor),
+            ),
+            onTap: () async {
+              final Uri _uri = Uri.parse('https://wa.link/lhdcmy');
+              await launchUrlMethod(_uri);
+            }
+          ),
           ListTile(
-              leading: Icon(
-                FontAwesomeIcons.whatsapp,
-                color: Colors.green,
-              ),
-              title: Text("What's App"),
-              onTap: () async {
-                final Uri _uri = Uri.parse('https://wa.link/lhdcmy');
-                await launchUrlMethod(_uri);
-              }),
+            textColor: textColor,
+            leading: const Icon(
+              FontAwesomeIcons.telegram,
+              color: Colors.blue,
+            ),
+            title: Text(
+              "Telegram",
+              style: TextStyle(color: textColor),
+            ),
+            onTap: () {}
+          ),
           ListTile(
-              leading: Icon(
-                FontAwesomeIcons.telegram,
-                color: Colors.blue,
-              ),
-              title: Text("Telegram"),
-              onTap: () {}),
+            textColor: textColor,
+            leading: Icon(
+              FontAwesomeIcons.locationDot,
+              color: mainColor,
+            ),
+            title: Text(
+              "Funny Baby",
+              style: TextStyle(color: textColor),
+            ),
+            onTap: () async {
+              final Uri _uri = Uri.parse('https://www.facebook.com/funnybabysohag');
+              await launchUrlMethod(_uri);
+            }
+          ),
           ListTile(
-              leading: Icon(
-                FontAwesomeIcons.locationDot,
-                color: mainColor,
-              ),
-              title: Text("Funny Baby"),
-              onTap: () async {
-                final Uri _uri =
-                    Uri.parse('https://www.facebook.com/funnybabysohag');
-                await launchUrlMethod(_uri);
-              }),
-          ListTile(
-              leading: Icon(
-                FontAwesomeIcons.info,
-                color: Colors.green,
-              ),
-              title: Text("Technical Support"),
-              onTap: () {}),
+            textColor: textColor,
+            leading: const Icon(
+              FontAwesomeIcons.info,
+              color: Colors.green,
+            ),
+            title: Text(
+              "Technical Support",
+              style: TextStyle(color: textColor),
+            ),
+            onTap: () {}
+          ),
         ],
       ),
     );

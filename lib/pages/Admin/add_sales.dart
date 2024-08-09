@@ -9,7 +9,7 @@ import 'package:funny_baby/widgets/custom_button.dart';
 import 'package:funny_baby/widgets/custom_text_field.dart';
 
 class AddSales extends StatefulWidget {
-  AddSales({super.key});
+  const AddSales({super.key});
   static String id = 'AddSales';
 
   @override

@@ -29,9 +29,9 @@ class _MyHomeState extends State<MyHome> {
   int _selectedIndex = 0;
 
   static final List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
-    SearchPage(),
-    SalesPage(),
+    const HomeScreen(),
+    const SearchPage(),
+    const SalesPage(),
     CategoriesPage(),
     ProfilePage(),
   ];
@@ -51,7 +51,7 @@ class _MyHomeState extends State<MyHome> {
     //  var size = MediaQuery.of(context).size;
     return Scaffold(
       // backgroundColor: Color.fromARGB(255, 236, 181, 181),
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
       // backgroundColor: Color(0xF3D0D7).withOpacity(0.1),
 
       body: NestedScrollView(
@@ -64,7 +64,7 @@ class _MyHomeState extends State<MyHome> {
             actions: [
               IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.search,
                   color: Colors.transparent,
                 ),
@@ -82,13 +82,13 @@ class _MyHomeState extends State<MyHome> {
                       fontFamily: 'Inter',
                       fontSize: 28),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
                 Text(
                   isarabic ? s.funny : s.baby,
-                  style: TextStyle(
-                      color: const Color.fromARGB(255, 247, 109, 233),
+                  style: const TextStyle(
+                      color: Color.fromARGB(255, 247, 109, 233),
                       fontWeight: FontWeight.bold,
                       fontFamily: 'Inter',
                       fontSize: 28),
@@ -135,7 +135,7 @@ class _MyHomeState extends State<MyHome> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: !isDarkMode ? blueColor : Colors.white,
+        selectedItemColor: !isDarkMode ? blueColor : Colors.black,
         onTap: _onItemTapped,
       ),
     );
@@ -143,6 +143,8 @@ class _MyHomeState extends State<MyHome> {
 }
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -169,9 +171,9 @@ class HomeScreen extends StatelessWidget {
               //   categoryName: S.of(context).boys,
               // )),
               SliverToBoxAdapter(child: SizedBox(
-                  height: size.height * .188,
+                 height: size.height * .188,
                    width: size.width,
-                child: Advarticements(color: Color(0xFFCAF0F8),image: 'assets/Images/boyy.png'
+                child: Advarticements(color: const Color(0xFFCAF0F8),image: 'assets/Images/boyy.png'
                 ,
                 text: S.of(context).New_collection
                 ))),

@@ -50,11 +50,11 @@ class _DetailsPageState extends State<DetailsPage> {
               left: size.width * 0.05,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 223, 125, 145).withOpacity(0.8),
+                  color: const Color.fromARGB(255, 223, 125, 145).withOpacity(0.8),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: IconButton(
-                  icon: Icon(Icons.arrow_forward, color: Colors.white),
+                  icon: const Icon(Icons.arrow_forward, color: Colors.white),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
               ),
@@ -70,12 +70,12 @@ class _DetailsPageState extends State<DetailsPage> {
                   children: [
                     AnimatedOpacity(
                       opacity: _isVisible ? 1.0 : 0.0,
-                      duration: Duration(milliseconds: 500),
+                      duration: const Duration(milliseconds: 500),
                       child: Container(
                         // height: size.height * .45,
                         width: size.width * .8,
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 223, 125, 145).withOpacity(0.8),
+                          color: const Color.fromARGB(255, 223, 125, 145).withOpacity(0.8),
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: Padding(
@@ -133,14 +133,14 @@ class _DetailsPageState extends State<DetailsPage> {
                                           children: [
                                             Text(
                                               s.pay_now,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 color: Colors.white,
                                               ),
                                             ),
                                             SizedBox(
                                               width: size.width * .07,
                                             ),
-                                            Icon(
+                                            const Icon(
                                               FontAwesomeIcons.bagShopping,
                                               color: Colors.white,
                                             ),
@@ -169,7 +169,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     if (!_isVisible)
                       Text(
                         s.click_to_view_details,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

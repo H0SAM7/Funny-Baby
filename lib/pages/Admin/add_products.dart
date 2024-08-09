@@ -11,7 +11,7 @@ import 'package:funny_baby/widgets/custom_text_field.dart';
 
 
 class AddProductsPage extends StatefulWidget {
-  AddProductsPage({super.key});
+  const AddProductsPage({super.key});
   static String iD = 'AddProductsPage';
 
   @override
@@ -130,7 +130,7 @@ class _AddProductsPageState extends State<AddProductsPage> {
                   controller: discountController,
                 ),
                     
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                      Row(
@@ -163,7 +163,7 @@ class _AddProductsPageState extends State<AddProductsPage> {
            
 
                    
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
             
@@ -226,7 +226,7 @@ class _AddProductsPageState extends State<AddProductsPage> {
   void ShowSnackbar(BuildContext context, String massage) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(massage.replaceAll('-', '')),
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
       backgroundColor: Colors.black,
     ));
   }

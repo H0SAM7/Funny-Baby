@@ -6,14 +6,14 @@ import 'package:funny_baby/pages/product_details.dart';
 import 'package:funny_baby/services/fire_base.dart';
 import 'package:funny_baby/widgets/custom_progress.dart';
 
-// ignore: must_be_immutable
+
 class Catogery_widget extends StatelessWidget {
-  Catogery_widget({
+ const Catogery_widget({
     super.key,
     required this.categoryName,
   });
 
-  String categoryName;
+ final String categoryName;
 
   @override
   Widget build(BuildContext context) {
@@ -25,15 +25,15 @@ class Catogery_widget extends StatelessWidget {
         children: [
           Align(
             alignment: !isarabic ? Alignment.topLeft : Alignment.topRight,
-            child: Container(
+     
               child: Text(
                 categoryName,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
+       
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(
@@ -115,7 +115,7 @@ class MyWidget extends StatelessWidget {
       child: Card(
           //  clipBehavior: Clip.none,
           elevation: 0,
-          margin: EdgeInsets.all(10),
+          margin: const EdgeInsets.all(10),
           child: Card(
             elevation: 2,
             child: Image.network(

@@ -4,12 +4,12 @@ import 'dart:async';
 
 
 
-// ignore: must_be_immutable
+
 class Advarticements extends StatefulWidget {
-  Advarticements({super.key, this.color, this.image, this.text});
+ const Advarticements({super.key, this.color, this.image, this.text});
   static String id = 'TestPage';
-  String? image, text;
-  Color? color;
+ final String? image, text;
+final  Color? color;
   @override
   State<Advarticements> createState() => _AdvarticementsState();
 }
@@ -22,7 +22,7 @@ class _AdvarticementsState extends State<Advarticements> {
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(Duration(seconds: 3), (Timer timer) {
+    _timer = Timer.periodic(const Duration(seconds: 3), (Timer timer) {
       if (_currentPage < 2) {
         _currentPage++;
       } else {
@@ -30,7 +30,7 @@ class _AdvarticementsState extends State<Advarticements> {
       }
       _pageController.animateToPage(
         _currentPage,
-        duration: Duration(seconds: 1),
+        duration: const Duration(seconds: 1),
         curve: Curves.easeInOut,
       );
     });
@@ -70,7 +70,7 @@ class _AdvarticementsState extends State<Advarticements> {
               decoration: BoxDecoration(
                 //color: widget.color,
                 borderRadius: BorderRadius.circular(30),
-                image: DecorationImage(image: AssetImage('assets/Images/offer.jpg'),
+                image: const DecorationImage(image: AssetImage('assets/Images/offer.jpg'),
                 fit: BoxFit.fill,
                 )
               ),
@@ -120,24 +120,25 @@ double newheight = size.height - padding.top - padding.bottom;
             ),
           ),
           Positioned(
-            top:size.height*-.035,
+            top:newheight*-.035,
             left: 0,
+            bottom: 10,
             child: Image.asset(
               image,
            height: newheight * .18,
             ),
           ),
-          Positioned(
-            left: size.width*.08,
-            top: newheight*.05,
-            right: size.width*.1,
-            
-            child: Text(text,style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: blueColor
-            ),))
+          Center(
+            child: Padding(
+              padding:  EdgeInsets.only(left: size.width*.25),
+              child: Text(text,style: TextStyle(
+                fontFamily: 'Inter',
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: blueColor
+              ),),
+            ),
+          )
         ],
       ),
     );

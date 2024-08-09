@@ -8,7 +8,7 @@ import 'package:funny_baby/widgets/custom_card.dart';
 import 'package:funny_baby/widgets/custom_text_field.dart';
 
 class SearchPage extends StatefulWidget {
-  SearchPage({
+ const SearchPage({
     super.key,
   });
 
@@ -61,18 +61,18 @@ class _SearchPageState extends State<SearchPage> {
               searchResult != null
                   ? CustomCard(productModel: searchResult!)
                   : Text(s.product_not_found),
-            if (!isSearching && searchHistory.isNotEmpty)
-              SizedBox(
-                height: size.height * .6, // Adjust the height as needed
-                child: ListView.builder(
-                  itemCount: searchHistory.length,
-                  itemBuilder: (context, ind) {
-                    return HistoryCard(productModel: searchHistory[ind],onTap: (){
-                      searchHistory.clear();
-                    });
-                  },
-                ),
-              ),
+            // if (!isSearching && searchHistory.isNotEmpty)
+            //   SizedBox(
+            //     height: size.height * .6, // Adjust the height as needed
+            //     child: ListView.builder(
+            //       itemCount: searchHistory.length,
+            //       itemBuilder: (context, ind) {
+            //         return HistoryCard(productModel: searchHistory[ind],onTap: (){
+            //           searchHistory.clear();
+            //         });
+            //       },
+            //     ),
+            //   ),
           ],
         ),
       ),
@@ -81,8 +81,8 @@ class _SearchPageState extends State<SearchPage> {
 }
 
 class HistoryCard extends StatelessWidget {
-  ProductModel productModel;
-  HistoryCard({
+ final ProductModel productModel;
+  HistoryCard({super.key, 
 
     required this.productModel,
     required this.onTap
@@ -94,7 +94,7 @@ class HistoryCard extends StatelessWidget {
     bool arabic=isArabic(context);
     return Card(
       elevation: 1,
-      margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -102,7 +102,7 @@ class HistoryCard extends StatelessWidget {
             Row(
               mainAxisAlignment:arabic? MainAxisAlignment.end:MainAxisAlignment.start,
               children: [
-                IconButton(onPressed: onTap, icon: Icon(Icons.delete))
+                IconButton(onPressed: onTap, icon: const Icon(Icons.delete))
               ],
             ),
             Row(
@@ -111,7 +111,7 @@ class HistoryCard extends StatelessWidget {
             
                     width: 80.0,
                     height: 80.0,
-                    margin: EdgeInsets.only(right: 10.0),
+                    margin: const EdgeInsets.only(right: 10.0),
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: NetworkImage(productModel.image),
@@ -120,16 +120,16 @@ class HistoryCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
-                    SizedBox(width: 5.0),
+                    const SizedBox(width: 5.0),
                 Text(
                   productModel.title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 5.0),
-                Text(
+                const SizedBox(height: 5.0),
+                const Text(
                   '',
                   style: TextStyle(
                     fontSize: 14.0,

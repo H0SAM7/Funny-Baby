@@ -8,7 +8,7 @@ import 'package:funny_baby/widgets/custom_button.dart';
 import 'package:funny_baby/widgets/custom_text_field.dart';
 
 class UpdateProductsPage extends StatefulWidget {
-  UpdateProductsPage({super.key});
+  const UpdateProductsPage({super.key});
   static String id = 'UpdateProductsPage';
 
   @override
@@ -43,7 +43,7 @@ class _AddProductsPageState extends State<UpdateProductsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Update Product')),
+      appBar: AppBar(title: const Text('Update Product')),
       body: RefreshIndicator(
         color: Colors.white,
         backgroundColor: mainColor,
@@ -102,7 +102,7 @@ class _AddProductsPageState extends State<UpdateProductsPage> {
                 controller: discountController,
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Row(
@@ -122,17 +122,14 @@ class _AddProductsPageState extends State<UpdateProductsPage> {
                       color: mainColor,
                     ),
                     label: !loaded
-                        ? Text('Upload Image')
+                        ? const Text('Upload Image')
                         : Text(titleController.text),
                   ),
                 ],
               ),
-              SizedBox(
-                height: 5,
-              ),
-
-              SizedBox(
-                height: 10,
+         
+              const SizedBox(
+                height: 15,
               ),
 
               CustomButton(
@@ -182,7 +179,7 @@ class _AddProductsPageState extends State<UpdateProductsPage> {
   void ShowSnackbar(BuildContext context, String massage) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(massage.replaceAll('-', '')),
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
       backgroundColor: Colors.black,
     ));
   }
@@ -221,7 +218,7 @@ class _CategoryDropdownState extends State<CategoryDropdown> {
   Widget build(BuildContext context) {
     return DropdownButton<String>(
       value: selectedCategory,
-      hint: Text('Select a category'),
+      hint: const Text('Select a category'),
       items: catNames.map((String category) {
         return DropdownMenuItem<String>(
           value: category,

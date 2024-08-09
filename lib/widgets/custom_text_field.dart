@@ -52,7 +52,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           style: TextStyle(color:!isDarkMode? Colors.black:Colors.white, fontFamily: 'Inter',),
           cursorColor: blueColor,
           decoration: InputDecoration(
-            contentPadding:EdgeInsets.symmetric(vertical: 20,horizontal: 20) ,
+            contentPadding:const EdgeInsets.symmetric(vertical: 20,horizontal: 20) ,
             prefixIcon: widget.icon,
             suffixIcon: widget.hide
                 ? IconButton(
@@ -72,7 +72,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                             widget.hide = !widget.hide;
                           });
                         },
-                        icon: Icon(Icons.visibility_off))
+                        icon: const Icon(Icons.visibility_off))
                     : null,
             label: Text(
               widget.label,
@@ -81,18 +81,18 @@ class _CustomTextFieldState extends State<CustomTextField> {
             hintText: widget.hint,
             fillColor: blueColor,
             hoverColor: blueColor,
-            hintStyle: TextStyle(color: Colors.grey, fontFamily: 'Inter',),
+            hintStyle: const TextStyle(color: Colors.grey, fontFamily: 'Inter',),
             border: OutlineInputBorder(
               borderSide: BorderSide(color: blueColor),
-              borderRadius: BorderRadius.all(Radius.circular(16)),
+              borderRadius: const BorderRadius.all(Radius.circular(16)),
             ),
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: blueColor),
-              borderRadius: BorderRadius.all(Radius.circular(16)),
+              borderRadius: const BorderRadius.all(Radius.circular(16)),
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: blueColor),
-              borderRadius: BorderRadius.all(Radius.circular(16)),
+              borderRadius: const BorderRadius.all(Radius.circular(16)),
             ),
           )),
     );

@@ -4,14 +4,14 @@ import 'package:funny_baby/pages/category_page.dart';
 
 // ignore: must_be_immutable
 class CustomCategory extends StatelessWidget {
-  CustomCategory({super.key, required this.name});
-  String name;
+  const CustomCategory({super.key, required this.name});
+ final String name;
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+  //  final size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, categoryPage.id, arguments: name);
+        Navigator.pushNamed(context, CategoryPage.id, arguments: name);
       },
       child: ClipRRect(
          borderRadius: BorderRadius.circular(25),
@@ -19,7 +19,7 @@ class CustomCategory extends StatelessWidget {
          // height: size.height*.5,
          // width: size.width*.2,
  
-          child: Center(
+          child: const Center(
               child: Text(
             '',
             style: TextStyle(

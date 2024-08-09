@@ -1,9 +1,6 @@
 
 import 'dart:developer';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:funny_baby/cubit/cahnge_mode.dart';
@@ -90,7 +87,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 title: s.add_product,
                 prefixIcon: Icons.add,
                 suffixIcon: Container()),
-            Divider(
+            const Divider(
               indent: 20,
               endIndent: 20,
               thickness: .3,
@@ -100,7 +97,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 title: s.update_products,
                 prefixIcon: Icons.update,
                 suffixIcon: Container()),
-            Divider(
+            const Divider(
               indent: 20,
               endIndent: 20,
               thickness: .3,
@@ -112,7 +109,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 title: s.add_sale,
                 prefixIcon: Icons.add,
                 suffixIcon: Container()),
-            Divider(
+            const Divider(
               indent: 20,
               endIndent: 20,
               thickness: .3,
@@ -134,7 +131,7 @@ class _ProfilePageState extends State<ProfilePage> {
               },
               suffixIcon: Container(),
             ),
-            Divider(
+            const Divider(
               indent: 20,
               endIndent: 20,
               thickness: .3,
@@ -148,7 +145,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   //  log('deleted done');
                 },
                 suffixIcon: Container()),
-            Divider(
+            const Divider(
               indent: 20,
               endIndent: 20,
               thickness: .3,
@@ -177,7 +174,7 @@ class _ProfilePageState extends State<ProfilePage> {
             onTap: () {
               log(isArabic(context).toString());
               context.read<LanguageCubit>().setLocale(
-                isArabic(context) ? Locale('en', '') : Locale('ar', ''),
+                isArabic(context) ? const Locale('en', '') : const Locale('ar', ''),
               );
             },
             suffixIcon: Row(

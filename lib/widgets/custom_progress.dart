@@ -7,8 +7,8 @@ class CustomProgressHUD extends StatelessWidget {
   final bool inAsyncCall;
   final Widget child;
   final AlignmentGeometry indicatorAlignment;
-  bool verify;
-  CustomProgressHUD({
+ final bool verify;
+const CustomProgressHUD({super.key, 
     required this.inAsyncCall,
     required this.child,
     this.indicatorAlignment = Alignment.bottomCenter,
@@ -28,7 +28,13 @@ class CustomProgressHUD extends StatelessWidget {
                 child: verify
                     ? Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [CustomLoadingIndicator(), Text(S.of(context).check_inbox,style: TextStyle(fontSize: 10),)],
+                        children: [
+                          CustomLoadingIndicator(),
+                          Text(
+                            S.of(context).check_inbox,
+                            style: const TextStyle(fontSize: 10),
+                          )
+                        ],
                       )
                     : CustomLoadingIndicator(),
               ),

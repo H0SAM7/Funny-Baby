@@ -15,7 +15,7 @@ import 'package:funny_baby/widgets/custom_widgets.dart';
 
 class LoginPage extends StatefulWidget {
   static String id = 'LoginPage';
-  LoginPage({super.key});
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -27,6 +27,8 @@ class _LoginPageState extends State<LoginPage> {
   String? password;
   bool isloading = false;
   GlobalKey<FormState> FromKey = GlobalKey<FormState>();
+  List emails=[];
+  List passwords=[];
 
   @override
   Widget build(BuildContext context) {
@@ -59,13 +61,13 @@ class _LoginPageState extends State<LoginPage> {
                           fontFamily: 'Inter',
                           fontSize: 28),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     Text(
                       isarabic ? s.funny : s.baby,
-                      style: TextStyle(
-                          color: const Color.fromARGB(255, 247, 109, 233),
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 247, 109, 233),
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Inter',
                           fontSize: 28),
@@ -84,6 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                     hint: s.emailHint,
                     onchage: (data) {
                       email = data;
+                      emails.add(emails);
                     },
                   ),
                 ),
@@ -100,6 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                     hint: s.passwordHint,
                     onchage: (data) {
                       password = data;
+                      passwords.add(password);
                     },
                   ),
                 ),
@@ -121,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: CustomButton(
                     buttonName: s.loginButton,
                     txtcolor: Colors.white,
-                    color: Color.fromARGB(255, 38, 70, 83),
+                    color: const Color.fromARGB(255, 38, 70, 83),
                     onTap: () async {
                       isloading = true;
 

@@ -11,7 +11,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:funny_baby/widgets/custom_widgets.dart';
 
 class UpdateProfilePage extends StatefulWidget {
-  UpdateProfilePage({super.key});
+  const UpdateProfilePage({super.key});
   static String id = 'UpdatePage';
 
   @override
@@ -47,8 +47,8 @@ class _RegisterPageState extends State<UpdateProfilePage> {
                 //   backgroundImage: AssetImage('assets/images/chat.png'),
                 // ),
 
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Row(
                     children: [
                       // Text('Log In: ',style: TextStyle(color: Colors.white,fontSize: 26),),

@@ -38,7 +38,7 @@ class DeleteProductsPage extends StatelessWidget {
                   hint: s.enter_product_code,
                   controller: idController,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 CustomButton(
@@ -68,7 +68,7 @@ class DeleteProductsPage extends StatelessWidget {
   void ShowSnackbar(BuildContext context, String massage) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(massage.replaceAll('-', '')),
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
       backgroundColor: Colors.black,
     ));
   }

@@ -29,10 +29,12 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
 
   );
-  runApp(FunnyBaby());
+  runApp(const FunnyBaby());
 }
 
 class FunnyBaby extends StatelessWidget {
+  const FunnyBaby({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -51,13 +53,13 @@ class FunnyBaby extends StatelessWidget {
         builder: (context, themeModeState) {
           return MaterialApp(
             locale: context.watch<LanguageCubit>().state,
-            localizationsDelegates: [
+            localizationsDelegates: const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
-            supportedLocales:  [
+            supportedLocales:  const [
               Locale('en', ''),
               Locale('ar', ''),
             
@@ -74,19 +76,19 @@ class FunnyBaby extends StatelessWidget {
               UpdateProfilePage.id: (context) => UpdateProfilePage(),
               CategoriesPage.id: (context) => CategoriesPage(),
               DetailsPage.id: (context) => const DetailsPage(),
-              categoryPage.id: (context) => categoryPage(),
+              CategoryPage.id: (context) => CategoryPage(),
               RegisterPage.id: (context) => RegisterPage(),
  
               AddProductsPage.iD: (context) => AddProductsPage(),
               UpdateProductsPage.id: (context) => UpdateProductsPage(),
               DeleteProductsPage.id: (context) => DeleteProductsPage(),
-              StartPage.id: (context) => StartPage(),
+              StartPage.id: (context) => const StartPage(),
               AddSales.id: (context) => AddSales(),
-              ForgetPassword.id: (context) => ForgetPassword(),
+              ForgetPassword.id: (context) => const ForgetPassword(),
     
             },
             debugShowCheckedModeBanner: false,
-            initialRoute:MyHome.id
+            initialRoute:StartPage.id
           );
         },
       ),

@@ -4,7 +4,7 @@ import 'package:funny_baby/models/product_model.dart';
 class SalesWidget extends StatelessWidget {
   final SaleModel sale;
 
-  SalesWidget({super.key, required this.sale});
+  const SalesWidget({super.key, required this.sale});
 
   @override
   Widget build(BuildContext context) {

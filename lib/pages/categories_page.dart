@@ -3,28 +3,17 @@ import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/widgets/custom_category.dart';
 
 class CategoriesPage extends StatelessWidget {
-  CategoriesPage({super.key});
+  const CategoriesPage({super.key});
   static String id = 'CategoriesPage';
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    double itemSpacing = size.width * 0.002; // Responsive item spacing
+    
     double childAspectRatio =
         (size.width / 2) / (size.height * .2); // Adjust aspect ratio
-    final s = S.of(context);
-    List<String> CatNames = [
-      s.boys,
-      s.girls,
-      s.dresses,
-      s.evening_wear,
-      s.shoes,
-      s.underwear,
-      s.boys_suits,
-      s.pajamas,
-      s.accessories,
-      s.summer
-    ];
+    //final s = S.of(context);
+  
     List<String> CategoryAr = [
       "اولادي",
       "بناتي",
