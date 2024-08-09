@@ -1,6 +1,5 @@
-import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/helper/helper_functions.dart';
 import 'package:funny_baby/models/product_model.dart';
@@ -8,7 +7,7 @@ import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/widgets/custom_widgets.dart';
 import 'package:funny_baby/widgets/image_details.dart';
 import 'package:funny_baby/widgets/pay_now.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 
 class DetailsPage extends StatefulWidget {
   const DetailsPage({super.key});
