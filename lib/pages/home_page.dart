@@ -9,8 +9,8 @@ import 'package:funny_baby/widgets/adv_widget.dart';
 import 'package:funny_baby/widgets/card_sliver_grid.dart';
 import 'package:funny_baby/widgets/custom_progress.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

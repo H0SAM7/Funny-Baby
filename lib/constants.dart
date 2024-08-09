@@ -34,7 +34,7 @@ List<String> categoriesAR = const [
 ];
 
 final List<Widget> widgetOptions = <Widget>[
-  const HomeScreen(),
+  const HomePage(),
   const SearchPage(),
   const SalesPage(),
   const CategoriesPage(),
