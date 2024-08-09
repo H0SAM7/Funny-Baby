@@ -27,7 +27,7 @@ class _SearchPageState extends State<SearchPage> {
     final s = S.of(context);
     var cubit = BlocProvider.of<GetProductCubit>(context);
     var size = MediaQuery.of(context).size;
-    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+  //  bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
       body: SingleChildScrollView(
