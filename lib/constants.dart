@@ -14,3 +14,15 @@ Color blueColor= const Color.fromARGB(255, 38, 70, 83);
 Color blueWhiteColor= const Color(0xFFCAF0F8);         
 
 // Color mainColor=Color.fromARGB(255, 244, 204, 212);              
+
+    List<String> categoriesAR = const[
+      "اولادي",
+      "بناتي",
+      "حديثي الولادة",
+      "ملابس داخلية",
+      "بيجامة",
+      "اكسسوارات",
+      "مصيف",
+      "احذية",
+      "سواريه",
+    ];

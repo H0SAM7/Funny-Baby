@@ -13,6 +13,7 @@ import 'package:funny_baby/pages/sales.dart';
 import 'package:funny_baby/pages/profile.dart';
 import 'package:funny_baby/pages/search.dart';
 import 'package:funny_baby/widgets/adv_widget.dart';
+import 'package:funny_baby/widgets/card_sliver_grid.dart';
 import 'package:funny_baby/widgets/custom_card.dart';
 import 'package:funny_baby/widgets/custom_progress.dart';
 import 'package:funny_baby/widgets/drawer.dart';
@@ -32,7 +33,7 @@ class _MyHomeState extends State<MyHome> {
     const HomeScreen(),
     const SearchPage(),
     const SalesPage(),
-    CategoriesPage(),
+    const CategoriesPage(),
     ProfilePage(),
   ];
 
@@ -41,7 +42,6 @@ class _MyHomeState extends State<MyHome> {
       _selectedIndex = index;
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -71,30 +71,7 @@ class _MyHomeState extends State<MyHome> {
               ),
             ],
             elevation: 0,
-            title: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  !isarabic ? s.funny : s.baby,
-                  style: TextStyle(
-                      color: blueColor,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Inter',
-                      fontSize: 28),
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  isarabic ? s.funny : s.baby,
-                  style: const TextStyle(
-                      color: Color.fromARGB(255, 247, 109, 233),
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Inter',
-                      fontSize: 28),
-                ),
-              ],
-            ),
+            title: TitleAppBar(isarabic: isarabic, s: s),
           ),
         ],
         body: Center(
@@ -103,9 +80,8 @@ class _MyHomeState extends State<MyHome> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         elevation: 0,
-        backgroundColor:blueWhiteColor,
+        backgroundColor: blueWhiteColor,
         type: BottomNavigationBarType.fixed,
-
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
@@ -142,6 +118,45 @@ class _MyHomeState extends State<MyHome> {
   }
 }
 
+class TitleAppBar extends StatelessWidget {
+  const TitleAppBar({
+    super.key,
+    required this.isarabic,
+    required this.s,
+  });
+
+  final bool isarabic;
+  final S s;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          !isarabic ? s.funny : s.baby,
+          style: TextStyle(
+              color: blueColor,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Inter',
+              fontSize: 28),
+        ),
+        const SizedBox(
+          width: 5,
+        ),
+        Text(
+          isarabic ? s.funny : s.baby,
+          style: const TextStyle(
+              color: Color.fromARGB(255, 247, 109, 233),
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Inter',
+              fontSize: 28),
+        ),
+      ],
+    );
+  }
+}
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -159,70 +174,21 @@ class HomeScreen extends StatelessWidget {
         if (state is ProductsLoadedSucccessfuly) {
           List<ProductModel> products = state.listProducts;
           return CustomScrollView(
-            clipBehavior:Clip.none,
+            clipBehavior: Clip.none,
             slivers: [
-              
-              // SliverToBoxAdapter(
-              //     child: Catogery_widget(
-              //   categoryName: S.of(context).dresses,
-              // )),
-              // SliverToBoxAdapter(
-              //     child: Catogery_widget(
-              //   categoryName: S.of(context).boys,
-              // )),
-              SliverToBoxAdapter(child: SizedBox(
-                 height: size.height * .188,
-                   width: size.width,
-                child: Advarticements(color: const Color(0xFFCAF0F8),image: 'assets/Images/boyy.png'
-                ,
-                text: S.of(context).New_collection
-                ))),
-
-              // SliverToBoxAdapter(
-              //     child: Padding(
-              //   padding:
-              //       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              //   child: Stack(
-              //     clipBehavior: Clip.none,
-              //     children: [
-              //       Container(
-              //         height: size.height * .15,
-              //         width: size.width,
-              //         decoration: BoxDecoration(
-              //           color: Color(0xFFCAF0F8),
-              //           borderRadius: BorderRadius.circular(30),
-              //         ),
-              //       ),
-              //       Positioned(
-              //         top: -20,
-              //         left: 0,
-              //         child: Image.asset(
-              //           'assets/Images/boyy.png',
-              //           height: size.height * .18,
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // )),
-              SliverGrid(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount:size.width>size.height?3: 2,
-                  // childAspectRatio: 1 / 2.1,
-                  //   childAspectRatio: 1 / 2.1,
-                  // mainAxisSpacing: 7,
-                  // crossAxisSpacing:3,
+              SliverToBoxAdapter(
+                  child: SizedBox(
+                      height: size.height * .188,
+                      width: size.width,
+                      child: Advarticements(
+                          color: const Color(0xFFCAF0F8),
+                          image: 'assets/Images/boyy.png',
+                          text: S.of(context).New_collection))),
+              CardSliverGrid(
+                  size: size,
                   childAspectRatio: childAspectRatio,
-                  mainAxisSpacing: itemSpacing,
-                  crossAxisSpacing: itemSpacing,
-                ),
-                delegate: SliverChildBuilderDelegate(
-                  
-                  (context, index) {
-                    return CustomCard(productModel: products[index]);
-                  },
-                  childCount: products.length,
-                ),
-              ),
+                  itemSpacing: itemSpacing,
+                  products: products),
             ],
           );
         } else if (state is ProductErrorLoading) {

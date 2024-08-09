@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:funny_baby/models/product_model.dart';
 import 'package:funny_baby/services/fire_base.dart';
+import 'package:funny_baby/widgets/category_grid_view.dart';
 import 'package:funny_baby/widgets/custom_card.dart';
 import 'package:funny_baby/widgets/custom_progress.dart';
 
@@ -25,21 +26,7 @@ class CategoryPage extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               List<ProductModel> products = snapshot.data!;
-              return GridView.builder(
-            
-                itemCount: products.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                       crossAxisCount: 2,
-                  childAspectRatio: 1 / 2.1,
-                  mainAxisSpacing: 7,
-                  crossAxisSpacing:3,
-                ),
-                itemBuilder: (context, index) {
-                  return CustomCard(
-                    productModel: products[index],
-                  );
-                },
-              );
+              return CategoryGridView(products: products);
             } else {
               return Center(
                 child: CustomLoadingIndicator(),
