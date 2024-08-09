@@ -6,7 +6,6 @@ import 'package:funny_baby/helper/auth_firebase.dart';
 import 'package:funny_baby/widgets/custom_button.dart';
 import 'package:funny_baby/widgets/custom_progress.dart';
 import 'package:funny_baby/widgets/custom_text_field.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:funny_baby/widgets/custom_widgets.dart';
 

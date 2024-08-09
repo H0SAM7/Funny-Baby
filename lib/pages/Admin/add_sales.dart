@@ -16,10 +16,10 @@ class AddSales extends StatefulWidget {
   State<AddSales> createState() => _AddSalesState();
 }
 
-String? image, Category;
+ String? image, category;
 final TextEditingController saleController = TextEditingController();
 bool loaded = false;
-GlobalKey<FormState> FromKey = GlobalKey<FormState>();
+GlobalKey<FormState> fromKey = GlobalKey<FormState>();
 
 class _AddSalesState extends State<AddSales> {
   @override
@@ -28,7 +28,7 @@ class _AddSalesState extends State<AddSales> {
     return Scaffold(
         appBar: AppBar(),
         body: Form(
-          key: FromKey,
+          key: fromKey,
           child: Column(
             children: [
               CustomTextField(
@@ -61,7 +61,7 @@ class _AddSalesState extends State<AddSales> {
                 color: blueColor,
                 txtcolor: Colors.white,
                 onTap: () async {
-                  if (FromKey.currentState!.validate() || loaded) {
+                  if (fromKey.currentState!.validate() || loaded) {
                     await FireBaseServices().addSale(
                         SaleModel(sale: saleController.text, image: image!));
                     log('add sale done');

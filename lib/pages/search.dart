@@ -19,6 +19,7 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   String? query;
   bool isSearching = false;
+  // ignore: prefer_typing_uninitialized_variables
   var searchResult;
   List<dynamic> searchHistory = [];
 

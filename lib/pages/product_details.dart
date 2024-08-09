@@ -10,10 +10,10 @@ class DetailsPage extends StatefulWidget {
   static const String id = 'DetailsPage';
 
   @override
-  _DetailsPageState createState() => _DetailsPageState();
+  DetailsPageState createState() => DetailsPageState();
 }
 
-class _DetailsPageState extends State<DetailsPage> {
+class DetailsPageState extends State<DetailsPage> {
   bool _isVisible = false;
 
   void _toggleVisibility() {

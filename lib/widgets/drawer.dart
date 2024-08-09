@@ -45,8 +45,8 @@ class DrawerListView extends StatelessWidget {
             style: TextStyle(color: textColor),
           ),
           onTap: () async {
-            final Uri _uri = Uri.parse('https://www.facebook.com/funnybabysohag');
-            await launchUrlMethod(_uri);
+            final Uri uri0 = Uri.parse('https://www.facebook.com/funnybabysohag');
+            await launchUrlMethod(uri0);
           }
         ),
         ListTile(
@@ -60,8 +60,8 @@ class DrawerListView extends StatelessWidget {
             style: TextStyle(color: textColor),
           ),
           onTap: () async {
-            final Uri _uri = Uri.parse('https://wa.link/lhdcmy');
-            await launchUrlMethod(_uri);
+            final Uri uri1 = Uri.parse('https://wa.link/lhdcmy');
+            await launchUrlMethod(uri1);
           }
         ),
         ListTile(

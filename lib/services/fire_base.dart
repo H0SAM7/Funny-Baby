@@ -38,13 +38,13 @@ class FireBaseServices {
   ) async {
     try {
       List<ProductModel> list = await getProducts();
-      List<ProductModel> CategoryProducts = [];
+      List<ProductModel> categoryProducts = [];
       for (var product in list) {
         if (category == product.category) {
-          CategoryProducts.add(product);
+          categoryProducts.add(product);
         }
       }
-      return CategoryProducts;
+      return categoryProducts;
     } catch (e) {
       log('Error getting products: $e');
       return [];

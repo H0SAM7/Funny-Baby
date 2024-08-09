@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
         } else if (state is ProductErrorLoading) {
           return Center(child: Text(S.of(context).Error_loading_products));
         } else {
-          return Center(child: CustomLoadingIndicator());
+          return const Center(child: CustomLoadingIndicator());
         }
       },
     );

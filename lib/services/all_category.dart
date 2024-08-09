@@ -21,10 +21,10 @@ Future<List<dynamic>> getAllCategory()async{
   
 } 
 on DioException catch (e) {
-  String ErrMassage=e.response?.data['error']['message'];
+  String errMassage=e.response?.data['error']['message'];
 
 
-    throw Exception(ErrMassage);
+    throw Exception(errMassage);
 }
 catch(e){
   log(e.toString());

@@ -151,7 +151,7 @@ class _RegisterPageState extends State<RegisterPage> {
                          showSnackbar(context, s.check_inbox);
                         try {
                           await AuthHelper()
-                              .RegisterUser(email!, password!, username!);
+                              .registerUser(email!, password!, username!);
                               
                           Navigator.pushNamed(context, MyHome.id);
                         } on FirebaseAuthException catch (e) {

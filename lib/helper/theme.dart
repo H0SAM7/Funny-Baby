@@ -14,6 +14,6 @@ class MyAppThemes {
   );
 }
 class MyAppColors {
-  static final darkBlue = Color(0xFF1E1E2C);
-  static final lightBlue = Color(0xFF2D2D44);
+  static const darkBlue = Color(0xFF1E1E2C);
+  static const lightBlue = Color(0xFF2D2D44);
 }

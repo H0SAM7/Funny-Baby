@@ -70,20 +70,20 @@ class FunnyBaby extends StatelessWidget {
                 ? ThemeMode.light
                 : ThemeMode.dark,
             routes: {
-              LoginPage.id: (context) => LoginPage(),
+              LoginPage.id: (context) => const LoginPage(),
               MyHome.id: (context) => const MyHome(),
   
-              UpdateProfilePage.id: (context) => UpdateProfilePage(),
-              CategoriesPage.id: (context) => CategoriesPage(),
+              UpdateProfilePage.id: (context) => const UpdateProfilePage(),
+              CategoriesPage.id: (context) => const CategoriesPage(),
               DetailsPage.id: (context) => const DetailsPage(),
-              CategoryPage.id: (context) => CategoryPage(),
-              RegisterPage.id: (context) => RegisterPage(),
+              CategoryPage.id: (context) => const CategoryPage(),
+              RegisterPage.id: (context) => const RegisterPage(),
  
-              AddProductsPage.iD: (context) => AddProductsPage(),
-              UpdateProductsPage.id: (context) => UpdateProductsPage(),
+              AddProductsPage.iD: (context) => const AddProductsPage(),
+              UpdateProductsPage.id: (context) => const UpdateProductsPage(),
               DeleteProductsPage.id: (context) => DeleteProductsPage(),
               StartPage.id: (context) => const StartPage(),
-              AddSales.id: (context) => AddSales(),
+              AddSales.id: (context) => const AddSales(),
               ForgetPassword.id: (context) => const ForgetPassword(),
     
             },

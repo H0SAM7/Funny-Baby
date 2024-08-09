@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -14,7 +14,7 @@ class AuthHelper {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final user = FirebaseAuth.instance.currentUser;
 
-  Future<void> RegisterUser(
+  Future<void> registerUser(
       String email, String password, String username) async {
     // Create a new user
     UserCredential userCredential = await auth.createUserWithEmailAndPassword(
@@ -69,7 +69,7 @@ class AuthHelper {
 
   Future<void> _checkEmailVerification(User user) async {
     while (!user.emailVerified) {
-      Container(
+      const SizedBox(
         height: 50,
         width: 50,
         child: Column(
@@ -79,7 +79,7 @@ class AuthHelper {
           ],
         ),
       );
-      await Future.delayed(Duration(seconds: 5));
+      await Future.delayed(const Duration(seconds: 5));
       await user.reload();
 
       user = auth.currentUser!;
@@ -137,7 +137,7 @@ class AuthHelper {
     return false;
   }
 
-  Future<void> LoginUser(String email, String password) async {
+  Future<void> loginUser(String email, String password) async {
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password);
     log('The Login Successful');
@@ -187,9 +187,9 @@ class AuthHelper {
       );
 
       return await FirebaseAuth.instance.signInWithCredential(credential);
-    } on Exception catch (e) {
-      // TODO
-      print('exception->$e');
+    }  catch (e) {
+     
+      log('exception->$e');
     }
   }
 
@@ -206,9 +206,9 @@ class AuthHelper {
 
   // Function to upload profile photo
   Future<String?> uploadProfilePhoto(String userId) async {
-    final ImagePicker _picker = ImagePicker();
+    final ImagePicker picker = ImagePicker();
     final XFile? pickedFile =
-        await _picker.pickImage(source: ImageSource.gallery);
+        await picker.pickImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
       File file = File(pickedFile.path);
@@ -220,17 +220,17 @@ class AuthHelper {
         uploadTask.snapshotEvents.listen((TaskSnapshot snapshot) {
           // Optionally handle progress updates here
           double progress = snapshot.bytesTransferred / snapshot.totalBytes;
-          print('Upload progress: ${progress * 100}%');
+          log('Upload progress: ${progress * 100}%');
         });
 
         await uploadTask;
         String downloadUrl = await ref.getDownloadURL();
         return downloadUrl;
       } on FirebaseException catch (e) {
-        print('Firebase error uploading profile photo: ${e.message}');
+        log('Firebase error uploading profile photo: ${e.message}');
         return null;
       } catch (e) {
-        print('Error uploading profile photo: $e');
+        log('Error uploading profile photo: $e');
         return null;
       }
     }
@@ -245,10 +245,10 @@ class AuthHelper {
       String downloadUrl = await ref.getDownloadURL();
       return downloadUrl;
     } on FirebaseException catch (e) {
-      print('Firebase error fetching profile photo URL: ${e.message}');
+      log('Firebase error fetching profile photo URL: ${e.message}');
       return null;
     } catch (e) {
-      print('Error fetching profile photo URL: $e');
+      log('Error fetching profile photo URL: $e');
       return null;
     }
   }
@@ -260,9 +260,9 @@ class AuthHelper {
         'profilePhotoUrl': downloadUrl,
       });
     } on FirebaseException catch (e) {
-      print('Firebase error updating user profile: ${e.message}');
+      log('Firebase error updating user profile: ${e.message}');
     } catch (e) {
-      print('Error updating user profile: $e');
+      log('Error updating user profile: $e');
     }
   }
 }

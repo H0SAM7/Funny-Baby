@@ -28,7 +28,7 @@ class CategoryPage extends StatelessWidget {
               List<ProductModel> products = snapshot.data!;
               return CategoryGridView(products: products);
             } else {
-              return Center(
+              return const Center(
                 child: CustomLoadingIndicator(),
               );
             }

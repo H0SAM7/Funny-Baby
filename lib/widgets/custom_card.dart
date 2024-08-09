@@ -111,7 +111,7 @@ class _CustomCardState extends State<CustomCard> {
     if (words.length <= maxWords) {
       return text;
     } else {
-      return words.take(maxWords).join(' ') + '...';
+      return '${words.take(maxWords).join(' ')}...';
     }
   }
 

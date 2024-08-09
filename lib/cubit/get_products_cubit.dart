@@ -11,7 +11,7 @@ class GetProductCubit extends Cubit<StoreStates> {
   List<ProductModel> searchHistory = [];
 
   List<ProductModel> listProducts = [];
-    List<ProductModel> FavlistProducts = [];
+    List<ProductModel> favlistProducts = [];
   Future<List<ProductModel>> getProducts() async {
     try {
       listProducts = await FireBaseServices().getProducts();
@@ -38,7 +38,7 @@ class GetProductCubit extends Cubit<StoreStates> {
 
 
 getFavoList(){
-  for (var i in FavlistProducts) {
+  for (var i in favlistProducts) {
     log(i.title);
   }
 }
@@ -55,6 +55,7 @@ ProductModel? search(String quary){
  
     
   }
+  return null;
 }
 
 

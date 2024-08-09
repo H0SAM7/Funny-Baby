@@ -44,7 +44,7 @@ class Catogery_widget extends StatelessWidget {
               width: size.width,
               child: FutureBuilder(
                   future: FireBaseServices().getCategoryProducts(
-                      isarabic ? categoryName : CatWithAr(categoryName)),
+                      isarabic ? categoryName : catWithAr(categoryName)),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       return ListView.builder(
@@ -66,7 +66,7 @@ class Catogery_widget extends StatelessWidget {
     );
   }
 
-  String CatWithAr(String cat) {
+  String catWithAr(String cat) {
     switch (cat) {
       case 'boys':
         return 'اولادي';

@@ -6,6 +6,7 @@ import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/services/fire_base.dart';
 import 'package:funny_baby/widgets/custom_button.dart';
 import 'package:funny_baby/widgets/custom_text_field.dart';
+import 'package:funny_baby/widgets/custom_widgets.dart';
 
 // ignore: must_be_immutable
 class DeleteProductsPage extends StatelessWidget {
@@ -15,7 +16,7 @@ class DeleteProductsPage extends StatelessWidget {
   final TextEditingController idController = TextEditingController();
 
   String? image;
-  GlobalKey<FormState> FromKey = GlobalKey<FormState>();
+  GlobalKey<FormState> fromKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class DeleteProductsPage extends StatelessWidget {
         },
         child: SingleChildScrollView(
           child: Form(
-            key: FromKey,
+            key: fromKey,
             child: Column(
               children: [
                 CustomTextField(
@@ -47,12 +48,12 @@ class DeleteProductsPage extends StatelessWidget {
                   txtcolor: Colors.white,
                   color: blueColor,
                   onTap: () async {
-                    if (FromKey.currentState!.validate()) {
+                    if (fromKey.currentState!.validate()) {
                       await FireBaseServices()
                           .deleteProduct(idController.text.toString());
                       log('Delete product Done');
 
-                      ShowSnackbar(context, s.deleteSuccess);
+                      showSnackbar(context, s.deleteSuccess);
                       idController.clear();
                     }
                   },
@@ -65,11 +66,4 @@ class DeleteProductsPage extends StatelessWidget {
     );
   }
 
-  void ShowSnackbar(BuildContext context, String massage) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(massage.replaceAll('-', '')),
-      duration: const Duration(seconds: 2),
-      backgroundColor: Colors.black,
-    ));
-  }
 }

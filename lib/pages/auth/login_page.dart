@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:funny_baby/constants.dart';
@@ -26,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
   String? email;
   String? password;
   bool isloading = false;
-  GlobalKey<FormState> FromKey = GlobalKey<FormState>();
+  GlobalKey<FormState> fromKey = GlobalKey<FormState>();
   List emails=[];
   List passwords=[];
 
@@ -43,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
       child: Scaffold(
         body: SingleChildScrollView(
           child: Form(
-            key: FromKey,
+            key: fromKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -130,9 +132,9 @@ class _LoginPageState extends State<LoginPage> {
                       isloading = true;
 
                       setState(() {});
-                      if (FromKey.currentState!.validate()) {
+                      if (fromKey.currentState!.validate()) {
                         try {
-                          await AuthHelper().LoginUser(email!, password!);
+                          await AuthHelper().loginUser(email!, password!);
                           Navigator.pushNamed(context, MyHome.id);
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'user-not-found') {
@@ -143,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                             showSnackbar(context, e.code.toString());
                           }
                         } catch (e) {
-                          print(e);
+                          log(e.toString());
                           showSnackbar(context, s.something_went_wrong);
                         }
                       }

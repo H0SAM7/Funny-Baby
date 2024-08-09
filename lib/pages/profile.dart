@@ -21,11 +21,11 @@ class _ProfilePageState extends State<ProfilePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SeperatedItem(title: s.Admin_Setting),
+            seperatedItem(title: s.Admin_Setting),
             const AdminSettings(),
-            SeperatedItem(title: s.profile_setting),
+            seperatedItem(title: s.profile_setting),
             const ProfileSettings(),
-            SeperatedItem(title: s.system_setting),
+            seperatedItem(title: s.system_setting),
             const SystemSettings(),
           ],
         ),
@@ -34,7 +34,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
 
-  Widget SeperatedItem({required String title}) {
+  Widget seperatedItem({required String title}) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
       width: double.infinity,

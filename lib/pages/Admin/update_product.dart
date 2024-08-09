@@ -6,6 +6,7 @@ import 'package:funny_baby/models/product_model.dart';
 import 'package:funny_baby/services/fire_base.dart';
 import 'package:funny_baby/widgets/custom_button.dart';
 import 'package:funny_baby/widgets/custom_text_field.dart';
+import 'package:funny_baby/widgets/custom_widgets.dart';
 
 class UpdateProductsPage extends StatefulWidget {
   const UpdateProductsPage({super.key});
@@ -157,7 +158,7 @@ class _AddProductsPageState extends State<UpdateProductsPage> {
                   log('send data Done');
                   loaded = false;
                   setState(() {});
-                  ShowSnackbar(context, 'Update New product Done');
+                  showSnackbar(context, 'Update New product Done');
                   idController.clear();
                   titleController.clear();
                   priceController.clear();
@@ -176,15 +177,8 @@ class _AddProductsPageState extends State<UpdateProductsPage> {
     );
   }
 
-  void ShowSnackbar(BuildContext context, String massage) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(massage.replaceAll('-', '')),
-      duration: const Duration(seconds: 2),
-      backgroundColor: Colors.black,
-    ));
-  }
-
-  bool Allfields() {
+  
+  bool allfields() {
     return idController.text.isNotEmpty &&
         titleController.text.isNotEmpty &&
         priceController.text.isNotEmpty &&
@@ -198,11 +192,13 @@ class _AddProductsPageState extends State<UpdateProductsPage> {
 }
 
 class CategoryDropdown extends StatefulWidget {
+  const CategoryDropdown({super.key});
+
   @override
-  _CategoryDropdownState createState() => _CategoryDropdownState();
+  CategoryDropdownState createState() => CategoryDropdownState();
 }
 
-class _CategoryDropdownState extends State<CategoryDropdown> {
+class CategoryDropdownState extends State<CategoryDropdown> {
   String? selectedCategory;
   final List<String> catNames = [
     "Dresses",
