@@ -136,7 +136,7 @@ class _AddProductsPageState extends State<AddProductsPage> {
                      Row(
             mainAxisAlignment: MainAxisAlignment.center,
              children: [
-               CustomDropDown(MenuList:CatNames ,  onChanged: (selectedValue) {
+               CustomDropDown(menuList:CatNames ,  onChanged: (selectedValue) {
                         categoryController.text = selectedValue ?? '';
                       },),
                 TextButton.icon(

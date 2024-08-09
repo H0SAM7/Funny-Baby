@@ -1,12 +1,13 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:funny_baby/helper/helper_functions.dart';
 import 'package:funny_baby/models/product_model.dart';
 import 'package:funny_baby/pages/product_details.dart';
 import 'package:funny_baby/services/fire_base.dart';
-import 'package:funny_baby/widgets/custom_progress.dart';
+import 'package:funny_baby/widgets/custom_loading_indecator.dart';
 
 
+// ignore: camel_case_types
 class Catogery_widget extends StatelessWidget {
  const Catogery_widget({
     super.key,
@@ -55,7 +56,7 @@ class Catogery_widget extends StatelessWidget {
                         },
                       );
                     } else {
-                      return CustomLoadingIndicator();
+                      return const CustomLoadingIndicator();
                     }
                   }),
             ),
@@ -131,28 +132,5 @@ class MyWidget extends StatelessWidget {
     );
   }
 }
-
-
-
-// Card(
-//        //  clipBehavior: Clip.none,
-//         elevation: 1,
-//         margin: EdgeInsets.all(10),
-//         child: Container(
-//           decoration: BoxDecoration(
-//         //  gradient: LinearGradient(colors: background)
-//         ),
-//           child: Image.network(
-            
-//           image,
-//             height: 150,
-//             width: double.infinity,
-//             fit: BoxFit.contain,
-//               color: Color(0xF3D0D7).withOpacity(0.1), // Apply color filter with transparency
-//                 colorBlendMode: BlendMode.srcOver,
-//           ),
-//         ),
-//             ),
-
 
 

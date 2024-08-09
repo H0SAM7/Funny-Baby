@@ -19,12 +19,12 @@ class CustomCategory extends StatelessWidget {
          // height: size.height*.5,
          // width: size.width*.2,
  
-          child: const Center(
-              child: Text(
-            '',
-            style: TextStyle(
-                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
-          )),
+          // child: const Center(
+          //     child: Text(
+          //   '',
+          //   style: TextStyle(
+          //       fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+          // )),
           decoration: BoxDecoration(
              // borderRadius: BorderRadius.circular(30),
               color: mainColor,

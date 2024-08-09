@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:funny_baby/constants.dart';
 
 // ignore: must_be_immutable
@@ -89,19 +88,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
               color: Colors.grey,
               fontFamily: 'Inter',
             ),
-            border: OutlineInputBorder(
-              borderSide: BorderSide(color: blueColor),
-              borderRadius: const BorderRadius.all(Radius.circular(16)),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: blueColor),
-              borderRadius: const BorderRadius.all(Radius.circular(16)),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: blueColor),
-              borderRadius: const BorderRadius.all(Radius.circular(16)),
-            ),
+            border: outlineInputBorder,
+            enabledBorder: outlineInputBorder,
+            focusedBorder: outlineInputBorder,
           )),
     );
   }
 }
+
+final outlineInputBorder = OutlineInputBorder(
+  borderSide: BorderSide(color: blueColor),
+  borderRadius: const BorderRadius.all(Radius.circular(16)),
+);

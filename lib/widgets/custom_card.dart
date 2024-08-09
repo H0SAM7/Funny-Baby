@@ -115,7 +115,4 @@ class _CustomCardState extends State<CustomCard> {
     }
   }
 
-  double discount(double price, discount) {
-    return price - (price * discount / 100);
-  }
 }

@@ -7,7 +7,8 @@ import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/models/product_model.dart';
 import 'package:funny_baby/widgets/adv_widget.dart';
 import 'package:funny_baby/widgets/card_sliver_grid.dart';
-import 'package:funny_baby/widgets/custom_progress.dart';
+import 'package:funny_baby/widgets/custom_loading_indecator.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
