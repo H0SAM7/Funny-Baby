@@ -33,10 +33,6 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  // void _changeLanguage(BuildContext context, Locale locale) {
-  //   FunnyBaby.setLocale(context, locale);
-  // }
-
 
   Widget SeperatedItem({required String title}) {
     return Container(

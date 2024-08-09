@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:funny_baby/constants.dart';
 import 'dart:async';
 
+import 'package:funny_baby/widgets/advarticements_body.dart';
+
 
 
 
@@ -48,49 +50,15 @@ class _AdvarticementsState extends State<Advarticements> {
    // final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: PageView(
-        controller: _pageController,
-        children: <Widget>[
-       
-          adv(
-           
-            color: widget.color!,
-            image: widget.image!,
-            text: widget.text!,
-          ),
-          // adv(
-        
-          //   color: widget.color!,
-          //   image: widget.image!,
-          //   text:' خصم 10%',
-          // ),
-             Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-            child: Container(
-              decoration: BoxDecoration(
-                //color: widget.color,
-                borderRadius: BorderRadius.circular(30),
-                image: const DecorationImage(image: AssetImage('assets/Images/offer.jpg'),
-                fit: BoxFit.fill,
-                )
-              ),
-            ),
-          ),
-          adv(
-           
-            color: widget.color!,
-            image: widget.image!,
-            text: widget.text!,
-          ),
-        ],
-      ),
+      body: AdvarticementsBody(pageController: _pageController, widget: widget),
     );
   }
 }
 
-// ignore: must_be_immutable
-class adv extends StatelessWidget {
-  adv(
+
+
+class AdvItem extends StatelessWidget {
+  const AdvItem(
       {super.key,
 
       required this.color,
@@ -98,8 +66,8 @@ class adv extends StatelessWidget {
       required this.text});
 
  
-  String image, text;
-  Color color;
+ final String image, text;
+ final Color color;
 
   @override
   Widget build(BuildContext context) {
