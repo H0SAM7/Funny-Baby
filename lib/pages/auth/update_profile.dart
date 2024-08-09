@@ -112,22 +112,22 @@ class _RegisterPageState extends State<UpdateProfilePage> {
                  
                           await AuthHelper().updateUser(
                               oldpassword!, newpassword!, username!);
-                          ShowSnackbar(context, 'Updated Done');
+                          showSnackbar(context, 'Updated Done');
                           Navigator.pop(context);
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'weak-password') {
-                            ShowSnackbar(context,
+                            showSnackbar(context,
                                 'The password is weak, please adding some chars (!@#%)');
                           } else if (e.code == 'wrong-password') {
-                            ShowSnackbar(context,
+                            showSnackbar(context,
                                 'The old password is incorrect.'); // Notify the user that the old password is incorrect
                           } else {
-                            ShowSnackbar(context, e.message.toString());
+                            showSnackbar(context, e.message.toString());
                           }
                         } on FirebaseException catch (e) {
-                          ShowSnackbar(context, e.message.toString());
+                          showSnackbar(context, e.message.toString());
                         } catch (e) {
-                          ShowSnackbar(context, e.toString());
+                          showSnackbar(context, e.toString());
                         }
                       }
                       isloading = false;

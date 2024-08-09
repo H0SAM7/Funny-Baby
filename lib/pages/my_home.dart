@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:funny_baby/constants.dart';
-import 'package:funny_baby/cubit/get_products_cubit.dart';
-import 'package:funny_baby/cubit/states.dart';
+
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/helper/helper_functions.dart';
-import 'package:funny_baby/models/product_model.dart';
-import 'package:funny_baby/pages/categories_page.dart';
-import 'package:funny_baby/pages/sales.dart';
-import 'package:funny_baby/pages/profile.dart';
-import 'package:funny_baby/pages/search.dart';
-import 'package:funny_baby/widgets/adv_widget.dart';
-import 'package:funny_baby/widgets/card_sliver_grid.dart';
-import 'package:funny_baby/widgets/custom_card.dart';
-import 'package:funny_baby/widgets/custom_progress.dart';
 import 'package:funny_baby/widgets/custom_title_appbar.dart';
 import 'package:funny_baby/widgets/drawer.dart';
 
@@ -29,7 +18,6 @@ class MyHome extends StatefulWidget {
 
 class _MyHomeState extends State<MyHome> {
   int _selectedIndex = 0;
-
 
   void _onItemTapped(int index) {
     setState(() {

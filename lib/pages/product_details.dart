@@ -2,12 +2,16 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:funny_baby/generated/l10n.dart';
+import 'package:funny_baby/helper/helper_functions.dart';
 import 'package:funny_baby/models/product_model.dart';
 import 'package:funny_baby/constants.dart';
+import 'package:funny_baby/widgets/custom_widgets.dart';
+import 'package:funny_baby/widgets/image_details.dart';
+import 'package:funny_baby/widgets/pay_now.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailsPage extends StatefulWidget {
-  const DetailsPage({Key? key}) : super(key: key);
+  const DetailsPage({super.key});
   static const String id = 'DetailsPage';
 
   @override
@@ -25,40 +29,31 @@ class _DetailsPageState extends State<DetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-   // bool isarabic = isArabic(context);
+    // bool isarabic = isArabic(context);
     final s = S.of(context);
     final size = MediaQuery.of(context).size;
     final ProductModel productModel =
         ModalRoute.of(context)!.settings.arguments as ProductModel;
     return Scaffold(
       body: GestureDetector(
-          onTap: _toggleVisibility,
+        onTap: _toggleVisibility,
         child: Stack(
           children: [
-            Container(
-              width: size.width,
-              height: size.height,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: Image.network(productModel.image).image,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Positioned(
-              top: size.height * 0.05,
-              left: size.width * 0.05,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 223, 125, 145).withOpacity(0.8),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: IconButton(
-                  icon: const Icon(Icons.arrow_forward, color: Colors.white),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-              ),
-            ),
+            ImageDetailesWidget(size: size, productModel: productModel),
+            // Positioned(
+            //   top: size.height * 0.05,
+            //   left: size.width * 0.05,
+            //   child: Container(
+            //     decoration: BoxDecoration(
+            //       color: const Color.fromARGB(255, 223, 125, 145).withOpacity(0.8),
+            //       borderRadius: BorderRadius.circular(15),
+            //     ),
+            //     child: IconButton(
+            //       icon: const Icon(Icons.arrow_forward, color: Colors.white),
+            //       onPressed: () => Navigator.of(context).pop(),
+            //     ),
+            //   ),
+            // ),
             Positioned(
               child: Padding(
                 padding: EdgeInsets.only(
@@ -75,7 +70,8 @@ class _DetailsPageState extends State<DetailsPage> {
                         // height: size.height * .45,
                         width: size.width * .8,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 223, 125, 145).withOpacity(0.8),
+                          color: const Color.fromARGB(255, 223, 125, 145)
+                              .withOpacity(0.8),
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: Padding(
@@ -85,7 +81,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: _buildSectionTitle(productModel.title),
+                                child: buildSectionTitle(productModel.title),
                               ),
                               Text(
                                 '• ${productModel.description}',
@@ -94,13 +90,12 @@ class _DetailsPageState extends State<DetailsPage> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                             
-                              _buildSectionTitle(s.size),
+                              buildSectionTitle(s.size),
                               Text(
                                 '• ${productModel.size}',
                                 style: const TextStyle(color: Colors.white),
                               ),
-                              _buildSectionTitle(s.price_after_discount),
+                              buildSectionTitle(s.price_after_discount),
                               Row(
                                 children: [
                                   Text(
@@ -128,29 +123,14 @@ class _DetailsPageState extends State<DetailsPage> {
                                     child: Align(
                                       alignment: Alignment.bottomCenter,
                                       child: TextButton(
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              s.pay_now,
-                                              style: const TextStyle(
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: size.width * .07,
-                                            ),
-                                            const Icon(
-                                              FontAwesomeIcons.bagShopping,
-                                              color: Colors.white,
-                                            ),
-                                          ],
-                                        ),
+                                        child: PayNowWidget(s: s, size: size),
                                         onPressed: () async {
-                                       if(_isVisible){
-                                           await _launchFacebookPage(
-                                              productModel.parcode.toString());
-                                       }
+                                          if (_isVisible) {
+                                            String url =
+                                                'https://wa.me/+201065103026?text=${productModel.parcode} كود المنتج';
+                                            final Uri uri = Uri.parse(url);
+                                            await launchUrlMethod(uri);
+                                          }
                                         },
                                       ),
                                     ),
@@ -175,7 +155,6 @@ class _DetailsPageState extends State<DetailsPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                   
                   ],
                 ),
               ),
@@ -186,34 +165,6 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 
-  String discount(String price, double discount) {
-    double discountPrice =
-        double.parse(price) - (double.parse(price) * discount / 100);
-    return discountPrice.toString();
-  }
 
-  Future<void> _launchFacebookPage(String idProduct) async {
-    String url = 'https://wa.me/+201065103026?text=$idProduct كود المنتج';
-    final Uri uri = Uri.parse(url);
-    if (!await canLaunchUrl(uri)) {
-      final bool launched =
-          await launchUrl(uri, mode: LaunchMode.externalApplication);
-      if (!launched) {
-        log('Could not launch $url');
-      }
-    } else {
-      log('Cannot launch URL: $url');
-    }
-  }
 
-  Widget _buildSectionTitle(String title) {
-    return Text(
-      title,
-      style: const TextStyle(
-        fontSize: 22,
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
 }

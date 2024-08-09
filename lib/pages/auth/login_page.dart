@@ -136,15 +136,15 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.pushNamed(context, MyHome.id);
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'user-not-found') {
-                            ShowSnackbar(context, s.user_not_found);
+                            showSnackbar(context, s.user_not_found);
                           } else if (e.code == 'wrong-password') {
-                            ShowSnackbar(context, s.wrong_password);
+                            showSnackbar(context, s.wrong_password);
                           } else {
-                            ShowSnackbar(context, e.code.toString());
+                            showSnackbar(context, e.code.toString());
                           }
                         } catch (e) {
                           print(e);
-                          ShowSnackbar(context, s.something_went_wrong);
+                          showSnackbar(context, s.something_went_wrong);
                         }
                       }
                       isloading = false;

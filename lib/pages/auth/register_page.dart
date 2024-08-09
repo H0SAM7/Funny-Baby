@@ -148,7 +148,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       });
 
                       if (FromKey.currentState!.validate()) {
-                         ShowSnackbar(context, s.check_inbox);
+                         showSnackbar(context, s.check_inbox);
                         try {
                           await AuthHelper()
                               .RegisterUser(email!, password!, username!);
@@ -156,20 +156,20 @@ class _RegisterPageState extends State<RegisterPage> {
                           Navigator.pushNamed(context, MyHome.id);
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'weak-password') {
-                            ShowSnackbar(context, s.weak_password);
+                            showSnackbar(context, s.weak_password);
                           } else if (e.code == 'invalid-email') {
                             log('The email address is not valid.');
-                            ShowSnackbar(context, s.invalid_email);
+                            showSnackbar(context, s.invalid_email);
                           } else if (e.code == 'email-already-in-use' ||
                               e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
-                            ShowSnackbar(context, s.email_already_in_use);
+                            showSnackbar(context, s.email_already_in_use);
                           } else {
-                            ShowSnackbar(context, e.message.toString());
+                            showSnackbar(context, e.message.toString());
                           }
                         } on FirebaseException catch (e) {
-                          ShowSnackbar(context, e.message.toString());
+                          showSnackbar(context, e.message.toString());
                         } catch (e) {
-                          ShowSnackbar(context, e.toString());
+                          showSnackbar(context, e.toString());
                         }
                       }
                       isloading = false;
