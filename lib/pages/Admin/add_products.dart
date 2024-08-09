@@ -8,7 +8,7 @@ import 'package:funny_baby/services/fire_base.dart';
 import 'package:funny_baby/widgets/custom_button.dart';
 import 'package:funny_baby/widgets/custom_dropdown.dart';
 import 'package:funny_baby/widgets/custom_text_field.dart';
-
+import 'package:funny_baby/widgets/custom_widgets.dart';
 
 class AddProductsPage extends StatefulWidget {
   const AddProductsPage({super.key});
@@ -29,8 +29,6 @@ class _AddProductsPageState extends State<AddProductsPage> {
 
   final TextEditingController categoryController = TextEditingController();
 
-
-
   final TextEditingController sizeController = TextEditingController();
 
   final TextEditingController countController = TextEditingController();
@@ -39,50 +37,29 @@ class _AddProductsPageState extends State<AddProductsPage> {
 
   final TextEditingController discountController = TextEditingController();
 
-  String? image,Category;
+  String? image, category;
 
   bool loaded = false;
-    GlobalKey<FormState> FromKey = GlobalKey<FormState>();
-      List<String> CatNames = [
-       "اولادي",
-      "بناتي",
-      "حديثي الولادة",
-      "ملابس داخلية",
-      "بيجامة",
-      "اكسسوارات",
-      "مصيف",
-      "احذية",
-      "سواريه",
-  ];
+  GlobalKey<FormState> fromKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-    final s=S.of(context);
+    final s = S.of(context);
     return Scaffold(
       appBar: AppBar(title: Text(s.add_products)),
       body: RefreshIndicator(
-          color: Colors.white,
+        color: Colors.white,
         backgroundColor: mainColor,
         onRefresh: () async {
           // Replace this delay with the code to be executed during refresh
           // and return asynchronous code
           return Future<void>.delayed(const Duration(seconds: 3));
-        
         },
-        
-
-        
         child: SingleChildScrollView(
-      
           child: Form(
-            key: FromKey,
+            key: fromKey,
             child: Column(
               children: [
-                //  CustomTextField(
-                //   label: 'Image URL',
-                //   hint: 'Enter image URL',
-                //   onSaved: (data) => image = data,
-                // ),
-                    
                 CustomTextField(
                   label: s.productIDLabel,
                   hint: s.productIDHint,
@@ -94,7 +71,7 @@ class _AddProductsPageState extends State<AddProductsPage> {
                   controller: titleController,
                 ),
                 CustomTextField(
-                  label:s.product_price,
+                  label: s.product_price,
                   hint: s.enter_product_price,
                   controller: priceController,
                 ),
@@ -103,114 +80,82 @@ class _AddProductsPageState extends State<AddProductsPage> {
                   hint: s.enter_description,
                   controller: descriptionController,
                 ),
-                // CustomTextField(
-                //   label: 'Category',
-                //   hint: 'Enter category',
-                //   controller: categoryController,
-                // ),
-              
                 CustomTextField(
                   label: s.size,
                   hint: s.enter_size,
                   controller: sizeController,
                 ),
                 CustomTextField(
-                  label:s.count,
+                  label: s.count,
                   hint: s.enter_count,
                   controller: countController,
                 ),
                 CustomTextField(
-                  label:s.gender,
+                  label: s.gender,
                   hint: s.enter_gender,
                   controller: genderController,
                 ),
                 CustomTextField(
-                  label:s.discount,
+                  label: s.discount,
                   hint: s.enter_discount,
                   controller: discountController,
                 ),
-                    
+
                 const SizedBox(
                   height: 5,
                 ),
-                     Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-             children: [
-               CustomDropDown(menuList:CatNames ,  onChanged: (selectedValue) {
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomDropDown(
+                      menuList: categoriesAR,
+                      onChanged: (selectedValue) {
                         categoryController.text = selectedValue ?? '';
-                      },),
-                TextButton.icon(
-                  statesController: MaterialStatesController(),
-                  onPressed: () async {
-                    image =
-                        await FireBaseServices().uploadImage(titleController.text+codeController.text);
-                   
-                    setState(() {
-                   if(image!=null){
-                    loaded=true;
-                   }
-                    });
-                  },
-                  icon: Icon(
-                    !loaded ? Icons.upload : Icons.done,
-                    color: mainColor,
-                  ),
-                  label:
-                      !loaded ? Text(s.upload_image) : Text(titleController.text),
-                ),
-             ],
-                     ),
-           
+                      },
+                    ),
+                    TextButton.icon(
+                      statesController: MaterialStatesController(),
+                      onPressed: () async {
+                        image = await FireBaseServices().uploadImage(
+                            titleController.text + codeController.text);
 
-                   
+                        setState(() {
+                          if (image != null) {
+                            loaded = true;
+                          }
+                        });
+                      },
+                      icon: Icon(
+                        !loaded ? Icons.upload : Icons.done,
+                        color: mainColor,
+                      ),
+                      label: !loaded
+                          ? Text(s.upload_image)
+                          : Text(titleController.text),
+                    ),
+                  ],
+                ),
+
                 const SizedBox(
                   height: 25,
                 ),
-            
+
                 loaded
                     ? CustomButton(
-                        buttonName:s.send,
+                        buttonName: s.send,
                         border: true,
                         txtcolor: Colors.white,
                         color: mainColor,
                         onTap: () async {
-                      if (FromKey.currentState!.validate()) {
-                            await FireBaseServices().addProduct(ProductModel(
-                              code: codeController.text,
-                               parcode: codeController.text,
-                              title: titleController.text,
-                              price: priceController.text,
-                              description: descriptionController.text,
-                              category: categoryController.text,
-                              image: image!,
-                           
-                              size: sizeController.text,
-                              count: int.tryParse(countController.text) ?? 0,
-                              gender: genderController.text,
-                              
-                              cart: false,
-                              discount:
-                                  double.tryParse(discountController.text) ?? 0,
-                            ));
+                          if (fromKey.currentState!.validate()) {
+                            await addProductMethod();
                             log('send data Done');
-                            loaded=false;
-                            setState(() {
-                              
-                            });
-                            ShowSnackbar(context, s.add_new_product_done);
-                          codeController.clear();
-                          titleController.clear();
-                          priceController.clear();
-                          descriptionController.clear();
-                          categoryController.clear();
-       
-                          sizeController.clear();
-                          countController.clear();
-                          genderController.clear();
-                          discountController.clear();
-                          }
-                          else{
-                            ShowSnackbar(context, s.please_fill_all_fields);
+                            loaded = false;
+                            setState(() {});
+                            showSnackbar(context, s.add_new_product_done);
+                            clearFieldsMethod();
+                          } else {
+                            showSnackbar(context, s.please_fill_all_fields);
                           }
                         },
                       )
@@ -223,14 +168,32 @@ class _AddProductsPageState extends State<AddProductsPage> {
     );
   }
 
-  void ShowSnackbar(BuildContext context, String massage) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(massage.replaceAll('-', '')),
-      duration: const Duration(seconds: 2),
-      backgroundColor: Colors.black,
+  void clearFieldsMethod() {
+    codeController.clear();
+    titleController.clear();
+    priceController.clear();
+    descriptionController.clear();
+    categoryController.clear();
+    sizeController.clear();
+    countController.clear();
+    genderController.clear();
+    discountController.clear();
+  }
+
+  Future<void> addProductMethod() async {
+    await FireBaseServices().addProduct(ProductModel(
+      code: codeController.text,
+      parcode: codeController.text,
+      title: titleController.text,
+      price: priceController.text,
+      description: descriptionController.text,
+      category: categoryController.text,
+      image: image!,
+      size: sizeController.text,
+      count: int.tryParse(countController.text) ?? 0,
+      gender: genderController.text,
+      cart: false,
+      discount: double.tryParse(discountController.text) ?? 0,
     ));
   }
-  
- }
-
-
+}
