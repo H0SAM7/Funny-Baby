@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/cubit/get_products_cubit.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/helper/helper_functions.dart';
-import 'package:funny_baby/models/product_model.dart';
 import 'package:funny_baby/widgets/custom_card.dart';
 import 'package:funny_baby/widgets/custom_text_field.dart';
 
@@ -26,7 +26,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
-    var cubit = BlocProvider.of<GetProductCubit>(context);
+   // var cubit = BlocProvider.of<GetProductCubit>(context);
     var size = MediaQuery.of(context).size;
   //  bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
@@ -51,7 +51,7 @@ class _SearchPageState extends State<SearchPage> {
                       isSearching = false; // Reset searching state
                     } else {
                       isSearching = true; // Set searching state
-                      searchResult = cubit.search(data);
+                   //   searchResult = cubit.search(data);
                       searchHistory.add(searchResult);
                     }
                   });

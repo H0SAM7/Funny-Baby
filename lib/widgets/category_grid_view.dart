@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:funny_baby/models/product_model.dart';
+import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/widgets/custom_card.dart';
 
 class CategoryGridView extends StatelessWidget {

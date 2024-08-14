@@ -3,11 +3,12 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:funny_baby/constants.dart';
+import 'package:funny_baby/core/widgets/custom_title.dart';
+import 'package:funny_baby/features/auth/presentation/views/register_page.dart';
+import 'package:funny_baby/features/home/presentation/views/widgets/bottom_navigation_bar.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/helper/auth_firebase.dart';
 import 'package:funny_baby/helper/helper_functions.dart';
-import 'package:funny_baby/pages/auth/register_page.dart';
-import 'package:funny_baby/pages/my_home.dart';
 import 'package:funny_baby/widgets/custom_button.dart';
 import 'package:funny_baby/widgets/custom_progress.dart';
 import 'package:funny_baby/widgets/custom_text_field.dart';
@@ -52,30 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: hi * .2,
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      !isarabic ? s.funny : s.baby,
-                      style: TextStyle(
-                          color: blueColor,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Inter',
-                          fontSize: 28),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      isarabic ? s.funny : s.baby,
-                      style: const TextStyle(
-                          color: Color.fromARGB(255, 247, 109, 233),
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Inter',
-                          fontSize: 28),
-                    ),
-                  ],
-                ),
+                CustomTitle(isarabic: isarabic, s: s),
                 SizedBox(height: hi * 0.1),
                 Padding(
                   padding: const EdgeInsets.all(8.0),

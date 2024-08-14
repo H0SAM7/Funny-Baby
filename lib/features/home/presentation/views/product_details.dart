@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/generated/l10n.dart';
-
-import 'package:funny_baby/models/product_model.dart';
-
 import 'package:funny_baby/widgets/product_details_body.dart';
 
 class DetailsPage extends StatefulWidget {

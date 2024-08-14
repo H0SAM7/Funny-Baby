@@ -1,4 +1,5 @@
-import 'package:funny_baby/models/product_model.dart';
+import 'package:funny_baby/core/models/product_model.dart';
+
 
 class StoreStates{}
 class LodingProductsState extends StoreStates{}

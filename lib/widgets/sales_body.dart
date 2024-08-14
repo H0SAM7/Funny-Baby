@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/generated/l10n.dart';
-import 'package:funny_baby/models/product_model.dart';
 import 'package:funny_baby/services/fire_base.dart';
 import 'package:funny_baby/widgets/sales_widget.dart';
 

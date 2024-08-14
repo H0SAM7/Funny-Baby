@@ -4,20 +4,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funny_baby/cubit/cahnge_mode.dart';
 import 'package:funny_baby/cubit/get_products_cubit.dart';
 import 'package:funny_baby/cubit/lang_cubit.dart';
+import 'package:funny_baby/features/auth/presentation/views/forget_password.dart';
+import 'package:funny_baby/features/auth/presentation/views/login_page.dart';
+import 'package:funny_baby/features/auth/presentation/views/register_page.dart';
+import 'package:funny_baby/features/auth/presentation/views/update_profile.dart';
+import 'package:funny_baby/features/home/presentation/manager/all_products_cubit/all_products_cubit.dart';
+import 'package:funny_baby/features/home/presentation/views/categories_view.dart';
+import 'package:funny_baby/features/home/presentation/views/category_details_view.dart';
+import 'package:funny_baby/features/home/presentation/views/product_details.dart';
+import 'package:funny_baby/features/home/presentation/views/widgets/bottom_navigation_bar.dart';
 import 'package:funny_baby/firebase_options.dart';
 import 'package:funny_baby/helper/theme.dart';
 import 'package:funny_baby/pages/Admin/add_products.dart';
 import 'package:funny_baby/pages/Admin/add_sales.dart';
 import 'package:funny_baby/pages/Admin/delete_product.dart';
 import 'package:funny_baby/pages/Admin/update_product.dart';
-import 'package:funny_baby/pages/auth/forget_password.dart';
-import 'package:funny_baby/pages/auth/login_page.dart';
-import 'package:funny_baby/pages/auth/register_page.dart';
-import 'package:funny_baby/pages/auth/update_profile.dart';
-import 'package:funny_baby/pages/categories_page.dart';
-import 'package:funny_baby/pages/category_page.dart';
-import 'package:funny_baby/pages/product_details.dart';
-import 'package:funny_baby/pages/my_home.dart';
 import 'package:funny_baby/pages/start_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
@@ -40,7 +41,7 @@ class FunnyBaby extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => GetProductCubit(),
+          create: (context) => AllProductsCubit()..getAllProducts(),
         ),
         BlocProvider(
           create: (context) => LanguageCubit(),

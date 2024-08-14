@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/generated/l10n.dart';
-import 'package:funny_baby/models/product_model.dart';
 import 'package:funny_baby/widgets/animated_details_product.dart';
 import 'package:funny_baby/widgets/custom_arrow_button.dart';
 import 'package:funny_baby/widgets/image_details.dart';

@@ -3,12 +3,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:funny_baby/constants.dart';
+import 'package:funny_baby/features/home/presentation/views/widgets/bottom_navigation_bar.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/helper/auth_firebase.dart';
 import 'package:funny_baby/helper/helper_functions.dart';
-
-import 'package:funny_baby/pages/my_home.dart';
-
 import 'package:funny_baby/widgets/custom_button.dart';
 import 'package:funny_baby/widgets/custom_progress.dart';
 import 'package:funny_baby/widgets/custom_text_field.dart';

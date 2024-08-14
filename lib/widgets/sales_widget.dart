@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:funny_baby/models/product_model.dart';
+import 'package:funny_baby/core/models/product_model.dart';
+
 
 class SalesWidget extends StatelessWidget {
   final SaleModel sale;

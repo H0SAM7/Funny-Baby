@@ -1,5 +1,5 @@
+import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/helper/api.dart';
-import 'package:funny_baby/models/product_model.dart';
 class CategoryProductsServices {
   CategoryProductsServices();
 

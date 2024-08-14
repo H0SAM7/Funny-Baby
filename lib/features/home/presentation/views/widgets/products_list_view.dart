@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:funny_baby/models/product_model.dart';
+import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/widgets/custom_card.dart';
 
-class CardSliverGrid extends StatelessWidget {
-  const CardSliverGrid({
+class ProductsListView extends StatelessWidget {
+  const ProductsListView({
     super.key,
     required this.size,
     required this.childAspectRatio,
@@ -31,6 +31,7 @@ class CardSliverGrid extends StatelessWidget {
         crossAxisSpacing: itemSpacing,
       ),
       delegate: SliverChildBuilderDelegate(
+        
         (context, index) {
           return CustomCard(productModel: products[index]);
         },

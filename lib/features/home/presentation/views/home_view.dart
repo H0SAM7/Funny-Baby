@@ -1,14 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:funny_baby/cubit/get_products_cubit.dart';
-import 'package:funny_baby/cubit/states.dart';
+import 'package:funny_baby/features/home/presentation/manager/all_products_cubit/all_products_cubit.dart';
+import 'package:funny_baby/features/home/presentation/views/widgets/custom_adv_widget.dart';
+import 'package:funny_baby/features/home/presentation/views/widgets/products_list_view.dart';
 import 'package:funny_baby/generated/l10n.dart';
-import 'package:funny_baby/models/product_model.dart';
-import 'package:funny_baby/widgets/adv_widget.dart';
-import 'package:funny_baby/widgets/card_sliver_grid.dart';
 import 'package:funny_baby/widgets/custom_loading_indecator.dart';
-
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -19,32 +15,22 @@ class HomePage extends StatelessWidget {
     double itemSpacing = size.width * 0.002; // Responsive item spacing
     double childAspectRatio =
         (size.width / 2) / (size.height * .53); // Adjust aspect ratio
-    return BlocBuilder<GetProductCubit, StoreStates>(
+    return BlocBuilder<AllProductsCubit, AllProductsState>(
       builder: (context, state) {
-        var cubit = BlocProvider.of<GetProductCubit>(context);
-        cubit.getProducts();
-
-        if (state is ProductsLoadedSucccessfuly) {
-          List<ProductModel> products = state.listProducts;
+        if (state is AllProductsSuccess) {
           return CustomScrollView(
             clipBehavior: Clip.none,
             slivers: [
               SliverToBoxAdapter(
-                  child: SizedBox(
-                      height: size.height * .188,
-                      width: size.width,
-                      child: Advarticements(
-                          color: const Color(0xFFCAF0F8),
-                          image: 'assets/Images/boyy.png',
-                          text: S.of(context).New_collection))),
-              CardSliverGrid(
+                  child: CustomAdvWidget(size: size)),
+              ProductsListView(
                   size: size,
                   childAspectRatio: childAspectRatio,
                   itemSpacing: itemSpacing,
-                  products: products),
+                  products: state.products),
             ],
           );
-        } else if (state is ProductErrorLoading) {
+        } else if (state is AllProductsFailure) {
           return Center(child: Text(S.of(context).Error_loading_products));
         } else {
           return const Center(child: CustomLoadingIndicator());
@@ -53,3 +39,4 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
