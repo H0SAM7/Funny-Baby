@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:funny_baby/constants.dart';
-import 'package:funny_baby/widgets/custom_category.dart';
+import 'package:funny_baby/features/home/presentation/views/widgets/custom_category_item.dart';
 
-class CategoriesPage extends StatelessWidget {
-  const CategoriesPage({super.key});
+class CategoriesView extends StatelessWidget {
+  const CategoriesView({super.key});
   static String id = 'CategoriesPage';
 
   @override
@@ -27,7 +27,7 @@ class CategoriesPage extends StatelessWidget {
         ),
         itemCount: categoriesAR.length,
         itemBuilder: (context, index) {
-          return CustomCategory(
+          return CustomCategoryItem(
             name: categoriesAR[index],
           );
         },

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:funny_baby/constants.dart';
+import 'package:funny_baby/core/models/discount_model.dart';
 import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/services/fire_base.dart';
@@ -63,7 +64,7 @@ class _AddSalesState extends State<AddSales> {
                 onTap: () async {
                   if (fromKey.currentState!.validate() || loaded) {
                     await FireBaseServices().addSale(
-                        SaleModel(sale: saleController.text, image: image!));
+                        DiscountModel(sale: saleController.text, image: image!));
                     log('add sale done');
                     saleController.clear();
                     setState(() {

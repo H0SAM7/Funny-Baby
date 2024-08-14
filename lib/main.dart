@@ -9,6 +9,7 @@ import 'package:funny_baby/features/auth/presentation/views/login_page.dart';
 import 'package:funny_baby/features/auth/presentation/views/register_page.dart';
 import 'package:funny_baby/features/auth/presentation/views/update_profile.dart';
 import 'package:funny_baby/features/home/presentation/manager/all_products_cubit/all_products_cubit.dart';
+import 'package:funny_baby/features/home/presentation/manager/discounts_cubit/discounts_cubit.dart';
 import 'package:funny_baby/features/home/presentation/views/categories_view.dart';
 import 'package:funny_baby/features/home/presentation/views/category_details_view.dart';
 import 'package:funny_baby/features/home/presentation/views/product_details.dart';
@@ -43,6 +44,7 @@ class FunnyBaby extends StatelessWidget {
         BlocProvider(
           create: (context) => AllProductsCubit()..getAllProducts(),
         ),
+        BlocProvider(create: (context) => DiscountsCubit()..getAllDiscounts()),
         BlocProvider(
           create: (context) => LanguageCubit(),
         ),
@@ -75,7 +77,7 @@ class FunnyBaby extends StatelessWidget {
               MyHome.id: (context) => const MyHome(),
   
               UpdateProfilePage.id: (context) => const UpdateProfilePage(),
-              CategoriesPage.id: (context) => const CategoriesPage(),
+              CategoriesView.id: (context) => const CategoriesView(),
               DetailsPage.id: (context) => const DetailsPage(),
               CategoryPage.id: (context) => const CategoryPage(),
               RegisterPage.id: (context) => const RegisterPage(),

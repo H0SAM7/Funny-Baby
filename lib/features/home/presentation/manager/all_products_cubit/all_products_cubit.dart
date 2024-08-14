@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:funny_baby/core/errors/failure.dart';
 import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/features/home/data/home_repo/home_repo_impl.dart';
 import 'package:meta/meta.dart';
@@ -12,7 +11,7 @@ class AllProductsCubit extends Cubit<AllProductsState> {
   Future<void> getAllProducts() async {
     emit(AllProductLoading());
     var result = await HomeRepoImp().getAllProducts();
-    result.fold((l) => emit(AllProductsFailure(errMessage: '')),
-        (r) => emit(AllProductsSuccess(products: r)));
+    result.fold((Failure) => emit(AllProductsFailure(errMessage: Failure.errMessage!)),
+        (products) => emit(AllProductsSuccess(products: products)));
   }
 }

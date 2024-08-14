@@ -6,22 +6,21 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 // ignore: must_be_immutable
-class CustomCard extends StatefulWidget {
-  const CustomCard({
+class CustomProductItem extends StatefulWidget {
+  const CustomProductItem({
     super.key,
     required this.productModel,
     this.details = true,
   });
 
  final bool details;
- final bool favo = false;
   final ProductModel productModel;
 
   @override
-  State<CustomCard> createState() => _CustomCardState();
+  State<CustomProductItem> createState() => _CustomProductItemState();
 }
 
-class _CustomCardState extends State<CustomCard> {
+class _CustomProductItemState extends State<CustomProductItem> {
   @override
   Widget build(BuildContext context) {
     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;

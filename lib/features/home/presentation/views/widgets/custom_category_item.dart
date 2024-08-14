@@ -3,8 +3,8 @@ import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/features/home/presentation/views/category_details_view.dart';
 
 
-class CustomCategory extends StatelessWidget {
-  const CustomCategory({super.key, required this.name});
+class CustomCategoryItem extends StatelessWidget {
+  const CustomCategoryItem({super.key, required this.name});
   final String name;
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/cubit/get_products_cubit.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/helper/helper_functions.dart';
-import 'package:funny_baby/widgets/custom_card.dart';
+import 'package:funny_baby/features/home/presentation/views/widgets/custom_product_item.dart';
 import 'package:funny_baby/widgets/custom_text_field.dart';
 
 class SearchPage extends StatefulWidget {
@@ -60,7 +60,7 @@ class _SearchPageState extends State<SearchPage> {
             ),
             if (isSearching)
               searchResult != null
-                  ? CustomCard(productModel: searchResult!)
+                  ? CustomProductItem(productModel: searchResult!)
                   : Text(s.product_not_found),
             // if (!isSearching && searchHistory.isNotEmpty)
             //   SizedBox(

@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:funny_baby/core/models/product_model.dart';
-import 'package:funny_baby/widgets/custom_card.dart';
+import 'package:funny_baby/features/home/presentation/views/widgets/custom_product_item.dart';
 
 class ProductsListView extends StatelessWidget {
   const ProductsListView({
@@ -33,7 +33,7 @@ class ProductsListView extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         
         (context, index) {
-          return CustomCard(productModel: products[index]);
+          return CustomProductItem(productModel: products[index]);
         },
         childCount: products.length,
       ),

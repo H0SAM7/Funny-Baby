@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:funny_baby/core/models/discount_model.dart';
 import 'package:funny_baby/core/models/product_model.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -50,18 +51,7 @@ class FireBaseServices {
       return [];
     }
   }
-    Future<List<SaleModel>> getsales() async {
-    try {
-      QuerySnapshot querySnapshot =
-          await _firestore.collection('sales').get();
-      return querySnapshot.docs
-          .map((doc) => SaleModel.fromDocument(doc))
-          .toList();
-    } catch (e) {
-      log('Error getting sales: $e');
-      return [];
-    }
-  }
+    
 
   Future<void> updateProduct(ProductModel product) async {
     try {
@@ -150,7 +140,7 @@ Future<void> deleteProduct(String parcode) async {
   }
 
 
-Future<void> addSale(SaleModel sale) async {
+Future<void> addSale(DiscountModel sale) async {
     try {
       await _firestore.collection('sales').add(sale.toMap());
       log('adding done');

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:funny_baby/core/models/discount_model.dart';
 import 'package:funny_baby/core/models/product_model.dart';
 
 
 class SalesWidget extends StatelessWidget {
-  final SaleModel sale;
+  final DiscountModel sale;
 
   const SalesWidget({super.key, required this.sale});
 
