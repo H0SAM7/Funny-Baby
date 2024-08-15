@@ -7,10 +7,10 @@ import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/features/admins/presentation/manager/admin_cubit/admin_cubit.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/services/fire_base.dart';
-import 'package:funny_baby/widgets/custom_button.dart';
-import 'package:funny_baby/widgets/custom_dropdown.dart';
-import 'package:funny_baby/widgets/custom_text_field.dart';
-import 'package:funny_baby/widgets/custom_widgets.dart';
+import 'package:funny_baby/core/widgets/custom_button.dart';
+import 'package:funny_baby/features/admins/presentation/views/widgets/custom_dropdown.dart';
+import 'package:funny_baby/core/widgets/custom_text_field.dart';
+import 'package:funny_baby/core/widgets/custom_widgets.dart';
 
 class AddProductsPage extends StatefulWidget {
   const AddProductsPage({super.key});

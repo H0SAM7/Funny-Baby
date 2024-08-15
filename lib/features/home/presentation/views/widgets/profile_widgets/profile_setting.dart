@@ -5,8 +5,8 @@ import 'package:funny_baby/features/auth/presentation/views/login_page.dart';
 import 'package:funny_baby/features/auth/presentation/views/update_profile.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/helper/auth_firebase.dart';
-import 'package:funny_baby/widgets/delete_show_dialog.dart';
-import 'package:funny_baby/widgets/item_setting.dart';
+import 'package:funny_baby/core/widgets/delete_show_dialog.dart';
+import 'package:funny_baby/features/home/presentation/views/widgets/profile_widgets/item_setting.dart';
 
 class ProfileSettings extends StatelessWidget {
   const ProfileSettings({super.key});

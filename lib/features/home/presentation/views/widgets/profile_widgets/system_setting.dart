@@ -7,7 +7,7 @@ import 'package:funny_baby/cubit/lang_cubit.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/helper/helper_functions.dart';
 
-import 'package:funny_baby/widgets/item_setting.dart';
+import 'package:funny_baby/features/home/presentation/views/widgets/profile_widgets/item_setting.dart';
 
 class SystemSettings extends StatefulWidget {
   const SystemSettings({super.key});

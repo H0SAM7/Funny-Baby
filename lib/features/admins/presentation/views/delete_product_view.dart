@@ -5,12 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/features/admins/presentation/manager/admin_cubit/admin_cubit.dart';
 import 'package:funny_baby/generated/l10n.dart';
-import 'package:funny_baby/services/fire_base.dart';
-import 'package:funny_baby/widgets/custom_button.dart';
-import 'package:funny_baby/widgets/custom_text_field.dart';
-import 'package:funny_baby/widgets/custom_widgets.dart';
+import 'package:funny_baby/core/widgets/custom_button.dart';
+import 'package:funny_baby/core/widgets/custom_text_field.dart';
+import 'package:funny_baby/core/widgets/custom_widgets.dart';
 
-// ignore: must_be_immutable
+
 class DeleteProductsPage extends StatelessWidget {
   DeleteProductsPage({super.key});
   static String id = 'DeleteProductsPage';

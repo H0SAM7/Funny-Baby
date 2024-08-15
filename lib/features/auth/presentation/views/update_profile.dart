@@ -3,11 +3,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/helper/auth_firebase.dart';
-import 'package:funny_baby/widgets/custom_button.dart';
-import 'package:funny_baby/widgets/custom_progress.dart';
-import 'package:funny_baby/widgets/custom_text_field.dart';
+import 'package:funny_baby/core/widgets/custom_button.dart';
+import 'package:funny_baby/core/widgets/custom_progress_hud.dart';
+import 'package:funny_baby/core/widgets/custom_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:funny_baby/widgets/custom_widgets.dart';
+import 'package:funny_baby/core/widgets/custom_widgets.dart';
 
 class UpdateProfilePage extends StatefulWidget {
   const UpdateProfilePage({super.key});

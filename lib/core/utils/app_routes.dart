@@ -12,7 +12,7 @@ import 'package:funny_baby/features/home/presentation/views/widgets/bottom_navig
 import 'package:funny_baby/features/admins/presentation/views/add_products_view.dart';
 import 'package:funny_baby/features/admins/presentation/views/delete_product_view.dart';
 import 'package:funny_baby/features/admins/presentation/views/update_product_view.dart';
-import 'package:funny_baby/pages/start_page.dart';
+import 'package:funny_baby/features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRoutes {
 final GoRouter router = GoRouter(
@@ -68,9 +68,9 @@ final GoRouter router = GoRouter(
       builder: (context, state) =>  DeleteProductsPage(),
     ),
     GoRoute(
-      path: StartPage.id,
-      name: StartPage.id,
-      builder: (context, state) => const StartPage(),
+      path: SplashView.id,
+      name: SplashView.id,
+      builder: (context, state) => const SplashView(),
     ),
     GoRoute(
       path: AddSales.id,

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class StartPageBody extends StatelessWidget {
-  const StartPageBody({
+class SplashviewBody extends StatelessWidget {
+  const SplashviewBody({
     super.key,
     required this.size,
     required this.s,

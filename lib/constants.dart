@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:funny_baby/features/home/presentation/views/categories_view.dart';
 import 'package:funny_baby/features/home/presentation/views/home_view.dart';
 import 'package:funny_baby/features/home/presentation/views/discounts_view.dart';
-import 'package:funny_baby/pages/profile.dart';
+import 'package:funny_baby/features/home/presentation/views/profile_view.dart';
 import 'package:funny_baby/pages/search.dart';
 
 List<Color> background = [

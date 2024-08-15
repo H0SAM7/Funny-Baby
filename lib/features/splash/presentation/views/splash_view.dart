@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:funny_baby/features/auth/presentation/views/login_page.dart';
 import 'package:funny_baby/generated/l10n.dart';
-import 'package:funny_baby/widgets/start_page_body.dart';
+import 'package:funny_baby/features/splash/presentation/views/widgets/splash_view_body.dart';
 
 
-class StartPage extends StatelessWidget {
-  const StartPage({super.key});
-  static String id = 'StartPage';
+class SplashView extends StatelessWidget {
+  const SplashView({super.key});
+  static String id = 'SplashView';
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class StartPage extends StatelessWidget {
         onTap: () {
           Navigator.pushNamed(context, LoginPage.id);
         },
-        child: StartPageBody(size: size, s: s),
+        child: SplashviewBody(size: size, s: s),
       ),
     );
   }

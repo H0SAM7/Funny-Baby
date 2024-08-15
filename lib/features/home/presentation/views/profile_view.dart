@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:funny_baby/generated/l10n.dart';
-import 'package:funny_baby/widgets/admin_settings.dart';
-import 'package:funny_baby/widgets/profile_setting.dart';
-import 'package:funny_baby/widgets/system_setting.dart';
+import 'package:funny_baby/features/home/presentation/views/widgets/profile_widgets/admin_settings.dart';
+import 'package:funny_baby/features/home/presentation/views/widgets/profile_widgets/profile_setting.dart';
+import 'package:funny_baby/features/home/presentation/views/widgets/profile_widgets/system_setting.dart';
 
 // ignore: must_be_immutable
 class ProfilePage extends StatefulWidget {

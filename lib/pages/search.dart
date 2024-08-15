@@ -5,7 +5,7 @@ import 'package:funny_baby/cubit/get_products_cubit.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/helper/helper_functions.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/custom_product_item.dart';
-import 'package:funny_baby/widgets/custom_text_field.dart';
+import 'package:funny_baby/core/widgets/custom_text_field.dart';
 
 class SearchPage extends StatefulWidget {
  const SearchPage({

@@ -23,7 +23,7 @@ import 'package:funny_baby/helper/theme.dart';
 
 import 'package:funny_baby/features/admins/presentation/views/delete_product_view.dart';
 
-import 'package:funny_baby/pages/start_page.dart';
+import 'package:funny_baby/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
 
@@ -92,7 +92,7 @@ class FunnyBaby extends StatelessWidget {
               AddProductsPage.iD: (context) => const AddProductsPage(),
               UpdateProductsPage.id: (context) => const UpdateProductsPage(),
               DeleteProductsPage.id: (context) => DeleteProductsPage(),
-              StartPage.id: (context) => const StartPage(),
+              SplashView.id: (context) => const SplashView(),
               AddSales.id: (context) => const AddSales(),
               ForgetPassword.id: (context) => const ForgetPassword(),
     
