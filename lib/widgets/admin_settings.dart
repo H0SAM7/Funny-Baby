@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:funny_baby/features/admins/presentation/views/add_discount_view.dart';
 import 'package:funny_baby/generated/l10n.dart';
-import 'package:funny_baby/pages/Admin/add_products.dart';
-import 'package:funny_baby/pages/Admin/add_sales.dart';
-import 'package:funny_baby/pages/Admin/delete_product.dart';
+import 'package:funny_baby/features/admins/presentation/views/add_products_view.dart';
+import 'package:funny_baby/features/admins/presentation/views/delete_product_view.dart';
 import 'package:funny_baby/widgets/item_setting.dart';
 
 class AdminSettings extends StatelessWidget {

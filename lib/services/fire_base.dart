@@ -12,14 +12,14 @@ class FireBaseServices {
   final FirebaseStorage _storage = FirebaseStorage.instance;
   final ImagePicker _picker = ImagePicker();
 
-  Future<void> addProduct(ProductModel product) async {
-    try {
-      await _firestore.collection('products').add(product.toMap());
-      log('adding done');
-    } catch (e) {
-      log('Error adding product: $e');
-    }
-  }
+  // Future<void> addProduct(ProductModel product) async {
+  //   try {
+  //     await _firestore.collection('products').add(product.toMap());
+  //     log('adding done');
+  //   } catch (e) {
+  //     log('Error adding product: $e');
+  //   }
+  // }
 
   Future<List<ProductModel>> getProducts() async {
     try {
@@ -80,28 +80,28 @@ Future<void> updateField(String fieldName, bool newValue, ProductModel productMo
 
 
 
-Future<void> deleteProduct(String parcode) async {
-  try {
-    // Query the collection to find the document with the matching parcode
-    QuerySnapshot querySnapshot = await _firestore
-        .collection('products')
-        .where('parcode', isEqualTo: parcode)
-        .get();
+// Future<void> deleteProduct(String parcode) async {
+//   try {
+//     // Query the collection to find the document with the matching parcode
+//     QuerySnapshot querySnapshot = await _firestore
+//         .collection('products')
+//         .where('parcode', isEqualTo: parcode)
+//         .get();
 
-    if (querySnapshot.docs.isNotEmpty) {
-      // Get the document ID of the first matching document
-      String docId = querySnapshot.docs.first.id;
+//     if (querySnapshot.docs.isNotEmpty) {
+//       // Get the document ID of the first matching document
+//       String docId = querySnapshot.docs.first.id;
 
-      // Delete the document with the matching ID
-      await _firestore.collection('products').doc(docId).delete();
-      log('Product with parcode $parcode deleted successfully.');
-    } else {
-      log('No product found with parcode $parcode');
-    }
-  } catch (e) {
-    log('Error deleting product: $e');
-  }
-}
+//       // Delete the document with the matching ID
+//       await _firestore.collection('products').doc(docId).delete();
+//       log('Product with parcode $parcode deleted successfully.');
+//     } else {
+//       log('No product found with parcode $parcode');
+//     }
+//   } catch (e) {
+//     log('Error deleting product: $e');
+//   }
+// }
 
 
   Future<String?> uploadImage(String fileName) async {
@@ -139,13 +139,15 @@ Future<void> deleteProduct(String parcode) async {
     }
   }
 
-
-Future<void> addSale(DiscountModel sale) async {
-    try {
-      await _firestore.collection('sales').add(sale.toMap());
-      log('adding done');
-    } catch (e) {
-      log('Error adding product: $e');
-    }
-  }
 }
+
+
+// Future<void> addSale(DiscountModel sale) async {
+//     try {
+//       await _firestore.collection('sales').add(sale.toMap());
+//       log('adding done');
+//     } catch (e) {
+//       log('Error adding product: $e');
+//     }
+//   }
+// }

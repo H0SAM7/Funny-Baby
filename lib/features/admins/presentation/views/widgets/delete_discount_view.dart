@@ -2,19 +2,17 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:funny_baby/constants.dart';
-import 'package:funny_baby/core/models/discount_model.dart';
-import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/services/fire_base.dart';
 import 'package:funny_baby/widgets/custom_button.dart';
 import 'package:funny_baby/widgets/custom_text_field.dart';
 
-class AddSales extends StatefulWidget {
-  const AddSales({super.key});
-  static String id = 'AddSales';
+class deleteDiscount extends StatefulWidget {
+  const deleteDiscount({super.key});
+  static String id = 'deleteDiscount';
 
   @override
-  State<AddSales> createState() => _AddSalesState();
+  State<deleteDiscount> createState() => _deleteDiscountState();
 }
 
  String? image, category;
@@ -22,7 +20,7 @@ final TextEditingController saleController = TextEditingController();
 bool loaded = false;
 GlobalKey<FormState> fromKey = GlobalKey<FormState>();
 
-class _AddSalesState extends State<AddSales> {
+class _deleteDiscountState extends State<deleteDiscount> {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
@@ -63,8 +61,8 @@ class _AddSalesState extends State<AddSales> {
                 txtcolor: Colors.white,
                 onTap: () async {
                   if (fromKey.currentState!.validate() || loaded) {
-                    await FireBaseServices().addSale(
-                        DiscountModel(sale: saleController.text, image: image!));
+                    // await FireBaseServices().addSale(
+                    //     DiscountModel(sale: saleController.text, image: image!));
                     log('add sale done');
                     saleController.clear();
                     setState(() {

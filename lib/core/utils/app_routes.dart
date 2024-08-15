@@ -1,4 +1,5 @@
 
+import 'package:funny_baby/features/admins/presentation/views/add_discount_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:funny_baby/features/auth/presentation/views/forget_password.dart';
 import 'package:funny_baby/features/auth/presentation/views/login_page.dart';
@@ -8,10 +9,9 @@ import 'package:funny_baby/features/home/presentation/views/categories_view.dart
 import 'package:funny_baby/features/home/presentation/views/category_products_view.dart';
 import 'package:funny_baby/features/home/presentation/views/product_details_view.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/bottom_navigation_bar.dart';
-import 'package:funny_baby/pages/Admin/add_products.dart';
-import 'package:funny_baby/pages/Admin/add_sales.dart';
-import 'package:funny_baby/pages/Admin/delete_product.dart';
-import 'package:funny_baby/pages/Admin/update_product.dart';
+import 'package:funny_baby/features/admins/presentation/views/add_products_view.dart';
+import 'package:funny_baby/features/admins/presentation/views/delete_product_view.dart';
+import 'package:funny_baby/features/admins/presentation/views/update_product_view.dart';
 import 'package:funny_baby/pages/start_page.dart';
 
 abstract class AppRoutes {

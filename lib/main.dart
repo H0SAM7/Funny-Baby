@@ -4,6 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funny_baby/cubit/cahnge_mode.dart';
 import 'package:funny_baby/cubit/get_products_cubit.dart';
 import 'package:funny_baby/cubit/lang_cubit.dart';
+import 'package:funny_baby/features/admins/presentation/manager/admin_cubit/admin_cubit.dart';
+import 'package:funny_baby/features/admins/presentation/views/add_products_view.dart';
+import 'package:funny_baby/features/admins/presentation/views/add_discount_view.dart';
+import 'package:funny_baby/features/admins/presentation/views/update_product_view.dart';
 import 'package:funny_baby/features/auth/presentation/views/forget_password.dart';
 import 'package:funny_baby/features/auth/presentation/views/login_page.dart';
 import 'package:funny_baby/features/auth/presentation/views/register_page.dart';
@@ -16,10 +20,9 @@ import 'package:funny_baby/features/home/presentation/views/product_details_view
 import 'package:funny_baby/features/home/presentation/views/widgets/bottom_navigation_bar.dart';
 import 'package:funny_baby/firebase_options.dart';
 import 'package:funny_baby/helper/theme.dart';
-import 'package:funny_baby/pages/Admin/add_products.dart';
-import 'package:funny_baby/pages/Admin/add_sales.dart';
-import 'package:funny_baby/pages/Admin/delete_product.dart';
-import 'package:funny_baby/pages/Admin/update_product.dart';
+
+import 'package:funny_baby/features/admins/presentation/views/delete_product_view.dart';
+
 import 'package:funny_baby/pages/start_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
@@ -45,12 +48,16 @@ class FunnyBaby extends StatelessWidget {
           create: (context) => AllProductsCubit()..getAllProducts(),
         ),
         BlocProvider(create: (context) => DiscountsCubit()..getAllDiscounts()),
+            BlocProvider(
+          create: (context) => AdminCubit(),
+        ),
         BlocProvider(
           create: (context) => LanguageCubit(),
         ),
         BlocProvider(
           create: (context) => ThemeCubit(),
         ),
+        
       ],
       child: BlocBuilder<ThemeCubit, ThemeModeState>(
         builder: (context, themeModeState) {
