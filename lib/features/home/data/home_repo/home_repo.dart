@@ -12,4 +12,5 @@ final FirebaseStorage storage = FirebaseStorage.instance;
 abstract class HomeRepo {
   Future<Either<Failure, List<ProductModel>>> getAllProducts();
   Future<Either<Failure, List<DiscountModel>>> getAllDiscounts();
+
 }

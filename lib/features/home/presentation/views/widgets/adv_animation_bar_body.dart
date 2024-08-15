@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:funny_baby/widgets/adv_widget.dart';
+import 'package:funny_baby/features/home/presentation/views/widgets/adv_animation_bar.dart';
+import 'package:funny_baby/features/home/presentation/views/widgets/adv_item.dart';
 
 class AdvarticementsBody extends StatelessWidget {
   const AdvarticementsBody({
@@ -10,7 +11,7 @@ class AdvarticementsBody extends StatelessWidget {
   }) : _pageController = pageController;
 
   final PageController _pageController;
-  final Advarticements widget;
+  final AdvarticementsAnimationBar widget;
 
   @override
   Widget build(BuildContext context) {

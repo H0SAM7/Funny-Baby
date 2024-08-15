@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/custom_product_item.dart';
 
-class CategoryGridView extends StatelessWidget {
-  const CategoryGridView({
+class CategoriesListView extends StatelessWidget {
+  const CategoriesListView({
     super.key,
     required this.products,
   });

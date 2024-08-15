@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:funny_baby/generated/l10n.dart';
-import 'package:funny_baby/widgets/custom_loading_indecator.dart';
+import 'package:funny_baby/core/widgets/custom_loading_indecator.dart';
 
 
 class CustomProgressHUD extends StatelessWidget {

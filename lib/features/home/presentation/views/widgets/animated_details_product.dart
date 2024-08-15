@@ -4,8 +4,8 @@ import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/widgets/product_details.dart';
 
-class AnimatedDetailsWidget extends StatelessWidget {
-  const AnimatedDetailsWidget({
+class AnimatedDetailsProduct extends StatelessWidget {
+  const AnimatedDetailsProduct({
     super.key,
     required this.size,
     required bool isVisible,

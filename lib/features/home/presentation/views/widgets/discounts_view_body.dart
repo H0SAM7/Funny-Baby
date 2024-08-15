@@ -4,8 +4,8 @@ import 'package:funny_baby/core/models/discount_model.dart';
 import 'package:funny_baby/features/home/presentation/manager/discounts_cubit/discounts_cubit.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/services/fire_base.dart';
-import 'package:funny_baby/widgets/custom_loading_indecator.dart';
-import 'package:funny_baby/widgets/sales_widget.dart';
+import 'package:funny_baby/core/widgets/custom_loading_indecator.dart';
+import 'package:funny_baby/features/home/presentation/views/widgets/discount_view_item.dart';
 
 class DiscountsViewBody extends StatelessWidget {
   const DiscountsViewBody({
@@ -23,7 +23,7 @@ class DiscountsViewBody extends StatelessWidget {
               clipBehavior: Clip.none,
               itemCount: state.discounts.length,
               itemBuilder: (context, index) {
-                return SalesWidget(
+                return DiscountViewItem(
                   sale: state.discounts[index],
                 );
               },

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:funny_baby/constants.dart';
-import 'package:funny_baby/features/home/presentation/views/category_details_view.dart';
+import 'package:funny_baby/features/home/presentation/views/category_products_view.dart';
 
 
 class CustomCategoryItem extends StatelessWidget {
@@ -11,7 +11,7 @@ class CustomCategoryItem extends StatelessWidget {
     //  final size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, CategoryPage.id, arguments: name);
+        Navigator.pushNamed(context, CategoryProductsView.id, arguments: name);
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(25),

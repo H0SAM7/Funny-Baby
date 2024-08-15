@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:funny_baby/core/models/product_model.dart';
 
-class ImageDetailesWidget extends StatelessWidget {
-  const ImageDetailesWidget({
+class ImageProductDetails extends StatelessWidget {
+  const ImageProductDetails({
     super.key,
     required this.size,
     required this.productModel,

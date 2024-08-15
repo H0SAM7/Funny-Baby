@@ -3,10 +3,10 @@ import 'package:funny_baby/core/models/discount_model.dart';
 import 'package:funny_baby/core/models/product_model.dart';
 
 
-class SalesWidget extends StatelessWidget {
+class DiscountViewItem extends StatelessWidget {
   final DiscountModel sale;
 
-  const SalesWidget({super.key, required this.sale});
+  const DiscountViewItem({super.key, required this.sale});
 
   @override
   Widget build(BuildContext context) {
@@ -44,24 +44,6 @@ class SalesWidget extends StatelessWidget {
                 ),
               ),
             ),
-            // Positioned(
-            //   bottom: 20,
-            //   left: 20,
-            //   child: Column(
-            //     crossAxisAlignment: CrossAxisAlignment.start,
-            //     children: [
-            //       Text(
-            //         sale.sale,
-            //         style: TextStyle(
-            //           fontSize: 24,
-            //           fontWeight: FontWeight.bold,
-            //           color: Colors.white,
-            //         ),
-            //       ),
-
-            //     ],
-            //   ),
-            // ),
           ],
         ),
       ),

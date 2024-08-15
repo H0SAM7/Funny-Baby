@@ -11,8 +11,8 @@ import 'package:funny_baby/features/auth/presentation/views/update_profile.dart'
 import 'package:funny_baby/features/home/presentation/manager/all_products_cubit/all_products_cubit.dart';
 import 'package:funny_baby/features/home/presentation/manager/discounts_cubit/discounts_cubit.dart';
 import 'package:funny_baby/features/home/presentation/views/categories_view.dart';
-import 'package:funny_baby/features/home/presentation/views/category_details_view.dart';
-import 'package:funny_baby/features/home/presentation/views/product_details.dart';
+import 'package:funny_baby/features/home/presentation/views/category_products_view.dart';
+import 'package:funny_baby/features/home/presentation/views/product_details_view.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/bottom_navigation_bar.dart';
 import 'package:funny_baby/firebase_options.dart';
 import 'package:funny_baby/helper/theme.dart';
@@ -79,7 +79,7 @@ class FunnyBaby extends StatelessWidget {
               UpdateProfilePage.id: (context) => const UpdateProfilePage(),
               CategoriesView.id: (context) => const CategoriesView(),
               DetailsPage.id: (context) => const DetailsPage(),
-              CategoryPage.id: (context) => const CategoryPage(),
+              CategoryProductsView.id: (context) => const CategoryProductsView(),
               RegisterPage.id: (context) => const RegisterPage(),
  
               AddProductsPage.iD: (context) => const AddProductsPage(),

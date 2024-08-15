@@ -4,7 +4,7 @@ import 'package:funny_baby/features/home/presentation/manager/all_products_cubit
 import 'package:funny_baby/features/home/presentation/views/widgets/custom_adv_widget.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/products_list_view.dart';
 import 'package:funny_baby/generated/l10n.dart';
-import 'package:funny_baby/widgets/custom_loading_indecator.dart';
+import 'package:funny_baby/core/widgets/custom_loading_indecator.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

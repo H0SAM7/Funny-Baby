@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/services/fire_base.dart';
-import 'package:funny_baby/widgets/category_grid_view.dart';
-import 'package:funny_baby/widgets/custom_loading_indecator.dart';
+import 'package:funny_baby/features/home/presentation/views/widgets/categories_list_view.dart';
+import 'package:funny_baby/core/widgets/custom_loading_indecator.dart';
 
 
-class CategoryPage extends StatelessWidget {
+class CategoryProductsView extends StatelessWidget {
   static String id='categoryPage';
 
-  const CategoryPage({super.key});
+  const CategoryProductsView({super.key});
   @override
   Widget build(BuildContext context) {
 
@@ -21,12 +21,11 @@ class CategoryPage extends StatelessWidget {
       body: Padding(
          padding: const EdgeInsets.only(left: 6, right: 6, top: 20,),
         child: FutureBuilder<List<ProductModel>>(
-         //  BlocProvider.of<GetProductCubit>(context).getProducts()
           future:FireBaseServices().getCategoryProducts(categoryName, ),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               List<ProductModel> products = snapshot.data!;
-              return CategoryGridView(products: products);
+              return CategoriesListView(products: products);
             } else {
               return const Center(
                 child: CustomLoadingIndicator(),
