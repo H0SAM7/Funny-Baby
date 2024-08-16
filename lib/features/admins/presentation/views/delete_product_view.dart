@@ -10,9 +10,10 @@ import 'package:funny_baby/core/widgets/custom_text_field.dart';
 import 'package:funny_baby/core/widgets/custom_widgets.dart';
 
 
+// ignore: must_be_immutable
 class DeleteProductsPage extends StatelessWidget {
   DeleteProductsPage({super.key});
-  static String id = 'DeleteProductsPage';
+  static const String id = 'DeleteProductsPage';
 
   final TextEditingController idController = TextEditingController();
 

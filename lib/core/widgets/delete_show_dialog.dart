@@ -2,7 +2,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:funny_baby/core/utils/app_routes.dart';
+import 'package:funny_baby/core/utils/app_go_routes.dart';
 import 'package:funny_baby/features/auth/presentation/views/login_page.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/helper/auth_firebase.dart';

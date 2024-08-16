@@ -15,7 +15,7 @@ import 'package:funny_baby/features/admins/presentation/views/delete_product_vie
 import 'package:funny_baby/features/admins/presentation/views/update_product_view.dart';
 import 'package:funny_baby/features/splash/presentation/views/splash_view.dart';
 
-abstract class AppRoutes {
+abstract class AppGoRoutes {
 static final GoRouter router = GoRouter(
   initialLocation: '/${MyHome.id}',  // Set LoginPage as the initial route
     routes: [

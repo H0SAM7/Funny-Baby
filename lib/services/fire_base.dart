@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:funny_baby/core/models/discount_model.dart';
 import 'package:funny_baby/core/models/product_model.dart';
 import 'package:image_picker/image_picker.dart';
 
