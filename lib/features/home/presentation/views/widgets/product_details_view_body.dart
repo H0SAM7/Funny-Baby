@@ -5,6 +5,7 @@ import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/animated_details_product.dart';
 import 'package:funny_baby/core/widgets/custom_icon_button.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/image_product_details.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductDetailsBody extends StatelessWidget {
   const ProductDetailsBody({
@@ -28,7 +29,8 @@ class ProductDetailsBody extends StatelessWidget {
         customIconButton(
           size: size,
           icon: Icon(Icons.arrow_forward, color: blueColor),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () =>    GoRouter.of(context).pop(),
+
         ),
         AnimatedDetailsProduct(
             size: size, isVisible: _isVisible, productModel: productModel, s: s)

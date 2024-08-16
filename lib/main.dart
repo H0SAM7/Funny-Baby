@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:funny_baby/core/utils/app_routes.dart';
 import 'package:funny_baby/cubit/cahnge_mode.dart';
-import 'package:funny_baby/cubit/get_products_cubit.dart';
 import 'package:funny_baby/cubit/lang_cubit.dart';
 import 'package:funny_baby/features/admins/presentation/manager/admin_cubit/admin_cubit.dart';
 import 'package:funny_baby/features/admins/presentation/views/add_products_view.dart';
@@ -20,19 +20,16 @@ import 'package:funny_baby/features/home/presentation/views/product_details_view
 import 'package:funny_baby/features/home/presentation/views/widgets/bottom_navigation_bar.dart';
 import 'package:funny_baby/firebase_options.dart';
 import 'package:funny_baby/helper/theme.dart';
-
 import 'package:funny_baby/features/admins/presentation/views/delete_product_view.dart';
-
 import 'package:funny_baby/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    
     options: DefaultFirebaseOptions.currentPlatform,
-
   );
   runApp(const FunnyBaby());
 }
@@ -48,7 +45,7 @@ class FunnyBaby extends StatelessWidget {
           create: (context) => AllProductsCubit()..getAllProducts(),
         ),
         BlocProvider(create: (context) => DiscountsCubit()..getAllDiscounts()),
-            BlocProvider(
+        BlocProvider(
           create: (context) => AdminCubit(),
         ),
         BlocProvider(
@@ -57,49 +54,47 @@ class FunnyBaby extends StatelessWidget {
         BlocProvider(
           create: (context) => ThemeCubit(),
         ),
-        
       ],
       child: BlocBuilder<ThemeCubit, ThemeModeState>(
         builder: (context, themeModeState) {
-          return MaterialApp(
-            locale: context.watch<LanguageCubit>().state,
-            localizationsDelegates: const [
-              S.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales:  const [
-              Locale('en', ''),
-              Locale('ar', ''),
-            
-            ],
-            theme: MyAppThemes.lightTheme,
-            darkTheme: MyAppThemes.darkTheme,
-            themeMode: themeModeState == ThemeModeState.light
-                ? ThemeMode.light
-                : ThemeMode.dark,
-            routes: {
-              LoginPage.id: (context) => const LoginPage(),
-              MyHome.id: (context) => const MyHome(),
-  
-              UpdateProfilePage.id: (context) => const UpdateProfilePage(),
-              CategoriesView.id: (context) => const CategoriesView(),
-              DetailsPage.id: (context) => const DetailsPage(),
-              CategoryProductsView.id: (context) => const CategoryProductsView(),
-              RegisterPage.id: (context) => const RegisterPage(),
- 
-              AddProductsPage.iD: (context) => const AddProductsPage(),
-              UpdateProductsPage.id: (context) => const UpdateProductsPage(),
-              DeleteProductsPage.id: (context) => DeleteProductsPage(),
-              SplashView.id: (context) => const SplashView(),
-              AddSales.id: (context) => const AddSales(),
-              ForgetPassword.id: (context) => const ForgetPassword(),
-    
-            },
-            debugShowCheckedModeBanner: false,
-            initialRoute:MyHome.id
-          );
+          return MaterialApp.router(
+              locale: context.watch<LanguageCubit>().state,
+              localizationsDelegates: const [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: const [
+                Locale('en', ''),
+                Locale('ar', ''),
+              ],
+              theme: MyAppThemes.lightTheme,
+              darkTheme: MyAppThemes.darkTheme,
+              themeMode: themeModeState == ThemeModeState.light
+                  ? ThemeMode.light
+                  : ThemeMode.dark,
+              // routes: {
+              //   LoginPage.id: (context) => const LoginPage(),
+              //   MyHome.id: (context) => const MyHome(),
+              //   UpdateProfilePage.id: (context) => const UpdateProfilePage(),
+              //   CategoriesView.id: (context) => const CategoriesView(),
+              //   DetailsPage.id: (context) => const DetailsPage(),
+              //   CategoryProductsView.id: (context) =>
+              //       const CategoryProductsView(),
+              //   RegisterPage.id: (context) => const RegisterPage(),
+              //   AddProductsPage.iD: (context) => const AddProductsPage(),
+              //   UpdateProductsPage.id: (context) => const UpdateProductsPage(),
+              //   DeleteProductsPage.id: (context) => DeleteProductsPage(),
+              //   SplashView.id: (context) => const SplashView(),
+              //   AddSales.id: (context) => const AddSales(),
+              //   ForgetPassword.id: (context) => const ForgetPassword(),
+                
+              //   },
+                
+              debugShowCheckedModeBanner: false,
+              routerConfig: AppRoutes.router,
+              );
         },
       ),
     );

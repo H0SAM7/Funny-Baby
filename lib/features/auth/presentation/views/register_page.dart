@@ -12,6 +12,7 @@ import 'package:funny_baby/core/widgets/custom_progress_hud.dart';
 import 'package:funny_baby/core/widgets/custom_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:funny_baby/core/widgets/custom_widgets.dart';
+import 'package:go_router/go_router.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -141,17 +142,16 @@ class _RegisterPageState extends State<RegisterPage> {
                     color: blueColor,
                     onTap: () async {
                       isloading = true;
-                      setState(() {
-                       
-                      });
+                      setState(() {});
 
                       if (FromKey.currentState!.validate()) {
-                         showSnackbar(context, s.check_inbox);
+                        showSnackbar(context, s.check_inbox);
                         try {
                           await AuthHelper()
                               .registerUser(email!, password!, username!);
-                              
-                          Navigator.pushNamed(context, MyHome.id);
+
+                          //     Navigator.pushNamed(context, MyHome.id);
+                           GoRouter.of(context).push('/${MyHome.id}');
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'weak-password') {
                             showSnackbar(context, s.weak_password);
@@ -188,7 +188,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     color: Colors.white,
                     onTap: () async {
                       await AuthHelper().signInWithGoogle();
-                      Navigator.pushNamed(context, MyHome.id);
+                      //      Navigator.pushNamed(context, MyHome.id);
+                       GoRouter.of(context).push('/${MyHome.id}');
                     },
                   ),
                 ),
@@ -202,7 +203,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         )),
                     TextButton(
                         onPressed: () {
-                          Navigator.pop(context);
+                           GoRouter.of(context).pop();
                         },
                         child: Text(s.loginButton,
                             style: TextStyle(

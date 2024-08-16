@@ -4,9 +4,9 @@ import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/product_details_view_body.dart';
 
 class DetailsPage extends StatefulWidget {
-  const DetailsPage({super.key});
+  const DetailsPage({super.key, required this.productModel});
   static const String id = 'DetailsPage';
-
+  final ProductModel productModel;
   @override
   DetailsPageState createState() => DetailsPageState();
 }
@@ -25,14 +25,14 @@ class DetailsPageState extends State<DetailsPage> {
     // bool isarabic = isArabic(context);
     final s = S.of(context);
     final size = MediaQuery.of(context).size;
-    final ProductModel productModel =
-        ModalRoute.of(context)!.settings.arguments as ProductModel;
+    // final ProductModel productModel =
+    //     ModalRoute.of(context)!.settings.arguments as ProductModel;
     return Scaffold(
       body: GestureDetector(
         onTap: _toggleVisibility,
         child: ProductDetailsBody(
             size: size,
-            productModel: productModel,
+            productModel: widget.productModel,
             isVisible: _isVisible,
             s: s),
       ),

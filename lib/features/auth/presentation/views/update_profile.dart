@@ -8,6 +8,7 @@ import 'package:funny_baby/core/widgets/custom_progress_hud.dart';
 import 'package:funny_baby/core/widgets/custom_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:funny_baby/core/widgets/custom_widgets.dart';
+import 'package:go_router/go_router.dart';
 
 class UpdateProfilePage extends StatefulWidget {
   const UpdateProfilePage({super.key});
@@ -112,7 +113,7 @@ class _RegisterPageState extends State<UpdateProfilePage> {
                           await AuthHelper().updateUser(
                               oldpassword!, newpassword!, username!);
                           showSnackbar(context, 'Updated Done');
-                          Navigator.pop(context);
+                           GoRouter.of(context).pop();
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'weak-password') {
                             showSnackbar(context,

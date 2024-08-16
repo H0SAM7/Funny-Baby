@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:funny_baby/features/auth/presentation/views/login_page.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/features/splash/presentation/views/widgets/splash_view_body.dart';
+import 'package:go_router/go_router.dart';
 
 
 class SplashView extends StatelessWidget {
@@ -17,7 +18,8 @@ class SplashView extends StatelessWidget {
     return Scaffold(
       body: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, LoginPage.id);
+        //  Navigator.pushNamed(context, LoginPage.id);
+                  GoRouter.of(context).push('/${LoginPage.id }');
         },
         child: SplashviewBody(size: size, s: s),
       ),

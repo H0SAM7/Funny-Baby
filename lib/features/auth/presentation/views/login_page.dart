@@ -13,6 +13,7 @@ import 'package:funny_baby/core/widgets/custom_button.dart';
 import 'package:funny_baby/core/widgets/custom_progress_hud.dart';
 import 'package:funny_baby/core/widgets/custom_text_field.dart';
 import 'package:funny_baby/core/widgets/custom_widgets.dart';
+import 'package:go_router/go_router.dart';
 
 
 
@@ -113,7 +114,9 @@ class _LoginPageState extends State<LoginPage> {
                       if (fromKey.currentState!.validate()) {
                         try {
                           await AuthHelper().loginUser(email!, password!);
-                          Navigator.pushNamed(context, MyHome.id);
+                       //   Navigator.pushNamed(context, MyHome.id);
+                            GoRouter.of(context).push('/${MyHome.id}');
+
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'user-not-found') {
                             showSnackbar(context, s.user_not_found);
@@ -144,7 +147,9 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.white,
                     onTap: () async {
                       await AuthHelper().signInWithGoogle();
-                      Navigator.pushNamed(context, MyHome.id);
+                     // Navigator.pushNamed(context, MyHome.id);
+                          GoRouter.of(context).push('/${MyHome.id}');
+
                     },
                   ),
                 ),
@@ -157,7 +162,9 @@ class _LoginPageState extends State<LoginPage> {
                       border: true,
               
                       onTap: () =>
-                          Navigator.pushNamed(context, RegisterPage.id),
+                     //     Navigator.pushNamed(context, RegisterPage.id),
+                          GoRouter.of(context).push('/${RegisterPage.id}'),
+
                     )),
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.center,

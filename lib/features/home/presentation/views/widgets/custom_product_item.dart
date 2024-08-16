@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/features/home/presentation/views/product_details_view.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 // ignore: must_be_immutable
 class CustomProductItem extends StatefulWidget {
@@ -13,7 +13,7 @@ class CustomProductItem extends StatefulWidget {
     this.details = true,
   });
 
- final bool details;
+  final bool details;
   final ProductModel productModel;
 
   @override
@@ -32,8 +32,9 @@ class _CustomProductItemState extends State<CustomProductItem> {
 
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, DetailsPage.id,
-            arguments: widget.productModel);
+        // Navigator.pushNamed(context, DetailsPage.id,
+        //     arguments: widget.productModel);
+        GoRouter.of(context).push('/${DetailsPage.id }', extra: widget.productModel);
       },
       child: Card(
         shape: RoundedRectangleBorder(
@@ -113,5 +114,4 @@ class _CustomProductItemState extends State<CustomProductItem> {
       return '${words.take(maxWords).join(' ')}...';
     }
   }
-
 }

@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:funny_baby/generated/l10n.dart';
+import 'package:go_router/go_router.dart';
 
 class ConfirmationDialog extends StatelessWidget {
   final String title;
@@ -23,7 +23,7 @@ class ConfirmationDialog extends StatelessWidget {
         TextButton(
           child: Text(S.of(context).cancel),
           onPressed: () {
-            Navigator.of(context).pop();
+           GoRouter.of(context).pop();
           },
         ),
         TextButton(

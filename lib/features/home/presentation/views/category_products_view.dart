@@ -7,15 +7,15 @@ import 'package:funny_baby/core/widgets/custom_loading_indecator.dart';
 
 class CategoryProductsView extends StatelessWidget {
   static String id='categoryPage';
-
-  const CategoryProductsView({super.key});
+  final String categoryName;
+  const CategoryProductsView({super.key, required this.categoryName});
   @override
   Widget build(BuildContext context) {
 
 
   
-    String categoryName =
-        ModalRoute.of(context)!.settings.arguments as String;
+    // String categoryName =
+    //     ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(),
       body: Padding(

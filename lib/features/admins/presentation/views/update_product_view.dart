@@ -27,8 +27,6 @@ class _AddProductsPageState extends State<UpdateProductsPage> {
 
   final TextEditingController categoryController = TextEditingController();
 
-
-
   final TextEditingController sizeController = TextEditingController();
 
   final TextEditingController countController = TextEditingController();
@@ -81,7 +79,7 @@ class _AddProductsPageState extends State<UpdateProductsPage> {
               //   hint: 'Enter category',
               //   controller: categoryController,
               // ),
-            
+
               CustomTextField(
                 label: 'Size',
                 hint: 'Enter size',
@@ -128,7 +126,7 @@ class _AddProductsPageState extends State<UpdateProductsPage> {
                   ),
                 ],
               ),
-         
+
               const SizedBox(
                 height: 15,
               ),
@@ -147,11 +145,9 @@ class _AddProductsPageState extends State<UpdateProductsPage> {
                     description: descriptionController.text,
                     category: categoryController.text,
                     image: image!,
-                   
                     size: sizeController.text,
                     count: int.tryParse(countController.text) ?? 0,
                     gender: genderController.text,
-                  
                     cart: false,
                     discount: double.tryParse(discountController.text) ?? 0,
                   ));
@@ -177,13 +173,11 @@ class _AddProductsPageState extends State<UpdateProductsPage> {
     );
   }
 
-  
   bool allfields() {
     return idController.text.isNotEmpty &&
         titleController.text.isNotEmpty &&
         priceController.text.isNotEmpty &&
         descriptionController.text.isNotEmpty &&
-       
         sizeController.text.isNotEmpty &&
         countController.text.isNotEmpty &&
         genderController.text.isNotEmpty &&
