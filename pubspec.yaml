@@ -50,6 +50,7 @@ dependencies:
   insta_image_viewer: ^1.0.4
   intl: ^0.18.1
   loading_indicator: ^3.1.1
+  shared_preferences: ^2.2.3
   url_launcher: ^6.3.0
   uuid: ^4.4.2
 dev_dependencies:

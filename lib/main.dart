@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funny_baby/bloc_observer.dart';
 import 'package:funny_baby/core/utils/app_go_routes.dart';
-import 'package:funny_baby/cubit/cahnge_mode.dart';
-import 'package:funny_baby/cubit/lang_cubit.dart';
+import 'package:funny_baby/system_cubits/cahnge_mode.dart';
+import 'package:funny_baby/system_cubits/lang_cubit.dart';
 import 'package:funny_baby/features/admins/presentation/manager/admin_cubit/admin_cubit.dart';
 import 'package:funny_baby/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:funny_baby/features/home/presentation/manager/all_products_cubit/all_products_cubit.dart';
 import 'package:funny_baby/features/home/presentation/manager/discounts_cubit/discounts_cubit.dart';
 import 'package:funny_baby/firebase_options.dart';
-import 'package:funny_baby/helper/theme.dart';
+import 'package:funny_baby/core/helper/theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
 

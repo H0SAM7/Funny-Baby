@@ -24,16 +24,11 @@ class _CustomProductItemState extends State<CustomProductItem> {
   @override
   Widget build(BuildContext context) {
     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    // bool isarabic = isArabic(context);
-    // final s = S.of(context);
-    // var cubit = BlocProvider.of<GetProductCubit>(context);
     var size = MediaQuery.of(context).size;
     double cardPadding = size.width * 0.02; // Responsive padding
 
     return GestureDetector(
       onTap: () {
-        // Navigator.pushNamed(context, DetailsPage.id,
-        //     arguments: widget.productModel);
         GoRouter.of(context).push('/${DetailsPage.id }', extra: widget.productModel);
       },
       child: Card(

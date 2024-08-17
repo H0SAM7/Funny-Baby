@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:funny_baby/core/helper/auth_helper.dart';
+import 'package:funny_baby/core/helper/shared_pref.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
 
@@ -18,7 +19,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> registerUser(
       String email, String password, String username) async {
-    // emit(AuthLoading());
+
     try {
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(
         email: email,
@@ -40,31 +41,29 @@ class AuthCubit extends Cubit<AuthState> {
             'username': username,
             // Add other fields as needed
           });
-          emit(AuthSuccess());
+         
           log('User account created successfully.');
         } else {
-          emit(AuthFailure(
-              errMessage:
-                  'Email verification failed. Please verify your email.'));
+         
           await user.delete();
           log('Email verification failed. Please verify your email.');
         }
       }
     } catch (e) {
-      emit(AuthFailure(errMessage: e.toString()));
+
     }
   }
 
   Future<void> loginUser(String email, String password) async {
    
     try {
-       emit(AuthLoading());
+      
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-      emit(AuthSuccess());
+     
       log('The Login Successful');
     } catch (e) {
-      emit(AuthFailure(errMessage: e.toString()));
+    
     }
   }
 
@@ -92,6 +91,7 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> logout() async {
     try {
       await auth.signOut();
+         await SharedPreference().setBool("isLoggedIn", false);
       log("User logged out successfully.");
     } catch (e) {
       log("Error logging out: $e");

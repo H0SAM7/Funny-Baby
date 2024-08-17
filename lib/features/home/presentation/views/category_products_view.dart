@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:funny_baby/core/models/product_model.dart';
-import 'package:funny_baby/services/fire_base.dart';
+import 'package:funny_baby/services/fire_base_services.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/categories_list_view.dart';
 import 'package:funny_baby/core/widgets/custom_loading_indecator.dart';
 

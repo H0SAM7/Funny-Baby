@@ -1,12 +1,10 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/features/admins/presentation/views/add_discount_view.dart';
-import 'package:funny_baby/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:funny_baby/features/home/presentation/views/profile_view.dart';
 import 'package:go_router/go_router.dart';
-import 'package:funny_baby/features/auth/presentation/views/forget_password.dart';
-import 'package:funny_baby/features/auth/presentation/views/login_page.dart';
-import 'package:funny_baby/features/auth/presentation/views/register_page.dart';
+import 'package:funny_baby/features/auth/presentation/views/forget_password_view.dart';
+import 'package:funny_baby/features/auth/presentation/views/login_view.dart';
+import 'package:funny_baby/features/auth/presentation/views/register_view.dart';
 import 'package:funny_baby/features/auth/presentation/views/update_profile.dart';
 import 'package:funny_baby/features/home/presentation/views/categories_view.dart';
 import 'package:funny_baby/features/home/presentation/views/category_products_view.dart';
@@ -61,19 +59,19 @@ abstract class AppGoRoutes {
         builder: (context, state) => const RegisterPage(),
       ),
       GoRoute(
-        path: '/${AddProductsPage.iD}',
-        name: AddProductsPage.iD,
-        builder: (context, state) => const AddProductsPage(),
+        path: '/${AddProductsView.iD}',
+        name: AddProductsView.iD,
+        builder: (context, state) => const AddProductsView(),
       ),
       GoRoute(
-        path: '/${UpdateProductsPage.id}',
-        name: UpdateProductsPage.id,
-        builder: (context, state) => const UpdateProductsPage(),
+        path: '/${UpdateProductsView.id}',
+        name: UpdateProductsView.id,
+        builder: (context, state) => const UpdateProductsView(),
       ),
       GoRoute(
-        path: '/${DeleteProductsPage.id}',
-        name: DeleteProductsPage.id,
-        builder: (context, state) => DeleteProductsPage(),
+        path: '/${DeleteProductsView.id}',
+        name: DeleteProductsView.id,
+        builder: (context, state) => DeleteProductsView(),
       ),
       GoRoute(
         path: '/${SplashView.id}',
@@ -81,9 +79,9 @@ abstract class AppGoRoutes {
         builder: (context, state) => const SplashView(),
       ),
       GoRoute(
-        path: '/${AddSales.id}',
-        name: AddSales.id,
-        builder: (context, state) => const AddSales(),
+        path: '/${AddDiscounts.id}',
+        name: AddDiscounts.id,
+        builder: (context, state) => const AddDiscounts(),
       ),
       GoRoute(
         path: '/${ForgetPassword.id}',

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funny_baby/core/utils/app_go_routes.dart';
 import 'package:funny_baby/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
-import 'package:funny_baby/features/auth/presentation/views/login_page.dart';
+import 'package:funny_baby/features/auth/presentation/views/login_view.dart';
 import 'package:funny_baby/features/auth/presentation/views/update_profile.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/features/auth/presentation/views/widgets/delete_user_show_dialog.dart';

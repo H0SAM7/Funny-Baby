@@ -16,7 +16,7 @@ class AdminSettings extends StatelessWidget {
         ItemSetting(
           onTap: () {
             // Navigator.pushNamed(context, AddProductsPage.iD);
-            GoRouter.of(context).push('/${AddProductsPage.iD}');
+            GoRouter.of(context).push('/${AddProductsView.iD}');
           },
           title: s.add_product,
           prefixIcon: Icons.add,
@@ -40,7 +40,7 @@ class AdminSettings extends StatelessWidget {
         ItemSetting(
             onTap: () {
               //Navigator.pushNamed(context, AddSales.id);
-              GoRouter.of(context).push('/${AddSales.id}');
+              GoRouter.of(context).push('/${AddDiscounts.id}');
             },
             title: s.add_sale,
             prefixIcon: Icons.add,
@@ -53,7 +53,7 @@ class AdminSettings extends StatelessWidget {
         ItemSetting(
             onTap: () {
               // Navigator.pushNamed(context, DeleteProductsPage.id);
-              GoRouter.of(context).push('/${DeleteProductsPage.id}');
+              GoRouter.of(context).push('/${DeleteProductsView.id}');
             },
             title: s.delete_products,
             prefixIcon: Icons.delete_forever,

@@ -1,22 +1,21 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/core/models/product_model.dart';
-import 'package:funny_baby/services/fire_base.dart';
+import 'package:funny_baby/services/fire_base_services.dart';
 import 'package:funny_baby/core/widgets/custom_button.dart';
 import 'package:funny_baby/core/widgets/custom_text_field.dart';
 import 'package:funny_baby/core/widgets/custom_widgets.dart';
 
-class UpdateProductsPage extends StatefulWidget {
-  const UpdateProductsPage({super.key});
+class UpdateProductsView extends StatefulWidget {
+  const UpdateProductsView({super.key});
   static String id = 'UpdateProductsPage';
 
   @override
-  State<UpdateProductsPage> createState() => _AddProductsPageState();
+  State<UpdateProductsView> createState() => _AddProductsPageState();
 }
 
-class _AddProductsPageState extends State<UpdateProductsPage> {
+class _AddProductsPageState extends State<UpdateProductsView> {
   final TextEditingController idController = TextEditingController();
 
   final TextEditingController titleController = TextEditingController();
@@ -107,7 +106,7 @@ class _AddProductsPageState extends State<UpdateProductsPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CategoryDropdown(),
+                  const CategoryDropdown(),
                   TextButton.icon(
                     statesController: MaterialStatesController(),
                     onPressed: () async {

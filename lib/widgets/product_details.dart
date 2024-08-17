@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/generated/l10n.dart';
-import 'package:funny_baby/helper/helper_functions.dart';
+import 'package:funny_baby/core/helper/helper_functions.dart';
 import 'package:funny_baby/core/widgets/custom_widgets.dart';
-import 'package:funny_baby/widgets/pay_nowButton.dart';
+import 'package:funny_baby/widgets/pay_now_button.dart';
 import 'package:funny_baby/core/widgets/price_details.dart';
 
 class ProductDetails extends StatelessWidget {

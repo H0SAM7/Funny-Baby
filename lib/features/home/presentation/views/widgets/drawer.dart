@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:funny_baby/constants.dart';
-import 'package:funny_baby/helper/helper_functions.dart';
+import 'package:funny_baby/core/helper/helper_functions.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});

@@ -2,10 +2,10 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:funny_baby/cubit/cahnge_mode.dart';
-import 'package:funny_baby/cubit/lang_cubit.dart';
+import 'package:funny_baby/system_cubits/cahnge_mode.dart';
+import 'package:funny_baby/system_cubits/lang_cubit.dart';
 import 'package:funny_baby/generated/l10n.dart';
-import 'package:funny_baby/helper/helper_functions.dart';
+import 'package:funny_baby/core/helper/helper_functions.dart';
 
 import 'package:funny_baby/features/home/presentation/views/widgets/profile_widgets/item_setting.dart';
 

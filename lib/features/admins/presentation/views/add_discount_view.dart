@@ -5,17 +5,18 @@ import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/core/models/discount_model.dart';
 import 'package:funny_baby/features/admins/presentation/manager/admin_cubit/admin_cubit.dart';
 import 'package:funny_baby/generated/l10n.dart';
-import 'package:funny_baby/services/fire_base.dart';
+import 'package:funny_baby/services/fire_base_services.dart';
 import 'package:funny_baby/core/widgets/custom_button.dart';
 import 'package:funny_baby/core/widgets/custom_text_field.dart';
 import 'package:funny_baby/core/widgets/custom_widgets.dart';
 
-class AddSales extends StatefulWidget {
-  const AddSales({super.key});
+class AddDiscounts extends StatefulWidget {
+  const AddDiscounts({super.key});
   static String id = 'AddSales';
 
+  
   @override
-  State<AddSales> createState() => _AddSalesState();
+  State<AddDiscounts> createState() => _AddDiscountsState();
 }
 
 String? image, category;
@@ -23,7 +24,7 @@ final TextEditingController saleController = TextEditingController();
 bool loaded = false;
 GlobalKey<FormState> fromKey = GlobalKey<FormState>();
 
-class _AddSalesState extends State<AddSales> {
+class _AddDiscountsState extends State<AddDiscounts> {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
