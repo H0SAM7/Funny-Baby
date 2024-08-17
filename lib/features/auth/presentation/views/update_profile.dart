@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:funny_baby/constants.dart';
+import 'package:funny_baby/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:funny_baby/generated/l10n.dart';
-import 'package:funny_baby/helper/auth_firebase.dart';
 import 'package:funny_baby/core/widgets/custom_button.dart';
 import 'package:funny_baby/core/widgets/custom_progress_hud.dart';
 import 'package:funny_baby/core/widgets/custom_text_field.dart';
@@ -29,7 +30,7 @@ class _RegisterPageState extends State<UpdateProfilePage> {
   @override
   Widget build(BuildContext context) {
     var x = MediaQuery.of(context).size.height;
-    final s=S.of(context);
+    final s = S.of(context);
     return CustomProgressHUD(
       verify: true,
       inAsyncCall: isloading,
@@ -62,7 +63,7 @@ class _RegisterPageState extends State<UpdateProfilePage> {
                 // ),
                 CustomTextField(
                     label: s.Username,
-                    hint:s.usernameHint,
+                    hint: s.usernameHint,
                     icon: Icon(
                       FontAwesomeIcons.user,
                       color: blueColor,
@@ -87,7 +88,7 @@ class _RegisterPageState extends State<UpdateProfilePage> {
                 CustomTextField(
                   hide: true,
                   label: s.new_password,
-                  hint:s.new_password_hint,
+                  hint: s.new_password_hint,
                   passicon: true,
                   icon: Icon(
                     Icons.lock,
@@ -106,14 +107,14 @@ class _RegisterPageState extends State<UpdateProfilePage> {
                       isloading = true;
                       setState(() {});
 
-                      if (FromKey.currentState!.validate()&&(oldpassword!=newpassword!)) {
+                      if (FromKey.currentState!.validate() &&
+                          (oldpassword != newpassword!)) {
                         try {
-                      
-                 
-                          await AuthHelper().updateUser(
-                              oldpassword!, newpassword!, username!);
+                          await BlocProvider.of<AuthCubit>(context)
+                              .updatePasswordAndName(
+                                  oldpassword!, newpassword!, username!);
                           showSnackbar(context, 'Updated Done');
-                           GoRouter.of(context).pop();
+                          GoRouter.of(context).pop();
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'weak-password') {
                             showSnackbar(context,

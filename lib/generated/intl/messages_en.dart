@@ -40,6 +40,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Select_category":
             MessageLookupByLibrary.simpleMessage("Select a category"),
         "Username": MessageLookupByLibrary.simpleMessage("Username"),
+        "aborted": MessageLookupByLibrary.simpleMessage(
+            "Firestore operation was aborted."),
         "accessories": MessageLookupByLibrary.simpleMessage("Accessories"),
         "add_new_product_done":
             MessageLookupByLibrary.simpleMessage("Add New product Done"),
@@ -55,6 +57,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "boys": MessageLookupByLibrary.simpleMessage("Boys"),
         "boys_suits": MessageLookupByLibrary.simpleMessage("Boys Suits"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "cancelled": MessageLookupByLibrary.simpleMessage(
+            "Firestore request was cancelled."),
         "categories": MessageLookupByLibrary.simpleMessage("categories"),
         "check_inbox": MessageLookupByLibrary.simpleMessage("check your inbox"),
         "click_to_view_details":
@@ -163,6 +167,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "system_setting":
             MessageLookupByLibrary.simpleMessage("System Setting"),
         "tap_statrt": MessageLookupByLibrary.simpleMessage("Tap on Screen"),
+        "unavailable": MessageLookupByLibrary.simpleMessage(
+            "Firestore service is currently unavailable."),
         "underwear": MessageLookupByLibrary.simpleMessage("Underwear"),
         "update_account":
             MessageLookupByLibrary.simpleMessage("Update Account"),

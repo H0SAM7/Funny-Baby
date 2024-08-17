@@ -1,12 +1,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funny_baby/core/utils/app_go_routes.dart';
+import 'package:funny_baby/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:funny_baby/features/auth/presentation/views/login_page.dart';
 import 'package:funny_baby/features/auth/presentation/views/update_profile.dart';
 import 'package:funny_baby/generated/l10n.dart';
-import 'package:funny_baby/helper/auth_firebase.dart';
-import 'package:funny_baby/core/widgets/delete_show_dialog.dart';
+import 'package:funny_baby/features/auth/presentation/views/widgets/delete_user_show_dialog.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/profile_widgets/item_setting.dart';
 import 'package:go_router/go_router.dart';
 
@@ -23,8 +24,7 @@ class ProfileSettings extends StatelessWidget {
           prefixIcon: Icons.account_box,
           onTap: () {
             //  Navigator.pushNamed(context, UpdateProfilePage.id);
-          GoRouter.of(context).push('/${UpdateProfilePage.id }');
-          
+            GoRouter.of(context).push('/${UpdateProfilePage.id}');
           },
           suffixIcon: Container(),
         ),
@@ -38,7 +38,7 @@ class ProfileSettings extends StatelessWidget {
             title: s.delete_my_account,
             prefixIcon: Icons.delete,
             onTap: () {
-              showConfirmationDialog(context);
+              DeketeAccountConfirmationDialog(context);
               //  log('deleted done');
             },
             suffixIcon: Container()),
@@ -52,7 +52,7 @@ class ProfileSettings extends StatelessWidget {
             title: s.log_out,
             prefixIcon: Icons.logout,
             onTap: () async {
-              await AuthHelper().logout();
+              await BlocProvider.of<AuthCubit>(context).logout();
               log('logout done');
               // Navigator.of(context).pushAndRemoveUntil(
               //   MaterialPageRoute(builder: (context) => const LoginPage()),

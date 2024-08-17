@@ -1,10 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:funny_baby/bloc_observer.dart';
 import 'package:funny_baby/core/utils/app_go_routes.dart';
 import 'package:funny_baby/cubit/cahnge_mode.dart';
 import 'package:funny_baby/cubit/lang_cubit.dart';
 import 'package:funny_baby/features/admins/presentation/manager/admin_cubit/admin_cubit.dart';
+import 'package:funny_baby/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:funny_baby/features/home/presentation/manager/all_products_cubit/all_products_cubit.dart';
 import 'package:funny_baby/features/home/presentation/manager/discounts_cubit/discounts_cubit.dart';
 import 'package:funny_baby/firebase_options.dart';
@@ -14,6 +16,7 @@ import 'generated/l10n.dart';
 
 
 void main() async {
+   Bloc.observer=SimpleBlocObserever();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -31,9 +34,13 @@ class FunnyBaby extends StatelessWidget {
         BlocProvider(
           create: (context) => AllProductsCubit()..getAllProducts(),
         ),
-        BlocProvider(create: (context) => DiscountsCubit()..getAllDiscounts()),
+        BlocProvider(
+          create: (context) => DiscountsCubit()..getAllDiscounts(),),
         BlocProvider(
           create: (context) => AdminCubit(),
+        ),
+              BlocProvider(
+          create: (context) => AuthCubit(),
         ),
         BlocProvider(
           create: (context) => LanguageCubit(),
@@ -61,8 +68,6 @@ class FunnyBaby extends StatelessWidget {
               themeMode: themeModeState == ThemeModeState.light
                   ? ThemeMode.light
                   : ThemeMode.dark,
-
-                
               debugShowCheckedModeBanner: false,
               routerConfig: AppGoRoutes.router,
               );

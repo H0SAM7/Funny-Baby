@@ -39,6 +39,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Search": MessageLookupByLibrary.simpleMessage("بحث"),
         "Select_category": MessageLookupByLibrary.simpleMessage("اختر الصنف"),
         "Username": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
+        "aborted":
+            MessageLookupByLibrary.simpleMessage("تم إلغاء عملية Firestore."),
         "accessories": MessageLookupByLibrary.simpleMessage("اكسسوارات"),
         "add_new_product_done":
             MessageLookupByLibrary.simpleMessage("تمت إضافة المنتج بنجاح"),
@@ -55,6 +57,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "boys": MessageLookupByLibrary.simpleMessage("اولادي"),
         "boys_suits": MessageLookupByLibrary.simpleMessage("اطقم اولادي"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+        "cancelled":
+            MessageLookupByLibrary.simpleMessage("تم إلغاء طلب Firestore."),
         "categories": MessageLookupByLibrary.simpleMessage("الاصناف"),
         "check_inbox":
             MessageLookupByLibrary.simpleMessage("تحقق من البريد الوارد"),
@@ -163,6 +167,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "system_setting":
             MessageLookupByLibrary.simpleMessage("إعدادات النظام"),
         "tap_statrt": MessageLookupByLibrary.simpleMessage("انقر علي الشاشة"),
+        "unavailable": MessageLookupByLibrary.simpleMessage(
+            "خدمة Firestore غير متاحة حاليًا."),
         "underwear": MessageLookupByLibrary.simpleMessage("ملابس داخلية"),
         "update_account": MessageLookupByLibrary.simpleMessage("تحديث الحساب"),
         "update_products":
@@ -172,7 +178,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "لم يتم العثور على مستخدم لهذا البريد الإلكتروني."),
         "usernameHint": MessageLookupByLibrary.simpleMessage("أدخل اسمك"),
         "weak_password": MessageLookupByLibrary.simpleMessage(
-            " (!@#%) كلمة المرور ضعيفة، يرجى إضافة بعض الأحرف "),
+            "كلمة مرور ضعيفة يرجي استخدام بعض الحروف او الرموز"),
         "wrong_password": MessageLookupByLibrary.simpleMessage(
             "تم تقديم كلمة مرور خاطئة لهذا المستخدم.")
       };

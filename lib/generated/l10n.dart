@@ -1169,6 +1169,66 @@ class S {
       args: [],
     );
   }
+
+  // skipped getter for the 'invalid-email' key
+
+  // skipped getter for the 'user-disabled' key
+
+  // skipped getter for the 'user-not-found' key
+
+  // skipped getter for the 'wrong-password' key
+
+  // skipped getter for the 'email-already-in-use' key
+
+  // skipped getter for the 'weak-password' key
+
+  // skipped getter for the 'operation-not-allowed' key
+
+  // skipped getter for the 'permission-denied' key
+
+  // skipped getter for the 'not-found' key
+
+  /// `Firestore operation was aborted.`
+  String get aborted {
+    return Intl.message(
+      'Firestore operation was aborted.',
+      name: 'aborted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the 'already-exists' key
+
+  // skipped getter for the 'resource-exhausted' key
+
+  /// `Firestore service is currently unavailable.`
+  String get unavailable {
+    return Intl.message(
+      'Firestore service is currently unavailable.',
+      name: 'unavailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the 'deadline-exceeded' key
+
+  /// `Firestore request was cancelled.`
+  String get cancelled {
+    return Intl.message(
+      'Firestore request was cancelled.',
+      name: 'cancelled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the 'unknown-error' key
+
+  // skipped getter for the 'unexpected-auth-error' key
+
+  // skipped getter for the 'unexpected-firestore-error' key
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

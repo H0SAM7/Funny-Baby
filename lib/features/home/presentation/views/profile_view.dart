@@ -5,15 +5,16 @@ import 'package:funny_baby/features/home/presentation/views/widgets/profile_widg
 import 'package:funny_baby/features/home/presentation/views/widgets/profile_widgets/system_setting.dart';
 
 // ignore: must_be_immutable
-class ProfilePage extends StatefulWidget {
-  ProfilePage({super.key});
+class ProfileView extends StatefulWidget {
+  static String id='ProfilePage';
+  ProfileView({super.key});
   bool isDark = false;
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  State<ProfileView> createState() => _ProfileViewState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);

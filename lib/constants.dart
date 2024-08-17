@@ -37,5 +37,5 @@ final List<Widget> widgetOptions = <Widget>[
   const SearchPage(),
   const DiscountsView(),
   const CategoriesView(),
-  ProfilePage(),
+  ProfileView(),
 ];

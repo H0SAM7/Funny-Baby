@@ -1,6 +1,8 @@
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/features/admins/presentation/views/add_discount_view.dart';
+import 'package:funny_baby/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
+import 'package:funny_baby/features/home/presentation/views/profile_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:funny_baby/features/auth/presentation/views/forget_password.dart';
 import 'package:funny_baby/features/auth/presentation/views/login_page.dart';
@@ -16,8 +18,8 @@ import 'package:funny_baby/features/admins/presentation/views/update_product_vie
 import 'package:funny_baby/features/splash/presentation/views/splash_view.dart';
 
 abstract class AppGoRoutes {
-static final GoRouter router = GoRouter(
-  initialLocation: '/${MyHome.id}',  // Set LoginPage as the initial route
+  static final GoRouter router = GoRouter(
+    initialLocation: '/${SplashView.id}', // Set LoginPage as the initial route
     routes: [
       GoRoute(
         path: '/${LoginPage.id}',
@@ -42,12 +44,16 @@ static final GoRouter router = GoRouter(
       GoRoute(
         path: '/${DetailsPage.id}',
         name: DetailsPage.id,
-        builder: (context, state) =>  DetailsPage(productModel: state.extra as ProductModel,),
+        builder: (context, state) => DetailsPage(
+          productModel: state.extra as ProductModel,
+        ),
       ),
       GoRoute(
         path: '/${CategoryProductsView.id}',
         name: CategoryProductsView.id,
-        builder: (context, state) =>  CategoryProductsView(categoryName: state.extra as String,),
+        builder: (context, state) => CategoryProductsView(
+          categoryName: state.extra as String,
+        ),
       ),
       GoRoute(
         path: '/${RegisterPage.id}',
@@ -84,15 +90,23 @@ static final GoRouter router = GoRouter(
         name: ForgetPassword.id,
         builder: (context, state) => const ForgetPassword(),
       ),
+       GoRoute(
+        path: '/${ProfileView.id}',
+        name: ProfileView.id,
+        builder: (context, state) => ProfileView(),
+      ),
+       GoRoute(
+        path: '/${UserName.id}',
+        name: UserName.id,
+        builder: (context, state) => const UserName(),
+      ),
     ],
   );
-
 }
 
-
-extension GoRouterExtension on GoRouter{
-  void clearStackAndNavigate(String location){
-    while(canPop()){
+extension GoRouterExtension on GoRouter {
+  void clearStackAndNavigate(String location) {
+    while (canPop()) {
       pop();
     }
     pushReplacement(location);

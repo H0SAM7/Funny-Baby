@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 abstract class Failure {
   final String? errMessage;
@@ -9,7 +8,6 @@ abstract class Failure {
 
 class FirebaseFailure extends Failure {
   FirebaseFailure({super.errMessage});
-
   factory FirebaseFailure.fromFirebaseException(Exception exception) {
     if (exception is FirebaseAuthException) {
       return FirebaseFailure.fromAuthException(exception);
@@ -19,7 +17,7 @@ class FirebaseFailure extends Failure {
       return FirebaseFailure(errMessage: 'An unknown Firebase error occurred.');
     }
   }
-
+  
   factory FirebaseFailure.fromAuthException(FirebaseAuthException exception) {
     switch (exception.code) {
       case 'invalid-email':
@@ -40,8 +38,7 @@ class FirebaseFailure extends Failure {
         return FirebaseFailure(errMessage: 'An unexpected Firebase Auth error occurred.');
     }
   }
-
-  factory FirebaseFailure.fromFirestoreException(FirebaseException exception) {
+factory FirebaseFailure.fromFirestoreException(FirebaseException exception) {
     switch (exception.code) {
       case 'permission-denied':
         return FirebaseFailure(errMessage: 'Permission denied to access Firestore.');

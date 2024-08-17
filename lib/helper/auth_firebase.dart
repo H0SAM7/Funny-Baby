@@ -14,77 +14,77 @@ class AuthHelper {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final user = FirebaseAuth.instance.currentUser;
 
-  Future<void> registerUser(
-      String email, String password, String username) async {
-    // Create a new user
-    UserCredential userCredential = await auth.createUserWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
-    User? user = userCredential.user;
+  // Future<void> registerUser(
+  //     String email, String password, String username) async {
+  //   // Create a new user
+  //   UserCredential userCredential = await auth.createUserWithEmailAndPassword(
+  //     email: email,
+  //     password: password,
+  //   );
+  //   User? user = userCredential.user;
 
-    if (user != null) {
-      // Send verification email
-      if (!user.emailVerified) {
-        await user.sendEmailVerification();
-        log('Verification email sent. Please check your inbox.');
+  //   if (user != null) {
+  //     // Send verification email
+  //     if (!user.emailVerified) {
+  //       await user.sendEmailVerification();
+  //       log('Verification email sent. Please check your inbox.');
 
-        // Prompt user to verify email
-        // (Optional) Show a dialog or notification prompting the user to check their email
-      }
-      bool emailVerified = await _waitForEmailVerification(user);
-      // Wait until the user verifies their email
-      await _checkEmailVerification(user);
+  //       // Prompt user to verify email
+  //       // (Optional) Show a dialog or notification prompting the user to check their email
+  //     }
+  //     bool emailVerified = await _waitForEmailVerification(user);
+  //     // Wait until the user verifies their email
+  //     await _checkEmailVerification(user);
 
-      if (emailVerified) {
-        // Create user account in Firestore or other actions
-        await firestore.collection('users').doc(user.uid).set({
-          'uid': user.uid,
-          'email': email,
-          'username': username,
-          // Add other fields as needed
-        });
-        log('User account created successfully.');
-      } else {
-        log('Email verification failed. Please verify your email.');
-      }
-    }
+  //     if (emailVerified) {
+  //       // Create user account in Firestore or other actions
+  //       await firestore.collection('users').doc(user.uid).set({
+  //         'uid': user.uid,
+  //         'email': email,
+  //         'username': username,
+  //         // Add other fields as needed
+  //       });
+  //       log('User account created successfully.');
+  //     } else {
+  //       log('Email verification failed. Please verify your email.');
+  //     }
+  //   }
 
-    // on FirebaseAuthException catch (e) {
-    //   if (e.code == 'email-already-in-use') {
-    //     log('The email address is already in use by another account.');
-    //   } else if (e.code == 'invalid-email') {
-    //     log('The email address is not valid.');
-    //   } else if (e.code == 'weak-password') {
-    //     log('The password is too weak.');
-    //   } else {
-    //     log('Registration error: ${e.message}');
-    //   }
-    // } on FirebaseException catch (e) {
-    //   log('Firebase error: ${e.message}');
-    // } catch (e) {
-    //   log('Unexpected error: $e');
-    // }
-  }
+  //   // on FirebaseAuthException catch (e) {
+  //   //   if (e.code == 'email-already-in-use') {
+  //   //     log('The email address is already in use by another account.');
+  //   //   } else if (e.code == 'invalid-email') {
+  //   //     log('The email address is not valid.');
+  //   //   } else if (e.code == 'weak-password') {
+  //   //     log('The password is too weak.');
+  //   //   } else {
+  //   //     log('Registration error: ${e.message}');
+  //   //   }
+  //   // } on FirebaseException catch (e) {
+  //   //   log('Firebase error: ${e.message}');
+  //   // } catch (e) {
+  //   //   log('Unexpected error: $e');
+  //   // }
+  // }
 
-  Future<void> _checkEmailVerification(User user) async {
-    while (!user.emailVerified) {
-      const SizedBox(
-        height: 50,
-        width: 50,
-        child: Column(
-          children: [
-            CircularProgressIndicator(),
-            Text('Verification email sent. Please check your inbox.')
-          ],
-        ),
-      );
-      await Future.delayed(const Duration(seconds: 5));
-      await user.reload();
+  // Future<void> _checkEmailVerification(User user) async {
+  //   while (!user.emailVerified) {
+  //     const SizedBox(
+  //       height: 50,
+  //       width: 50,
+  //       child: Column(
+  //         children: [
+  //           CircularProgressIndicator(),
+  //           Text('Verification email sent. Please check your inbox.')
+  //         ],
+  //       ),
+  //     );
+  //     await Future.delayed(const Duration(seconds: 5));
+  //     await user.reload();
 
-      user = auth.currentUser!;
-    }
-  }
+  //     user = auth.currentUser!;
+  //   }
+  // }
   // await firestore.collection('users').doc(user.uid).set({
 
   //       'uid': user.uid,
@@ -93,114 +93,117 @@ class AuthHelper {
   //           // Add other fields as needed
   //         });
 
-  Future<void> deleteUser() async {
-    try {
-      if (user != null) {
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(user!.uid)
-            .delete();
-        log("Document with UID ${user!.uid} deleted successfully");
-        await user!.delete();
-        // Account deletion successful
-        log("Account deleted successfully.");
-      }
-    } catch (e) {
-      // Handle errors here, like reauthentication requirements
-      log("Error deleting account: $e");
-    }
-  }
 
-  Future<void> logout() async {
-    try {
-      await auth.signOut();
-      log("User logged out successfully.");
-    } catch (e) {
-      log("Error logging out: $e");
-    }
-  }
 
-  Future<bool> _waitForEmailVerification(User user) async {
-    const timeout = Duration(minutes: 5);
-    const interval = Duration(seconds: 5);
-    final endTime = DateTime.now().add(timeout);
 
-    while (DateTime.now().isBefore(endTime)) {
-      await Future.delayed(interval);
-      await user.reload();
-      user = auth.currentUser!;
+  // Future<void> deleteUser() async {
+  //   try {
+  //     if (user != null) {
+  //       await FirebaseFirestore.instance
+  //           .collection('users')
+  //           .doc(user!.uid)
+  //           .delete();
+  //       log("Document with UID ${user!.uid} deleted successfully");
+  //       await user!.delete();
+  //       // Account deletion successful
+  //       log("Account deleted successfully.");
+  //     }
+  //   } catch (e) {
+  //     // Handle errors here, like reauthentication requirements
+  //     log("Error deleting account: $e");
+  //   }
+  // }
 
-      if (user.emailVerified) {
-        return true;
-      }
-    }
-    return false;
-  }
+  // Future<void> logout() async {
+  //   try {
+  //     await auth.signOut();
+  //     log("User logged out successfully.");
+  //   } catch (e) {
+  //     log("Error logging out: $e");
+  //   }
+  // }
 
-  Future<void> loginUser(String email, String password) async {
-    await FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: email, password: password);
-    log('The Login Successful');
-  }
+  // Future<bool> _waitForEmailVerification(User user) async {
+  //   const timeout = Duration(minutes: 5);
+  //   const interval = Duration(seconds: 5);
+  //   final endTime = DateTime.now().add(timeout);
 
-  Future<void> updateUser(
-      String oldPassword, String newPassword, String username) async {
-    try {
-      User? user = auth.currentUser;
+  //   while (DateTime.now().isBefore(endTime)) {
+  //     await Future.delayed(interval);
+  //     await user.reload();
+  //     user = auth.currentUser!;
 
-      if (user != null) {
-        String email = user.email!;
+  //     if (user.emailVerified) {
+  //       return true;
+  //     }
+  //   }
+  //   return false;
+  // }
 
-        // Re-authenticate the user
-        AuthCredential credential = EmailAuthProvider.credential(
-          email: email,
-          password: oldPassword,
-        );
-        await user.reauthenticateWithCredential(credential);
-        log('Re-authentication successful.');
-        await user.updatePassword(newPassword);
+  // Future<void> loginUser(String email, String password) async {
+  //   await FirebaseAuth.instance
+  //       .signInWithEmailAndPassword(email: email, password: password);
+  //   log('The Login Successful');
+  // }
 
-        // Update user account in Firestore or other actions
-        await firestore.collection('users').doc(user.uid).update({
-          'uid': user.uid,
-          'username': username,
-          // Add other fields as needed
-        });
-        log('User account updated successfully.');
-      }
-    } catch (e) {
-      log('Error updating user: $e');
-      // Handle errors, e.g., show a message to the user
-    }
-  }
+  // Future<void> updateUser(
+  //     String oldPassword, String newPassword, String username) async {
+  //   try {
+  //     User? user = auth.currentUser;
 
-  Future<dynamic> signInWithGoogle() async {
-    try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  //     if (user != null) {
+  //       String email = user.email!;
 
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
+  //       // Re-authenticate the user
+  //       AuthCredential credential = EmailAuthProvider.credential(
+  //         email: email,
+  //         password: oldPassword,
+  //       );
+  //       await user.reauthenticateWithCredential(credential);
+  //       log('Re-authentication successful.');
+  //       await user.updatePassword(newPassword);
 
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
-      );
+  //       // Update user account in Firestore or other actions
+  //       await firestore.collection('users').doc(user.uid).update({
+  //         'uid': user.uid,
+  //         'username': username,
+  //         // Add other fields as needed
+  //       });
+  //       log('User account updated successfully.');
+  //     }
+  //   } catch (e) {
+  //     log('Error updating user: $e');
+  //     // Handle errors, e.g., show a message to the user
+  //   }
+  // }
 
-      return await FirebaseAuth.instance.signInWithCredential(credential);
-    }  catch (e) {
+  // Future<dynamic> signInWithGoogle() async {
+  //   try {
+  //     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+  //     final GoogleSignInAuthentication? googleAuth =
+  //         await googleUser?.authentication;
+
+  //     final credential = GoogleAuthProvider.credential(
+  //       accessToken: googleAuth?.accessToken,
+  //       idToken: googleAuth?.idToken,
+  //     );
+
+  //     return await FirebaseAuth.instance.signInWithCredential(credential);
+  //   }  catch (e) {
      
-      log('exception->$e');
-    }
-  }
+  //     log('exception->$e');
+  //   }
+  // }
 
-  Future<bool> signOutFromGoogle() async {
-    try {
-      await FirebaseAuth.instance.signOut();
-      return true;
-    } on Exception catch (_) {
-      return false;
-    }
-  }
+  // Future<bool> signOutFromGoogle() async {
+  //   try {
+  //     await FirebaseAuth.instance.signOut();
+  //     return true;
+  //   } on Exception catch (_) {
+  //     return false;
+  //   }
+  // }
 
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
