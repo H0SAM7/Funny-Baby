@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/custom_product_item.dart';
@@ -22,16 +21,10 @@ class ProductsListView extends StatelessWidget {
     return SliverGrid(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: size.width > size.height ? 3 : 2,
-        // childAspectRatio: 1 / 2.1,
-        //   childAspectRatio: 1 / 2.1,
-        // mainAxisSpacing: 7,
-        // crossAxisSpacing:3,
-        childAspectRatio: childAspectRatio,
-        mainAxisSpacing: itemSpacing,
-        crossAxisSpacing: itemSpacing,
+        mainAxisSpacing: 7,
+        crossAxisSpacing: 3,
       ),
       delegate: SliverChildBuilderDelegate(
-        
         (context, index) {
           return CustomProductItem(productModel: products[index]);
         },

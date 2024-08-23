@@ -12,9 +12,7 @@ class CustomCategoryItem extends StatelessWidget {
     //  final size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
-    //    Navigator.pushNamed(context, CategoryProductsView.id, arguments: name);
-
-
+        
         GoRouter.of(context).push('/${CategoryProductsView.id }', extra:name);
 
       },

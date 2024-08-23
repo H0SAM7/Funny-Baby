@@ -14,14 +14,16 @@ import 'package:funny_baby/core/helper/theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
 
-
 void main() async {
-   Bloc.observer=SimpleBlocObserever();
+  Bloc.observer = SimpleBlocObserever();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const FunnyBaby());
+  runApp(
+    const FunnyBaby(),
+  );
+  //runApp(DevicePreview(enabled: true, builder: (context) => const FunnyBaby()));
 }
 
 class FunnyBaby extends StatelessWidget {
@@ -35,11 +37,12 @@ class FunnyBaby extends StatelessWidget {
           create: (context) => AllProductsCubit()..getAllProducts(),
         ),
         BlocProvider(
-          create: (context) => DiscountsCubit()..getAllDiscounts(),),
+          create: (context) => DiscountsCubit()..getAllDiscounts(),
+        ),
         BlocProvider(
           create: (context) => AdminCubit(),
         ),
-              BlocProvider(
+        BlocProvider(
           create: (context) => AuthCubit(),
         ),
         BlocProvider(
@@ -52,25 +55,27 @@ class FunnyBaby extends StatelessWidget {
       child: BlocBuilder<ThemeCubit, ThemeModeState>(
         builder: (context, themeModeState) {
           return MaterialApp.router(
-              locale: context.watch<LanguageCubit>().state,
-              localizationsDelegates: const [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: const [
-                Locale('en', ''),
-                Locale('ar', ''),
-              ],
-              theme: MyAppThemes.lightTheme,
-              darkTheme: MyAppThemes.darkTheme,
-              themeMode: themeModeState == ThemeModeState.light
-                  ? ThemeMode.light
-                  : ThemeMode.dark,
-              debugShowCheckedModeBanner: false,
-              routerConfig: AppGoRoutes.router,
-              );
+            // locale: DevicePreview.locale(context),
+            // builder: DevicePreview.appBuilder,
+         locale: context.watch<LanguageCubit>().state,
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('en', ''),
+              Locale('ar', ''),
+            ],
+            theme: MyAppThemes.lightTheme,
+            darkTheme: MyAppThemes.darkTheme,
+            themeMode: themeModeState == ThemeModeState.light
+                ? ThemeMode.light
+                : ThemeMode.dark,
+            debugShowCheckedModeBanner: false,
+            routerConfig: AppGoRoutes.router,
+          );
         },
       ),
     );

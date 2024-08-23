@@ -21,8 +21,7 @@ class HomePage extends StatelessWidget {
           return CustomScrollView(
             clipBehavior: Clip.none,
             slivers: [
-              SliverToBoxAdapter(
-                  child: CustomAdvWidget(size: size)),
+                             SliverToBoxAdapter(child: CustomAdvWidget(size: size)),
               ProductsListView(
                   size: size,
                   childAspectRatio: childAspectRatio,
@@ -39,4 +38,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-

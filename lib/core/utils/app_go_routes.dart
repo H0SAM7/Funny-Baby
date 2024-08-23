@@ -17,7 +17,7 @@ import 'package:funny_baby/features/splash/presentation/views/splash_view.dart';
 
 abstract class AppGoRoutes {
   static final GoRouter router = GoRouter(
-    initialLocation: '/${SplashView.id}', // Set LoginPage as the initial route
+    initialLocation: '/${MyHome.id}', // Set LoginPage as the initial route
     routes: [
       GoRoute(
         path: '/${LoginPage.id}',
