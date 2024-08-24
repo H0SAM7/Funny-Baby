@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funny_baby/bloc_observer.dart';
+import 'package:funny_baby/core/models/cart_item_model.dart';
 import 'package:funny_baby/core/utils/app_go_routes.dart';
 import 'package:funny_baby/system_cubits/cahnge_mode.dart';
 import 'package:funny_baby/system_cubits/lang_cubit.dart';
@@ -13,8 +14,12 @@ import 'package:funny_baby/firebase_options.dart';
 import 'package:funny_baby/core/helper/theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
+ await Hive.initFlutter();
+  Hive.registerAdapter(CartModelAdapter());
+  await Hive.openBox<CartModel>('cart');
   Bloc.observer = SimpleBlocObserever();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -57,7 +62,7 @@ class FunnyBaby extends StatelessWidget {
           return MaterialApp.router(
             // locale: DevicePreview.locale(context),
             // builder: DevicePreview.appBuilder,
-         locale: context.watch<LanguageCubit>().state,
+            locale: context.watch<LanguageCubit>().state,
             localizationsDelegates: const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,

@@ -11,10 +11,8 @@ class CategoriesView extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     
     double childAspectRatio =
-        (size.width / 2) / (size.height * .2); // Adjust aspect ratio
+    (size.width / 2) / (size.height * .2); // Adjust aspect ratio
     //final s = S.of(context);
-  
-
     return Scaffold(
         body: Padding(
       padding: const EdgeInsets.only(top: 20, right: 10, left: 10),

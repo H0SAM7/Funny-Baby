@@ -132,6 +132,7 @@
   "cancelled": "تم إلغاء طلب Firestore.",
   "unknown-error": "حدث خطأ غير معروف في Firebase.",
   "unexpected-auth-error": "حدث خطأ غير متوقع في Firebase Auth.",
-  "unexpected-firestore-error": "حدث خطأ غير متوقع في Firestore."
+  "unexpected-firestore-error": "حدث خطأ غير متوقع في Firestore.",
+  "cart":"السلة"
 
 }

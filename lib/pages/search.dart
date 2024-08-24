@@ -7,7 +7,7 @@ class SearchPage extends StatefulWidget {
   const SearchPage({
     super.key,
   });
-
+static String id='SearchPage';
   @override
   State<SearchPage> createState() => _SearchPageState();
 }
@@ -27,6 +27,7 @@ class _SearchPageState extends State<SearchPage> {
     //  bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [

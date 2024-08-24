@@ -59,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cancelled": MessageLookupByLibrary.simpleMessage(
             "Firestore request was cancelled."),
+        "cart": MessageLookupByLibrary.simpleMessage("cart"),
         "categories": MessageLookupByLibrary.simpleMessage("categories"),
         "check_inbox": MessageLookupByLibrary.simpleMessage("check your inbox"),
         "click_to_view_details":

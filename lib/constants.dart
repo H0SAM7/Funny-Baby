@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:funny_baby/features/cart/presentation/views/cart_view.dart';
 import 'package:funny_baby/features/home/presentation/views/categories_view.dart';
 import 'package:funny_baby/features/home/presentation/views/home_view.dart';
 import 'package:funny_baby/features/home/presentation/views/discounts_view.dart';
 import 'package:funny_baby/features/home/presentation/views/profile_view.dart';
-import 'package:funny_baby/pages/search.dart';
 
 List<Color> background = [
   const Color(0xFFCAF0F8), // rgb(246, 245, 242)
@@ -34,7 +34,7 @@ List<String> categoriesAR = const [
 
 final List<Widget> widgetOptions = <Widget>[
   const HomePage(),
-  const SearchPage(),
+  const CartView(),
   const DiscountsView(),
   const CategoriesView(),
   ProfileView(),

@@ -1,6 +1,7 @@
 import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/features/admins/presentation/views/add_discount_view.dart';
 import 'package:funny_baby/features/home/presentation/views/profile_view.dart';
+import 'package:funny_baby/pages/search.dart';
 import 'package:go_router/go_router.dart';
 import 'package:funny_baby/features/auth/presentation/views/forget_password_view.dart';
 import 'package:funny_baby/features/auth/presentation/views/login_view.dart';
@@ -97,6 +98,11 @@ abstract class AppGoRoutes {
         path: '/${UserName.id}',
         name: UserName.id,
         builder: (context, state) => const UserName(),
+      ),
+        GoRoute(
+        path: '/${SearchPage.id}',
+        name: SearchPage.id,
+        builder: (context, state) => const SearchPage(),
       ),
     ],
   );

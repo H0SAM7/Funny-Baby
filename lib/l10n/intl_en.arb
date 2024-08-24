@@ -132,7 +132,8 @@
   "cancelled": "Firestore request was cancelled.",
   "unknown-error": "An unknown Firebase error occurred.",
   "unexpected-auth-error": "An unexpected Firebase Auth error occurred.",
-  "unexpected-firestore-error": "An unexpected Firestore error occurred."
+  "unexpected-firestore-error": "An unexpected Firestore error occurred.",
+    "cart":"cart"
      
       
   

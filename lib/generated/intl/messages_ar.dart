@@ -59,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
         "cancelled":
             MessageLookupByLibrary.simpleMessage("تم إلغاء طلب Firestore."),
+        "cart": MessageLookupByLibrary.simpleMessage("السلة"),
         "categories": MessageLookupByLibrary.simpleMessage("الاصناف"),
         "check_inbox":
             MessageLookupByLibrary.simpleMessage("تحقق من البريد الوارد"),

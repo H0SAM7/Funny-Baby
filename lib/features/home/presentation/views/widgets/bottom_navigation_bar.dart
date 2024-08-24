@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:funny_baby/constants.dart';
-
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/core/helper/helper_functions.dart';
 import 'package:funny_baby/core/widgets/custom_title_appbar.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/drawer.dart';
+import 'package:funny_baby/pages/search.dart';
+import 'package:go_router/go_router.dart';
 
 class MyHome extends StatefulWidget {
   const MyHome({super.key});
@@ -45,10 +45,13 @@ class _MyHomeState extends State<MyHome> {
             //  automaticallyImplyLeading: false,
             actions: [
               IconButton(
-                onPressed: () {},
-                icon: const Icon(
+                onPressed: () {
+                     GoRouter.of(context)
+            .push('/${SearchPage.id}', );
+                },
+                icon:  Icon(
                   Icons.search,
-                  color: Colors.transparent,
+                  color: blueColor,
                 ),
               ),
             ],
@@ -73,8 +76,8 @@ class _MyHomeState extends State<MyHome> {
             label: S.of(context).Home,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search, color: blueColor),
-            label: S.of(context).Search,
+            icon: Icon(FontAwesomeIcons.cartShopping, color: blueColor),
+            label: S.of(context).cart,
           ),
           BottomNavigationBarItem(
             icon: Icon(

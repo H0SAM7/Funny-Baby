@@ -12,9 +12,7 @@ class CategoryProductsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-
-  
-    // String categoryName =
+    //     String categoryName =
     //     ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(),

@@ -1229,6 +1229,16 @@ class S {
   // skipped getter for the 'unexpected-auth-error' key
 
   // skipped getter for the 'unexpected-firestore-error' key
+
+  /// `cart`
+  String get cart {
+    return Intl.message(
+      'cart',
+      name: 'cart',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
