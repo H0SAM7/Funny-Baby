@@ -1,5 +1,6 @@
 import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/features/admins/presentation/views/add_discount_view.dart';
+import 'package:funny_baby/features/cart/presentation/views/cart_view.dart';
 import 'package:funny_baby/features/home/presentation/views/profile_view.dart';
 import 'package:funny_baby/pages/search.dart';
 import 'package:go_router/go_router.dart';
@@ -89,20 +90,25 @@ abstract class AppGoRoutes {
         name: ForgetPassword.id,
         builder: (context, state) => const ForgetPassword(),
       ),
-       GoRoute(
+      GoRoute(
         path: '/${ProfileView.id}',
         name: ProfileView.id,
         builder: (context, state) => ProfileView(),
       ),
-       GoRoute(
+      GoRoute(
         path: '/${UserName.id}',
         name: UserName.id,
         builder: (context, state) => const UserName(),
       ),
-        GoRoute(
+      GoRoute(
         path: '/${SearchPage.id}',
         name: SearchPage.id,
         builder: (context, state) => const SearchPage(),
+      ),
+      GoRoute(
+        path: '/${CartView.id}',
+        name: CartView.id,
+        builder: (context, state) => const CartView(),
       ),
     ],
   );

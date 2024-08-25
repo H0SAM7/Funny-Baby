@@ -1,32 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/features/cart/presentation/manager/cubit/add_item_in_cart_cubit.dart';
 import 'package:funny_baby/features/cart/presentation/views/widgets/cart_list_view.dart';
-
-
-class CartView extends StatefulWidget {
-  const CartView({super.key});
-  static String id = 'CartView';
-  @override
-  State<CartView> createState() => _CartViewState();
-}
-
-class _CartViewState extends State<CartView> {
-  @override
-  void initState() {
-    BlocProvider.of<AddItemCartCubit>(context).fetchAllItems();
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: CartViewBody(),
-    );
-  }
-}
 
 class CartViewBody extends StatelessWidget {
   const CartViewBody({
@@ -42,6 +20,7 @@ class CartViewBody extends StatelessWidget {
           border: Border.all(
             width: .2,
             color: blueColor,
+    
           ),
         ),
         child: Column(
@@ -53,6 +32,7 @@ class CartViewBody extends StatelessWidget {
                     child: CartListView(
                       products:
                           BlocProvider.of<AddItemCartCubit>(context).items!,
+                       
                     ),
                   );
                 } else {
@@ -63,12 +43,12 @@ class CartViewBody extends StatelessWidget {
             Container(
                 height: 60,
                 width: 200,
-                decoration: BoxDecoration(
+                decoration:  BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   color: Colors.blue,
                 ),
                 child: const Icon(
-                  FontAwesomeIcons.cartShopping,
+                    FontAwesomeIcons.cartShopping,
                 ))
           ],
         ),

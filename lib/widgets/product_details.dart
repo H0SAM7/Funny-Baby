@@ -1,7 +1,10 @@
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/core/models/product_model.dart';
+import 'package:funny_baby/features/cart/presentation/manager/cubit/add_item_in_cart_cubit.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/core/helper/helper_functions.dart';
 import 'package:funny_baby/core/widgets/custom_widgets.dart';
@@ -69,10 +72,13 @@ class ProductDetails extends StatelessWidget {
                       child: PayNowWidget(s: s, size: size),
                       onPressed: () async {
                         if (_isVisible) {
-                          String url =
-                              'https://wa.me/+201065103026?text=${productModel.parcode} كود المنتج';
-                          final Uri uri = Uri.parse(url);
-                          await launchUrlMethod(uri);
+                          // String url =
+                          //     'https://wa.me/+201065103026?text=${productModel.parcode} كود المنتج';
+                          // final Uri uri = Uri.parse(url);
+                          // await launchUrlMethod(uri);
+                          await BlocProvider.of<AddItemCartCubit>(context)
+                              .addItem(productModel);
+                              log('add item to cart done');
                         }
                       },
                     ),
@@ -86,4 +92,3 @@ class ProductDetails extends StatelessWidget {
     );
   }
 }
-

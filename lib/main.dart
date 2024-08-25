@@ -2,8 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funny_baby/bloc_observer.dart';
-import 'package:funny_baby/core/models/cart_item_model.dart';
+import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/core/utils/app_go_routes.dart';
+import 'package:funny_baby/features/cart/presentation/manager/cubit/add_item_in_cart_cubit.dart';
 import 'package:funny_baby/system_cubits/cahnge_mode.dart';
 import 'package:funny_baby/system_cubits/lang_cubit.dart';
 import 'package:funny_baby/features/admins/presentation/manager/admin_cubit/admin_cubit.dart';
@@ -18,8 +19,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
  await Hive.initFlutter();
-  Hive.registerAdapter(CartModelAdapter());
-  await Hive.openBox<CartModel>('cart');
+  Hive.registerAdapter(ProductModelAdapter());
+  await Hive.openBox<ProductModel>('cart');
   Bloc.observer = SimpleBlocObserever();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -55,6 +56,9 @@ class FunnyBaby extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ThemeCubit(),
+        ),
+             BlocProvider(
+          create: (context) => AddItemCartCubit(),
         ),
       ],
       child: BlocBuilder<ThemeCubit, ThemeModeState>(
