@@ -5,6 +5,7 @@ import 'package:funny_baby/bloc_observer.dart';
 import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/core/utils/app_go_routes.dart';
 import 'package:funny_baby/features/cart/presentation/manager/cubit/add_item_in_cart_cubit.dart';
+import 'package:funny_baby/features/payment/presentation/manager/cubit/add_order_cubit.dart';
 import 'package:funny_baby/system_cubits/cahnge_mode.dart';
 import 'package:funny_baby/system_cubits/lang_cubit.dart';
 import 'package:funny_baby/features/admins/presentation/manager/admin_cubit/admin_cubit.dart';
@@ -59,6 +60,9 @@ class FunnyBaby extends StatelessWidget {
         ),
              BlocProvider(
           create: (context) => AddItemCartCubit(),
+        ),
+           BlocProvider(
+          create: (context) => AddOrderCubit(),
         ),
       ],
       child: BlocBuilder<ThemeCubit, ThemeModeState>(

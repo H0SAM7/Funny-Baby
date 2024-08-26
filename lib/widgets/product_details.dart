@@ -69,7 +69,7 @@ class ProductDetails extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.bottomCenter,
                     child: TextButton(
-                      child: PayNowWidget(s: s, size: size),
+                      child: AddToCartWidget(s: s, size: size),
                       onPressed: () async {
                         if (_isVisible) {
                           // String url =

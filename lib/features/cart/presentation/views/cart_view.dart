@@ -4,7 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/features/cart/presentation/manager/cubit/add_item_in_cart_cubit.dart';
 import 'package:funny_baby/features/cart/presentation/views/widgets/cart_list_view.dart';
-
+import 'package:funny_baby/features/payment/presentation/views/payment_option_view.dart';
+import 'package:go_router/go_router.dart';
 
 class CartView extends StatefulWidget {
   const CartView({super.key});
@@ -61,15 +62,22 @@ class CartViewBody extends StatelessWidget {
               },
             ),
             Container(
-                height: 60,
-                width: 200,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  color: Colors.blue,
-                ),
-                child: const Icon(
+              height: 60,
+              width: 200,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: Colors.blue,
+              ),
+              child: IconButton(
+                onPressed: () {
+                  GoRouter.of(context).push('/${PaymentOptionView.id}',
+                      extra: BlocProvider.of<AddItemCartCubit>(context).items!);
+                },
+                icon: const Icon(
                   FontAwesomeIcons.cartShopping,
-                ))
+                ),
+              ),
+            ),
           ],
         ),
       ),

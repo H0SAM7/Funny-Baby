@@ -2,6 +2,7 @@ import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/features/admins/presentation/views/add_discount_view.dart';
 import 'package:funny_baby/features/cart/presentation/views/cart_view.dart';
 import 'package:funny_baby/features/home/presentation/views/profile_view.dart';
+import 'package:funny_baby/features/payment/presentation/views/payment_option_view.dart';
 import 'package:funny_baby/pages/search.dart';
 import 'package:go_router/go_router.dart';
 import 'package:funny_baby/features/auth/presentation/views/forget_password_view.dart';
@@ -109,6 +110,13 @@ abstract class AppGoRoutes {
         path: '/${CartView.id}',
         name: CartView.id,
         builder: (context, state) => const CartView(),
+      ),
+      GoRoute(
+        path: '/${PaymentOptionView.id}',
+        name: PaymentOptionView.id,
+        builder: (context, state) => PaymentOptionView(
+        items: state.extra as List<ProductModel>,
+        ),
       ),
     ],
   );
