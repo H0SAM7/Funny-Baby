@@ -8,15 +8,14 @@ class PriceDetails extends StatelessWidget {
   const PriceDetails({
     super.key,
     required this.productModel,
-    required this.size,
   });
 
   final ProductModel productModel;
-  final Size size;
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      
       children: [
         Text(
           '• \$${discount(productModel.price, productModel.discount)}',
@@ -25,7 +24,7 @@ class PriceDetails extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(width: size.width * .05),
+        SizedBox(width: 10,),
         Text(
           '\$${productModel.price}',
           style: const TextStyle(

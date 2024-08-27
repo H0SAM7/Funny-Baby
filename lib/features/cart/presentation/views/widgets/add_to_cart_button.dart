@@ -1,4 +1,3 @@
-// ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,15 +6,13 @@ import 'package:funny_baby/generated/l10n.dart';
 class AddToCartWidget extends StatelessWidget {
   const AddToCartWidget({
     super.key,
-    required this.s,
-    required this.size,
   });
 
-  final S s;
-  final Size size;
 
   @override
   Widget build(BuildContext context) {
+    
+  final S s=S.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -25,8 +22,7 @@ class AddToCartWidget extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        SizedBox(
-          width: size.width * .07,
+        const SizedBox(width: 20,
         ),
         const Icon(
           FontAwesomeIcons.bagShopping,

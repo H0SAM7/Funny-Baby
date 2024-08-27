@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funny_baby/core/models/product_model.dart';
-import 'package:funny_baby/features/payment/presentation/manager/cubit/add_order_cubit.dart';
+import 'package:funny_baby/features/payment/presentation/views/widgets/cash_payment.dart';
 
 class PaymentOptionView extends StatelessWidget {
   const PaymentOptionView({super.key, required this.items});
@@ -14,27 +13,11 @@ class PaymentOptionView extends StatelessWidget {
       appBar: AppBar(),
       body:  Column(
         children: [
-          CashPayment(items:items,),
+          CashPayment(items: items,),
         ],
       ),
     );
   }
 }
 
-class CashPayment extends StatelessWidget {
-  const CashPayment({super.key, required this.items});
-  final List<ProductModel> items ;
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: ()async {
-        BlocProvider.of<AddOrderCubit>(context).addOrder(items);
-      },
-      child: Container(
-        width: 50,
-        height: 50,
-        color: Colors.amber,
-      ),
-    );
-  }
-}
+

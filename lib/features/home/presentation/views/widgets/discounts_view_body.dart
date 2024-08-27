@@ -18,6 +18,7 @@ class DiscountsViewBody extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(top: 10.0),
             child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
               clipBehavior: Clip.none,
               itemCount: state.discounts.length,
               itemBuilder: (context, index) {
@@ -27,12 +28,10 @@ class DiscountsViewBody extends StatelessWidget {
               },
             ),
           );
-        }
-        else if(state is DiscountsFailure){
-               return Center(child: Text(S.of(context).Error_loading_products));
-        }
-        else{
-         return const Center(child: CustomLoadingIndicator());
+        } else if (state is DiscountsFailure) {
+          return Center(child: Text(S.of(context).Error_loading_products));
+        } else {
+          return const Center(child: CustomLoadingIndicator());
         }
       },
     );

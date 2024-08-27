@@ -52,7 +52,8 @@ class ProfileSettings extends StatelessWidget {
             title: s.log_out,
             prefixIcon: Icons.logout,
             onTap: () async {
-              await BlocProvider.of<AuthCubit>(context).logout();
+              
+             await BlocProvider.of<AuthCubit>(context).logout();
               log('logout done');
               // Navigator.of(context).pushAndRemoveUntil(
               //   MaterialPageRoute(builder: (context) => const LoginPage()),

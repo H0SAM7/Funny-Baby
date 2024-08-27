@@ -17,6 +17,8 @@ class CategoriesView extends StatelessWidget {
         body: Padding(
       padding: const EdgeInsets.only(top: 20, right: 10, left: 10),
       child: GridView.builder(
+                    physics: const BouncingScrollPhysics(),
+
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: childAspectRatio,

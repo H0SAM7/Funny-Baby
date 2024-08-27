@@ -1,7 +1,9 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/core/models/product_model.dart';
+import 'package:funny_baby/features/admins/presentation/manager/admin_cubit/admin_cubit.dart';
 import 'package:funny_baby/services/fire_base_services.dart';
 import 'package:funny_baby/core/widgets/custom_button.dart';
 import 'package:funny_baby/core/widgets/custom_text_field.dart';
@@ -108,10 +110,10 @@ class _AddProductsPageState extends State<UpdateProductsView> {
                 children: [
                   const CategoryDropdown(),
                   TextButton.icon(
-                    statesController: MaterialStatesController(),
+                    statesController: WidgetStatesController(),
                     onPressed: () async {
-                      image = await FireBaseServices()
-                          .uploadImage(titleController.text);
+                      image =  await BlocProvider.of<AdminCubit>(context)
+                          .uploadImage(titleController.text,);
                       loaded = true;
                       setState(() {});
                     },

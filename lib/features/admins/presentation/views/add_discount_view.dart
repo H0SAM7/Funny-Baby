@@ -5,7 +5,6 @@ import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/core/models/discount_model.dart';
 import 'package:funny_baby/features/admins/presentation/manager/admin_cubit/admin_cubit.dart';
 import 'package:funny_baby/generated/l10n.dart';
-import 'package:funny_baby/services/fire_base_services.dart';
 import 'package:funny_baby/core/widgets/custom_button.dart';
 import 'package:funny_baby/core/widgets/custom_text_field.dart';
 import 'package:funny_baby/core/widgets/custom_widgets.dart';
@@ -14,7 +13,6 @@ class AddDiscounts extends StatefulWidget {
   const AddDiscounts({super.key});
   static String id = 'AddSales';
 
-  
   @override
   State<AddDiscounts> createState() => _AddDiscountsState();
 }
@@ -38,10 +36,9 @@ class _AddDiscountsState extends State<AddDiscounts> {
               image = null;
               loaded = false;
 
-              showSnackbar(context,'add sale done' );
-            }
-            else if(state is AdminFailure){
-              showSnackbar(context,'add sale failed' );
+              showSnackbar(context, 'add sale done');
+            } else if (state is AdminFailure) {
+              showSnackbar(context, 'add sale failed');
             }
           },
           child: Form(
@@ -54,10 +51,10 @@ class _AddDiscountsState extends State<AddDiscounts> {
                   controller: saleController,
                 ),
                 TextButton.icon(
-                  statesController: MaterialStatesController(),
+                  statesController: WidgetStatesController(),
                   onPressed: () async {
-                    image = await FireBaseServices()
-                        .uploadImage(saleController.text);
+                    image = await BlocProvider.of<AdminCubit>(context)
+                        .uploadDiscountImage(saleController.text);
 
                     setState(() {
                       if (image != null) {

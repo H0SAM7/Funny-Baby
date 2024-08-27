@@ -1,33 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/core/models/product_model.dart';
+import 'package:funny_baby/core/utils/app_styles.dart';
 import 'package:funny_baby/features/home/presentation/views/product_details_view.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/custom_image_procduct.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class CustomProductItem extends StatefulWidget {
+class CustomProductItem extends StatelessWidget {
   const CustomProductItem({
     super.key,
     required this.productModel,
-    this.details = true,
   });
 
-  final bool details;
   final ProductModel productModel;
 
-  @override
-  State<CustomProductItem> createState() => _CustomProductItemState();
-}
-
-class _CustomProductItemState extends State<CustomProductItem> {
   @override
   Widget build(BuildContext context) {
     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context)
-            .push('/${DetailsPage.id}', extra: widget.productModel);
+        GoRouter.of(context).push('/${DetailsPage.id}', extra: productModel);
       },
       child: Card(
         shape: RoundedRectangleBorder(
@@ -47,7 +38,7 @@ class _CustomProductItemState extends State<CustomProductItem> {
               children: [
                 Expanded(
                   child: CustomImage(
-                    image: widget.productModel.image,
+                    image: productModel.image,
                   ),
                 ),
                 Padding(
@@ -55,23 +46,18 @@ class _CustomProductItemState extends State<CustomProductItem> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        _truncateText(widget.productModel.title, 4),
-                        style: TextStyle(
-                          color: blueColor,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: GoogleFonts.amiri().fontFamily,
-                          // fontFamily: GoogleFonts.amiri().fontFamily,
-                          fontSize: 18,
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          _truncateText(productModel.title, 4),
+                          style: AppStyles.styleMedium18(context),
+                          maxLines: 1,
                         ),
-                        maxLines: 1,
                       ),
-                      Text(
-                        " \$ ${widget.productModel.price}",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: blueColor,
-                        ),
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(" \$ ${productModel.price}",
+                            style: AppStyles.styleMedium18(context)),
                       ),
                     ],
                   ),

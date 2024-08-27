@@ -7,7 +7,7 @@ import 'package:funny_baby/core/helper/auth_helper.dart';
 import 'package:funny_baby/core/helper/shared_pref.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
@@ -19,7 +19,6 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> registerUser(
       String email, String password, String username) async {
-
     try {
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(
         email: email,
@@ -41,32 +40,25 @@ class AuthCubit extends Cubit<AuthState> {
             'username': username,
             // Add other fields as needed
           });
-         
+          await SharedPreference().setString('email', email);
+          await SharedPreference().setString('userName', username);
           log('User account created successfully.');
         } else {
-         
           await user.delete();
           log('Email verification failed. Please verify your email.');
         }
       }
-    } catch (e) {
-
-    }
+    } catch (e) {}
   }
 
   Future<void> loginUser(String email, String password) async {
-   
     try {
-      
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-     
-      log('The Login Successful');
-    } catch (e) {
-    
-    }
-  }
 
+      log('The Login Successful');
+    } catch (e) {}
+  }
 
   Future<void> deleteUser() async {
     try {
@@ -86,19 +78,15 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-
-
   Future<void> logout() async {
     try {
       await auth.signOut();
-         await SharedPreference().setBool("isLoggedIn", false);
+      await SharedPreference().setBool("isLoggedIn", false);
       log("User logged out successfully.");
     } catch (e) {
       log("Error logging out: $e");
     }
   }
-
-
 
   Future<void> updatePasswordAndName(
       String oldPassword, String newPassword, String username) async {
@@ -131,54 +119,57 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
- 
-Future<UserCredential> signInWithGoogle() async {
-  try {
-    final GoogleSignIn googleSignIn = GoogleSignIn();
+  Future<UserCredential> signInWithGoogle() async {
+    try {
+      final GoogleSignIn googleSignIn = GoogleSignIn();
 
-    // Force sign out from any previous Google account
-    await googleSignIn.signOut();
+      // Force sign out from any previous Google account
+      await googleSignIn.signOut();
 
-    // Trigger the authentication flow and prompt for account selection
-    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+      // Trigger the authentication flow and prompt for account selection
+      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
 
-    if (googleUser == null) {
-      // Handle the case where the user cancels the sign-in
-      throw FirebaseAuthException(
-        code: 'sign_in_canceled',
-        message: 'Sign-in was canceled by the user.',
+      if (googleUser == null) {
+        // Handle the case where the user cancels the sign-in
+        throw FirebaseAuthException(
+          code: 'sign_in_canceled',
+          message: 'Sign-in was canceled by the user.',
+        );
+      }
+
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
       );
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      final String? email = userCredential.user?.email;
+      final String? uid = userCredential.user?.uid;
+        await SharedPreference().setString('email', email!);
+
+      await firestore.collection('users').doc(uid).set({
+        'uid': uid,
+        'email': email,
+
+        // Add other fields as needed
+      });
+      // Once signed in, return the UserCredential
+      return userCredential;
+    } catch (e) {
+      // Handle different types of exceptions
+      if (e is FirebaseAuthException) {
+        log('FirebaseAuthException: ${e.message}');
+      } else {
+        log('Exception: ${e.toString()}');
+      }
+      // Optionally rethrow or handle the error as needed
+      rethrow;
     }
-
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
-  } catch (e) {
-    // Handle different types of exceptions
-    if (e is FirebaseAuthException) {
-      log('FirebaseAuthException: ${e.message}');
-    } else {
-      log('Exception: ${e.toString()}');
-    }
-    // Optionally rethrow or handle the error as needed
-    rethrow;
   }
-}
-
-
-
-
-
-
-
-
-
 }

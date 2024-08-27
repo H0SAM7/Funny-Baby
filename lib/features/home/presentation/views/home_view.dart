@@ -14,11 +14,12 @@ class HomePage extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     double itemSpacing = size.width * 0.002; // Responsive item spacing
     double childAspectRatio =
-        (size.width / 2) / (size.height * .53); // Adjust aspect ratio
+        (size.width / 2) / (size.height * .53);
     return BlocBuilder<AllProductsCubit, AllProductsState>(
       builder: (context, state) {
         if (state is AllProductsSuccess) {
           return CustomScrollView(
+            physics: const BouncingScrollPhysics(),
             clipBehavior: Clip.none,
             slivers: [
               SliverToBoxAdapter(child: CustomAdvWidget(size: size)),
@@ -38,3 +39,6 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+
+

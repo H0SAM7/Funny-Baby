@@ -110,7 +110,9 @@ class _LoginPageState extends State<LoginPage> {
                         try {
                           BlocProvider.of<AuthCubit>(context)
                               .loginUser(email!, password!);
+
                           await SharedPreference().setBool("isLoggedIn", true);
+                          GoRouter.of(context).push('/${MyHome.id}');
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'user-not-found') {
                             showSnackbar(context, s.user_not_found);
@@ -140,10 +142,16 @@ class _LoginPageState extends State<LoginPage> {
                     txtcolor: blueColor,
                     color: Colors.white,
                     onTap: () async {
+                      isloading = true;
+
+                      setState(() {});
                       await BlocProvider.of<AuthCubit>(context)
                           .signInWithGoogle();
                       await SharedPreference().setBool("isLoggedIn", true);
                       GoRouter.of(context).push('/${MyHome.id}');
+                      isloading = false;
+
+                      setState(() {});
                     },
                   ),
                 ),

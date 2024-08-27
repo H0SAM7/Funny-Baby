@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:funny_baby/core/models/discount_model.dart';
 
@@ -23,7 +24,7 @@ class DiscountViewItem extends StatelessWidget {
               width: size.width,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(sale.image),
+                  image: CachedNetworkImageProvider( sale.image),
                   fit: BoxFit.cover,
                 ),
               ),

@@ -1,15 +1,10 @@
 import 'dart:developer';
-import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:funny_baby/core/models/product_model.dart';
-import 'package:image_picker/image_picker.dart';
 
 class FireBaseServices {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  final FirebaseStorage _storage = FirebaseStorage.instance;
-  final ImagePicker _picker = ImagePicker();
 
   // Future<void> addProduct(ProductModel product) async {
   //   try {
@@ -102,41 +97,6 @@ Future<void> updateField(String fieldName, bool newValue, ProductModel productMo
 //   }
 // }
 
-
-  Future<String?> uploadImage(String fileName) async {
-    try {
-      final XFile? pickedFile =
-          await _picker.pickImage(source: ImageSource.gallery);
-
-      if (pickedFile != null) {
-        File file = File(pickedFile.path);
-
-        Reference storageRef =
-            _storage.ref().child('FunnyBabyimages/$fileName');
-
-        UploadTask uploadTask = storageRef.putFile(file);
-
-        TaskSnapshot snapshot = await uploadTask.whenComplete(() => {});
-
-        String downloadUrl = await snapshot.ref.getDownloadURL();
-
-        return downloadUrl;
-      }
-    } catch (e) {
-      log('Error uploading image: $e');
-    }
-    return null;
-  }
-
-  Future<String?> getDownloadUrl(String filePath) async {
-    try {
-      String downloadUrl = await _storage.ref(filePath).getDownloadURL();
-      return downloadUrl;
-    } catch (e) {
-      log('Error getting download URL: $e');
-      return null;
-    }
-  }
 
 }
 

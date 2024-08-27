@@ -5,11 +5,9 @@ import 'package:funny_baby/core/models/product_model.dart';
 class ImageProductDetails extends StatelessWidget {
   const ImageProductDetails({
     super.key,
-    required this.size,
     required this.productModel,
   });
 
-  final Size size;
   final ProductModel productModel;
 
   @override

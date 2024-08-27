@@ -22,9 +22,10 @@ class _ProfileViewState extends State<ProfileView> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            seperatedItem(title: s.Admin_Setting),
+            seperatedItem(title: s.Admin_Setting,),
             const AdminSettings(),
             seperatedItem(title: s.profile_setting),
+         
             const ProfileSettings(),
             seperatedItem(title: s.system_setting),
             const SystemSettings(),
@@ -47,7 +48,7 @@ class _ProfileViewState extends State<ProfileView> {
             fontWeight: FontWeight.bold,
             fontSize: 15,
             color: widget.isDark
-                ? Colors.white.withOpacity(0.4)
+                ? Colors.white
                 : Colors.black.withOpacity(0.4)),
       ),
     );

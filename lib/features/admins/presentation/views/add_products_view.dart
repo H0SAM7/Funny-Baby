@@ -6,7 +6,6 @@ import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/features/admins/presentation/manager/admin_cubit/admin_cubit.dart';
 import 'package:funny_baby/generated/l10n.dart';
-import 'package:funny_baby/services/fire_base_services.dart';
 import 'package:funny_baby/core/widgets/custom_button.dart';
 import 'package:funny_baby/features/admins/presentation/views/widgets/custom_dropdown.dart';
 import 'package:funny_baby/core/widgets/custom_text_field.dart';
@@ -120,13 +119,14 @@ class _AddProductsViewState extends State<AddProductsView> {
                       CustomDropDown(
                         menuList: categoriesAR,
                         onChanged: (selectedValue) {
-                          categoryController.text = selectedValue ?? '';
+                          categoryController.text = selectedValue!;
                         },
                       ),
                       TextButton.icon(
-                        statesController: MaterialStatesController(),
+                        statesController: WidgetStatesController(),
                         onPressed: () async {
-                          image = await FireBaseServices().uploadImage(
+                          image =   await BlocProvider.of<AdminCubit>(context).uploadImage(
+                            
                               titleController.text + codeController.text);
 
                           setState(() {

@@ -1,37 +1,41 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'product_model.dart'; // Import your ProductModel
+import 'product_model.dart';
 
 class OrderModel {
   String orderId;
-  ProductModel product;
-  int quantity;
-  String totalPrice;
+  List<ProductModel> products; // List of products
+ // String totalPrice;
   String customerName;
   String customerEmail;
-  Timestamp orderDate;
-  String status;
+  String customerAddress;
+  String customerPhone;
+  String customerAddressCenter;
+//String status;
 
   OrderModel({
     required this.orderId,
-    required this.product,
-    required this.quantity,
-    required this.totalPrice,
+    required this.products,
+  // required this.totalPrice,
     required this.customerName,
     required this.customerEmail,
-    required this.orderDate,
-    required this.status,
+    required this.customerAddress,
+    required this.customerAddressCenter,
+    required this.customerPhone,
+   // required this.status,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'orderId': orderId,
-      'product': product.toMap(), // Convert the product to a map
-      'quantity': quantity,
-      'totalPrice': totalPrice,
+      'products': products.map((product) => product.toMap()).toList(), 
+    //  'totalPrice': totalPrice,
       'customerName': customerName,
       'customerEmail': customerEmail,
-      'orderDate': orderDate,
-      'status': status,
+      'customerAddress': customerAddress,
+      'customerAddressCenter': customerAddressCenter,
+      'customerPhone': customerPhone,
+      
+     // 'status': status,
     };
   }
 
@@ -39,13 +43,14 @@ class OrderModel {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     return OrderModel(
       orderId: doc.id,
-      product: ProductModel.fromDocument(data['product']),
-      quantity: data['quantity'],
-      totalPrice: data['totalPrice'],
+      products: (data['products'] as List).map((productData) => ProductModel.fromDocument(productData)).toList(),
+      //totalPrice: data['totalPrice'],
       customerName: data['customerName'],
       customerEmail: data['customerEmail'],
-      orderDate: data['orderDate'],
-      status: data['status'],
+      customerAddress: data['customerAddress'],
+      customerAddressCenter: data['customerAddressCenter'],
+      customerPhone: data['customerPhone'],
+      //status: data['status'],
     );
   }
 }

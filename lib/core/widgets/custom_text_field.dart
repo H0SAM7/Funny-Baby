@@ -13,10 +13,13 @@ class CustomTextField extends StatefulWidget {
       this.passicon = false,
       this.onSaved,
       this.controller,
-      this.onTap});
+      this.onTap,
+          this.maxline = 1,
+      });
   final TextEditingController? controller;
   final String label;
   final String hint;
+  final int maxline;
   bool hide;
   Icon? icon;
   bool passicon;
@@ -35,6 +38,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
       child: TextFormField(
           onSaved: widget.onSaved,
+          maxLines: widget.maxline,
           showCursor: true,
           obscureText: widget.hide,
           controller: widget.controller,

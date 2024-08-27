@@ -5,7 +5,7 @@ import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/core/helper/helper_functions.dart';
 import 'package:funny_baby/core/widgets/custom_title_appbar.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/drawer.dart';
-import 'package:funny_baby/pages/search.dart';
+import 'package:funny_baby/features/home/presentation/views/search_view.dart';
 import 'package:go_router/go_router.dart';
 
 class MyHome extends StatefulWidget {

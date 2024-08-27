@@ -11,7 +11,7 @@ class AllProductsCubit extends Cubit<AllProductsState> {
   Future<void> getAllProducts() async {
     emit(AllProductLoading());
     var result = await HomeRepoImp().getAllProducts();
-    result.fold((Failure) => emit(AllProductsFailure(errMessage: Failure.errMessage!)),
+    result.fold((failure) => emit(AllProductsFailure(errMessage: failure.errMessage!)),
         (products) => emit(AllProductsSuccess(products: products)));
   }
 }

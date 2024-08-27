@@ -1,9 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funny_baby/constants.dart';
+import 'package:funny_baby/features/admins/presentation/manager/admin_cubit/admin_cubit.dart';
 import 'package:funny_baby/generated/l10n.dart';
-import 'package:funny_baby/services/fire_base_services.dart';
 import 'package:funny_baby/core/widgets/custom_button.dart';
 import 'package:funny_baby/core/widgets/custom_text_field.dart';
 
@@ -36,10 +37,10 @@ class _deleteDiscountState extends State<deleteDiscount> {
                 controller: saleController,
               ),
               TextButton.icon(
-                statesController: MaterialStatesController(),
+                statesController: WidgetStatesController(),
                 onPressed: () async {
                   image =
-                      await FireBaseServices().uploadImage(saleController.text);
+                        await BlocProvider.of<AdminCubit>(context).uploadDiscountImage(saleController.text);
 
                   setState(() {
                     if (image != null) {
