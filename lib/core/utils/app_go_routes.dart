@@ -1,5 +1,7 @@
 import 'package:funny_baby/core/models/product_model.dart';
+import 'package:funny_baby/features/admins/order_features/views/widgets/order_details.dart';
 import 'package:funny_baby/features/admins/presentation/views/add_discount_view.dart';
+import 'package:funny_baby/features/admins/order_features/views/orders_view.dart';
 import 'package:funny_baby/features/auth/presentation/views/profile_details_view.dart';
 import 'package:funny_baby/features/cart/presentation/views/cart_view.dart';
 import 'package:funny_baby/features/home/presentation/views/profile_view.dart';
@@ -98,7 +100,7 @@ abstract class AppGoRoutes {
       GoRoute(
         path: '/${ProfileView.id}',
         name: ProfileView.id,
-        builder: (context, state) => ProfileView(),
+        builder: (context, state) => const ProfileView(),
       ),
       GoRoute(
         path: '/${UserName.id}',
@@ -139,10 +141,20 @@ abstract class AppGoRoutes {
         name: TechnicalSupportView.id,
         builder: (context, state) => const TechnicalSupportView(),
       ),
-                GoRoute(
+      GoRoute(
         path: '/${CrashView.id}',
         name: CrashView.id,
         builder: (context, state) => const CrashView(),
+      ),
+        GoRoute(
+        path: '/${OrdersView.id}',
+        name: OrdersView.id,
+        builder: (context, state) => const OrdersView(),
+      ),
+          GoRoute(
+        path: '/${OrderDetails.id}',
+        name: OrderDetails.id,
+        builder: (context, state) =>  OrderDetails(products: state.extra as List<ProductModel>,),
       ),
     ],
   );

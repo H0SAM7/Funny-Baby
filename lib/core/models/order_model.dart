@@ -4,7 +4,7 @@ import 'product_model.dart';
 class OrderModel {
   String orderId;
   List<ProductModel> products; // List of products
- // String totalPrice;
+  // String totalPrice;
   String customerName;
   String customerEmail;
   String customerAddress;
@@ -15,27 +15,27 @@ class OrderModel {
   OrderModel({
     required this.orderId,
     required this.products,
-  // required this.totalPrice,
+    // required this.totalPrice,
     required this.customerName,
     required this.customerEmail,
     required this.customerAddress,
     required this.customerAddressCenter,
     required this.customerPhone,
-   // required this.status,
+    // required this.status,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'orderId': orderId,
-      'products': products.map((product) => product.toMap()).toList(), 
-    //  'totalPrice': totalPrice,
+      'products': products.map((product) => product.toMap()).toList(),
+      //  'totalPrice': totalPrice,
       'customerName': customerName,
       'customerEmail': customerEmail,
       'customerAddress': customerAddress,
       'customerAddressCenter': customerAddressCenter,
       'customerPhone': customerPhone,
-      
-     // 'status': status,
+
+      // 'status': status,
     };
   }
 
@@ -43,7 +43,9 @@ class OrderModel {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     return OrderModel(
       orderId: doc.id,
-      products: (data['products'] as List).map((productData) => ProductModel.fromDocument(productData)).toList(),
+    products: (data['products'] as List<dynamic>)
+        .map((productData) => ProductModel.fromMap(productData as Map<String, dynamic>))
+        .toList(),
       //totalPrice: data['totalPrice'],
       customerName: data['customerName'],
       customerEmail: data['customerEmail'],

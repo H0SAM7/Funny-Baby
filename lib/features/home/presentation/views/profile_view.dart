@@ -6,9 +6,8 @@ import 'package:funny_baby/features/home/presentation/views/widgets/profile_widg
 
 // ignore: must_be_immutable
 class ProfileView extends StatefulWidget {
-  static String id='ProfilePage';
-  ProfileView({super.key});
-  bool isDark = false;
+  static String id = 'ProfilePage';
+  const ProfileView({super.key});
 
   @override
   State<ProfileView> createState() => _ProfileViewState();
@@ -17,17 +16,21 @@ class ProfileView extends StatefulWidget {
 class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     final s = S.of(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            seperatedItem(title: s.Admin_Setting,),
+            seperatedItem(
+              title: s.Admin_Setting,color: !isDarkMode?Colors.black.withOpacity(.4):null
+              
+            ),
             const AdminSettings(),
-            seperatedItem(title: s.profile_setting),
-         
+            seperatedItem(title: s.profile_setting,color: !isDarkMode?Colors.black.withOpacity(.4):null),
             const ProfileSettings(),
-            seperatedItem(title: s.system_setting),
+            seperatedItem(title: s.system_setting,color: !isDarkMode?Colors.black.withOpacity(.4):null),
             const SystemSettings(),
           ],
         ),
@@ -35,8 +38,7 @@ class _ProfileViewState extends State<ProfileView> {
     );
   }
 
-
-  Widget seperatedItem({required String title}) {
+  Widget seperatedItem({required String title, Color? color}) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
       width: double.infinity,
@@ -45,11 +47,10 @@ class _ProfileViewState extends State<ProfileView> {
       child: Text(
         title,
         style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 15,
-            color: widget.isDark
-                ? Colors.white
-                : Colors.black.withOpacity(0.4)),
+          fontWeight: FontWeight.bold,
+          fontSize: 15,
+          color: color ?? Colors.white,
+        ),
       ),
     );
   }

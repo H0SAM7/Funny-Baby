@@ -68,6 +68,7 @@ class FunnyBaby extends StatelessWidget {
            BlocProvider(
           create: (context) => SearchCubit(),
         ),
+       
       ],
       child: BlocBuilder<ThemeCubit, ThemeModeState>(
         builder: (context, themeModeState) {

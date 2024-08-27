@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:funny_baby/core/helper/shared_pref.dart';
+import 'package:funny_baby/core/widgets/custom_show_dialog2.dart';
 import 'package:funny_baby/features/auth/presentation/views/login_view.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/bottom_navigation_bar.dart';
 import 'package:funny_baby/features/splash/presentation/views/widgets/read_crash_value.dart';
@@ -23,7 +24,21 @@ class SplashView extends StatelessWidget {
         onTap: () async {
           bool isCrashed = await readDocument();
           if (isCrashed) {
-            GoRouter.of(context).push('/${CrashView.id}');
+            showDialog(
+
+              context: context,
+              builder: (BuildContext context) {
+                return ConfirmationDialog2(
+                  title: '',
+                  content:
+                      'يتم اجراء بعض اعمال الصيانة الرجاء المحاولة لاحقا سيتم اعادة تشغيل الخدمة في اقرب وقت',
+                  onConfirm: () {
+                    GoRouter.of(context).push('/${CrashView.id}');
+                  },
+                  action: 'موافق',
+                );
+              },
+            );
           } else {
             bool isLoggedIn =
                 await SharedPreference().getBool("isLoggedIn") ?? false;

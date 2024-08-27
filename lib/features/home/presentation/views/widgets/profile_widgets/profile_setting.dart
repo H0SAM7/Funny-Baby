@@ -38,7 +38,7 @@ class ProfileSettings extends StatelessWidget {
             title: s.delete_my_account,
             prefixIcon: Icons.delete,
             onTap: () {
-              DeketeAccountConfirmationDialog(context);
+              deketeAccountConfirmationDialog(context);
               //  log('deleted done');
             },
             suffixIcon: Container()),

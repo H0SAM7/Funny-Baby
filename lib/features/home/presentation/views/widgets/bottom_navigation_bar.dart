@@ -51,7 +51,7 @@ class _MyHomeState extends State<MyHome> {
                 },
                 icon:  Icon(
                   Icons.search,
-                  color: blueColor,
+                  color:isDarkMode?Colors.white :blueColor,
                 ),
               ),
             ],
@@ -97,6 +97,9 @@ class _MyHomeState extends State<MyHome> {
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: !isDarkMode ? blueColor : Colors.black,
+        unselectedItemColor: isDarkMode?Colors.black:blueColor,
+        selectedIconTheme:const IconThemeData(size: 15),
+        showUnselectedLabels:false,
         onTap: _onItemTapped,
       ),
     );

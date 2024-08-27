@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:funny_baby/features/admins/presentation/views/add_discount_view.dart';
+import 'package:funny_baby/features/admins/order_features/views/orders_view.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/features/admins/presentation/views/add_products_view.dart';
 import 'package:funny_baby/features/admins/presentation/views/delete_product_view.dart';
@@ -57,6 +59,18 @@ class AdminSettings extends StatelessWidget {
             },
             title: s.delete_products,
             prefixIcon: Icons.delete_forever,
+            suffixIcon: Container()),
+             const Divider(
+          indent: 20,
+          endIndent: 20,
+          thickness: .3,
+        ),
+        ItemSetting(
+            onTap: () {
+              GoRouter.of(context).push('/${OrdersView.id}');
+            },
+            title: 'قائمة الاوردارت',
+            prefixIcon: FontAwesomeIcons.cartShopping,
             suffixIcon: Container()),
       ],
     );

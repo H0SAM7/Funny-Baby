@@ -8,7 +8,7 @@ import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/core/widgets/custom_show_dialog.dart';
 import 'package:go_router/go_router.dart';
 
-void DeketeAccountConfirmationDialog(
+void deketeAccountConfirmationDialog(
   BuildContext context,
 ) {
   showDialog(

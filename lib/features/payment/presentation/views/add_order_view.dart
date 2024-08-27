@@ -6,7 +6,7 @@ import 'package:funny_baby/core/helper/shared_pref.dart';
 import 'package:funny_baby/core/models/order_model.dart';
 import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/core/widgets/custom_button.dart';
-import 'package:funny_baby/core/widgets/custom_widgets.dart';
+import 'package:funny_baby/core/widgets/custom_show_dialog2.dart';
 import 'package:funny_baby/core/widgets/optional_text_field.dart';
 import 'package:funny_baby/features/cart/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:funny_baby/features/payment/presentation/manager/cubit/add_order_cubit.dart';
@@ -104,15 +104,18 @@ class _AddOrderViewState extends State<AddOrderView> {
                       value; // Update controller value
                 },
               ),
-              const SizedBox(height: 24,),
+              const SizedBox(
+                height: 24,
+              ),
               CustomButton(
                 buttonName: 'اطلب الان',
                 txtcolor: Colors.white,
                 color: blueColor,
                 onTap: () async {
-                  var email = await SharedPreference().getString('email');
+                  // var email = await SharedPreference().getString('email');
+                  var email = 'hh';
+
                   if (formKey.currentState!.validate()) {
-                     
                     var docRef =
                         FirebaseFirestore.instance.collection('orders').doc();
                     await BlocProvider.of<AddOrderCubit>(context).addOrder(
@@ -121,16 +124,27 @@ class _AddOrderViewState extends State<AddOrderView> {
                         products: widget.items,
                         //totalPrice: totalPrice,
                         customerName: nameController.text,
-                        customerEmail: email!,
+                        customerEmail: email,
                         customerAddress: addressController.text,
                         customerAddressCenter: centerController.text,
                         customerPhone: phoneController.text,
                       ),
                     );
                     await BlocProvider.of<CartCubit>(context).clearCart();
-                    showSnackbar(context,
-                        'تم طلب الاوردر بنجاح سيتم التواصل معكم لتاكيد الاوردر');
-                    GoRouter.of(context).pop();
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return ConfirmationDialog2(
+                              title: 'تاكيد الاوردر',
+                              content:
+                                  'تم طلب الاوردر بنجاح سيتم التواصل معكم لتاكيد الاوردر',
+                              action: 'موافق',
+                              onConfirm: () {
+                                GoRouter.of(context).pop();
+                                GoRouter.of(context).pop();
+                                GoRouter.of(context).pop();
+                              });
+                        });
                   }
                 },
               )
