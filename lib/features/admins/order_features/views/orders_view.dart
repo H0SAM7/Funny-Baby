@@ -5,7 +5,6 @@ import 'package:funny_baby/core/widgets/custom_loading_indecator.dart';
 import 'package:funny_baby/features/admins/order_features/get_orders.dart';
 import 'package:funny_baby/features/admins/order_features/views/widgets/order_list_view.dart';
 
-
 class OrdersView extends StatelessWidget {
   const OrdersView({super.key});
   static String id = 'OrdersView';

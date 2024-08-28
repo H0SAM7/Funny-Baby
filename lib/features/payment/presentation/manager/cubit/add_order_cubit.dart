@@ -13,10 +13,8 @@ class AddOrderCubit extends Cubit<AddOrderState> {
   Future<void> addOrder(OrderModel order) async {
     emit(AddOrderLoading());
     try {
-
-      await firestore
-          .collection('orders')
-          .add(order.toMap()); 
+      await firestore.collection('orders').add(order.toMap());
+      emit(AddOrderSuccses());
       log('Order added successfully');
     } catch (e) {
       log('Error adding order: $e');

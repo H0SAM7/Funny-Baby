@@ -5,14 +5,14 @@ void showSnackbar(
   BuildContext context,
   String massage,
 ) {
-  bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+ // bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     content: Text(
       massage.replaceAll('-', ''),
       style: TextStyle(
           color:
-              isDarkMode ? Colors.white : blueColor), // Set the text color here
+               Colors.white ), // Set the text color here
     ),
     duration: const Duration(seconds: 2),
     backgroundColor: Colors.black,

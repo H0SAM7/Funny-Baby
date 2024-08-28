@@ -1,7 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/core/models/order_model.dart';
+import 'package:go_router/go_router.dart';
+
+import 'order_details.dart';
 
 class OrdersListViewItem extends StatelessWidget {
   const OrdersListViewItem({
@@ -15,27 +17,27 @@ class OrdersListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: blueColor,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Column(
-          
-          children: [
-          Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('name:${order.customerName}', style: const TextStyle(fontSize: 16, color: Colors.white)),
-              const SizedBox(width: 50,),
-               Text('phone:${order.customerPhone}', style: const TextStyle(fontSize: 14, color: Colors.white)),
-            ],
-          ),
-         
-          Text('#${order.products.length}', style: const TextStyle(fontSize: 14, color: Colors.white)),
-        ],)
+      child: GestureDetector(
+        onTap: () {
+          GoRouter.of(context)
+              .push('/${OrderDetails.id}', extra: order.products);
+        },
+        child: Container(
+            decoration: BoxDecoration(
+              color: blueColor,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Column(
+              children: [
+                Text(order.customerName,
+                    style: const TextStyle(fontSize: 16, color: Colors.white)),
+                Text(order.customerPhone,
+                    style: const TextStyle(fontSize: 14, color: Colors.white)),
+                Text('#${order.products.length}',
+                    style: const TextStyle(fontSize: 14, color: Colors.white)),
+              ],
+            )),
       ),
     );
-  
   }
 }

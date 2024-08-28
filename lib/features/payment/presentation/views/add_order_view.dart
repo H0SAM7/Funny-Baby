@@ -8,6 +8,7 @@ import 'package:funny_baby/core/models/product_model.dart';
 import 'package:funny_baby/core/widgets/custom_button.dart';
 import 'package:funny_baby/core/widgets/custom_show_dialog2.dart';
 import 'package:funny_baby/core/widgets/optional_text_field.dart';
+import 'package:funny_baby/core/widgets/phone_number_text_field.dart';
 import 'package:funny_baby/features/cart/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:funny_baby/features/payment/presentation/manager/cubit/add_order_cubit.dart';
 import 'package:go_router/go_router.dart';
@@ -67,7 +68,7 @@ class _AddOrderViewState extends State<AddOrderView> {
                   nameController.text = value; // Update controller value
                 },
               ),
-              OptionalTextField(
+              PhoneNumberTextField(
                 label: 'رقم الهاتف',
                 hint: 'ادخل رقم هاتفك',
                 controller: phoneController,
@@ -112,8 +113,8 @@ class _AddOrderViewState extends State<AddOrderView> {
                 txtcolor: Colors.white,
                 color: blueColor,
                 onTap: () async {
-                  // var email = await SharedPreference().getString('email');
-                  var email = 'hh';
+                  var email = await SharedPreference().getString('email');
+                  //var email = 'hh';
 
                   if (formKey.currentState!.validate()) {
                     var docRef =
@@ -124,7 +125,7 @@ class _AddOrderViewState extends State<AddOrderView> {
                         products: widget.items,
                         //totalPrice: totalPrice,
                         customerName: nameController.text,
-                        customerEmail: email,
+                        customerEmail: email!,
                         customerAddress: addressController.text,
                         customerAddressCenter: centerController.text,
                         customerPhone: phoneController.text,

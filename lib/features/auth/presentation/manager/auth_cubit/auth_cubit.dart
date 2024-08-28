@@ -118,6 +118,54 @@ class AuthCubit extends Cubit<AuthState> {
       // Handle errors, e.g., show a message to the user
     }
   }
+  
+  
+  Future<void> forgotPassword({required String email}) async {
+  try {
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .where('email', isEqualTo: email)
+        .get();
+
+    // Check if the user with the given email exists
+    if (querySnapshot.docs.isNotEmpty) {
+      // If email is found, send the password reset email
+      await auth.sendPasswordResetEmail(email: email);
+    } else {
+      // If email is not found, throw an exception or handle it accordingly
+      throw Exception('No user found with this email');
+    }
+  } on FirebaseAuthException catch (err) {
+    // Handle FirebaseAuth specific errors
+    throw Exception(err.message.toString());
+  } catch (err) {
+    // Handle any other errors
+    throw Exception(err.toString());
+  }
+}
+
+
+// Future<ProductModel?> searchProductByName(String productName) async {
+//   try {
+//     QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+//         .collection('products') 
+//         .where('name', isEqualTo: productName)
+//         .get();
+
+//     if (querySnapshot.docs.isNotEmpty) {
+//       // Assuming you want the first match
+//       DocumentSnapshot doc = querySnapshot.docs.first;
+//       return ProductModel.fromDocument(doc);
+//     } else {
+//       log('No products found with the name $productName');
+//       return null;
+//     }
+//   } catch (e) {
+//     log('Error searching for product: $e');
+//     return null;
+//   }
+// }
+
 
   Future<UserCredential> signInWithGoogle() async {
     try {

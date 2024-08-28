@@ -95,7 +95,7 @@ abstract class AppGoRoutes {
       GoRoute(
         path: '/${ForgetPassword.id}',
         name: ForgetPassword.id,
-        builder: (context, state) => const ForgetPassword(),
+        builder: (context, state) =>  ForgetPassword(),
       ),
       GoRoute(
         path: '/${ProfileView.id}',

@@ -6,6 +6,7 @@ import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/core/helper/shared_pref.dart';
 import 'package:funny_baby/core/widgets/custom_title.dart';
 import 'package:funny_baby/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
+import 'package:funny_baby/features/auth/presentation/views/forget_password_view.dart';
 import 'package:funny_baby/features/auth/presentation/views/register_view.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/bottom_navigation_bar.dart';
 import 'package:funny_baby/generated/l10n.dart';
@@ -88,7 +89,9 @@ class _LoginPageState extends State<LoginPage> {
                     right: wi * .5,
                   ),
                   child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                           GoRouter.of(context).push('/${ForgetPassword.id}');
+                      },
                       child: Text(
                         s.forget_password,
                         style: TextStyle(

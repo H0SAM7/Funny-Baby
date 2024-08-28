@@ -43,24 +43,16 @@ class _RegisterPageState extends State<UpdateProfilePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(height: x * 0.20),
-                //     CircleAvatar(
-                //   radius: 85, // Adjust the radius as needed
-                //   backgroundImage: AssetImage('assets/images/chat.png'),
-                // ),
+         
 
                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Row(
                     children: [
-                      // Text('Log In: ',style: TextStyle(color: Colors.white,fontSize: 26),),
                     ],
                   ),
                 ),
-                // CustomTextField(
-                //   hint: 'enter your name',
-                //   label: 'Username',
-
-                // ),
+       
                 CustomTextField(
                     label: s.Username,
                     hint: s.usernameHint,
@@ -147,35 +139,4 @@ class _RegisterPageState extends State<UpdateProfilePage> {
       ),
     );
   }
-
-  // Future<void> RegisterUser() async {
-  //  final auth =FirebaseAuth.instance;
-  //   await
-  //       auth.createUserWithEmailAndPassword(email: email!, password: password!);
-  //     // log('${auth.} wwwwwwwwwwwwwwwwwwwwwwwwwww');
-  // }
-
-  // Future<void> RegisterUser() async {
-  //   final auth = FirebaseAuth.instance;
-  //   final firestore = FirebaseFirestore.instance;
-
-  //   try {
-  //     UserCredential userCredential = await auth.createUserWithEmailAndPassword(
-  //         email: email!, password: password!);
-
-  //     // Store user email in Firestore
-  //     await firestore.collection('users').doc(userCredential.user?.uid).set({
-  //       'email': email,
-  //       'username': username,
-  //     });
-  //   } catch (e) {
-  //     // Handle registration error
-  //     print('@@@@@@@@@@@@@@@@@@@@@@@@Registration error: $e');
-  //   }
-  // }
-
-// AddingData(){
-//   DatabaseReference ref = FirebaseDatabase.instance.ref("username");
-
-// }
 }

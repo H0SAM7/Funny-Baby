@@ -22,7 +22,8 @@ class SplashView extends StatelessWidget {
     return Scaffold(
       body: GestureDetector(
         onTap: () async {
-          bool isCrashed = await readDocument();
+          bool isCrashed = await readCrash();
+            bool relogin = await readRelogin();
           if (isCrashed) {
             showDialog(
 
@@ -42,9 +43,11 @@ class SplashView extends StatelessWidget {
           } else {
             bool isLoggedIn =
                 await SharedPreference().getBool("isLoggedIn") ?? false;
-            if (isLoggedIn) {
+            if (isLoggedIn &&!relogin ) {
+              
               GoRouter.of(context).push('/${MyHome.id}');
             } else {
+          
               GoRouter.of(context).push('/${LoginPage.id}');
             }
           }

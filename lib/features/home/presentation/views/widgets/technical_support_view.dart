@@ -97,7 +97,7 @@ class _TechnicalSupportViewState extends State<TechnicalSupportView> {
                   phoneController.clear();
                   titleController.clear();
                   contentController.clear();
-
+        
                   // Provide feedback to the user (e.g., show a snackbar)
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('تم إرسال الشكوى بنجاح')),
