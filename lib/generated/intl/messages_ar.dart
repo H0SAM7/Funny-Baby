@@ -39,8 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Search": MessageLookupByLibrary.simpleMessage("بحث"),
         "Select_category": MessageLookupByLibrary.simpleMessage("اختر الصنف"),
         "Username": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
-        "aborted":
-            MessageLookupByLibrary.simpleMessage("تم إلغاء عملية Firestore."),
+        "aborted": MessageLookupByLibrary.simpleMessage("تم إلغاء العملية"),
         "accessories": MessageLookupByLibrary.simpleMessage("اكسسوارات"),
         "add_new_product_done":
             MessageLookupByLibrary.simpleMessage("تمت إضافة المنتج بنجاح"),
@@ -49,6 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_sale": MessageLookupByLibrary.simpleMessage("إضافة عرض"),
         "admin_setting":
             MessageLookupByLibrary.simpleMessage("إعدادات المسؤول"),
+        "alreadyExists":
+            MessageLookupByLibrary.simpleMessage("الوثيقة موجودة بالفعل"),
         "alreadyHaveAccount":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب بالفعل ؟"),
         "appBarTitle": MessageLookupByLibrary.simpleMessage("حذف المنتج"),
@@ -57,8 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "boys": MessageLookupByLibrary.simpleMessage("اولادي"),
         "boys_suits": MessageLookupByLibrary.simpleMessage("اطقم اولادي"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
-        "cancelled":
-            MessageLookupByLibrary.simpleMessage("تم إلغاء طلب Firestore."),
+        "cancelled": MessageLookupByLibrary.simpleMessage("تم إلغاء الطلب."),
         "cart": MessageLookupByLibrary.simpleMessage("السلة"),
         "categories": MessageLookupByLibrary.simpleMessage("الاصناف"),
         "check_inbox":
@@ -72,6 +72,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("حذف الحساب"),
         "count": MessageLookupByLibrary.simpleMessage("الكمية"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("الوضع المظلم"),
+        "deadlineExceeded":
+            MessageLookupByLibrary.simpleMessage("انتهت مهلة عملية Firestore."),
         "deleteSuccess": MessageLookupByLibrary.simpleMessage("تم حذف المنتج"),
         "delete_my_account": MessageLookupByLibrary.simpleMessage("حذف حسابي"),
         "delete_products": MessageLookupByLibrary.simpleMessage("حذف المنتجات"),
@@ -79,6 +81,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "details_page": MessageLookupByLibrary.simpleMessage("صفحة التفاصيل"),
         "discount": MessageLookupByLibrary.simpleMessage("الخصم"),
         "dresses": MessageLookupByLibrary.simpleMessage("فساتين"),
+        "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
+            "البريد الإلكتروني قيد الاستخدام بالفعل."),
         "emailHint":
             MessageLookupByLibrary.simpleMessage("أدخل بريدك الإلكتروني"),
         "emailLabel": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
@@ -108,6 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "funny": MessageLookupByLibrary.simpleMessage("Funny"),
         "gender": MessageLookupByLibrary.simpleMessage("الجنس"),
         "girls": MessageLookupByLibrary.simpleMessage("بناتي"),
+        "invalidEmail": MessageLookupByLibrary.simpleMessage(
+            "عنوان البريد الإلكتروني غير صالح."),
         "invalid_email": MessageLookupByLibrary.simpleMessage(
             "عنوان البريد الإلكتروني غير صالح."),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
@@ -121,15 +127,21 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ادخل كلمة السر الجديدة"),
         "no_discounts":
             MessageLookupByLibrary.simpleMessage("لا يوجد خصومات حتي الان"),
+        "notFound": MessageLookupByLibrary.simpleMessage(
+            "لم يتم العثور على الوثيقة في Firestore."),
         "old_password":
             MessageLookupByLibrary.simpleMessage("كلمة السر القديمة"),
         "old_password_hint":
             MessageLookupByLibrary.simpleMessage("ادخل كلمة السر القديمة"),
+        "operationNotAllowed":
+            MessageLookupByLibrary.simpleMessage("هذه العملية غير مسموح بها."),
         "pajamas": MessageLookupByLibrary.simpleMessage("بيجامة"),
         "passwordHint":
             MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور"),
         "passwordLabel": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "pay_now": MessageLookupByLibrary.simpleMessage("اشتري الآن"),
+        "permissionDenied": MessageLookupByLibrary.simpleMessage(
+            "تم رفض الإذن للوصول إلى Firestore."),
         "please_fill_all_fields":
             MessageLookupByLibrary.simpleMessage("من فضلك املأ جميع الحقول"),
         "please_upload_image":
@@ -153,6 +165,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("انشاء حساب باستخدام جوجل"),
         "reset_password":
             MessageLookupByLibrary.simpleMessage(" نسيت كلمة المرور "),
+        "resourceExhausted":
+            MessageLookupByLibrary.simpleMessage("نفدت الموارد"),
         "sale_desc": MessageLookupByLibrary.simpleMessage("الخصم"),
         "sales_page": MessageLookupByLibrary.simpleMessage("الخصومات"),
         "search_hint": MessageLookupByLibrary.simpleMessage("ابحث..."),
@@ -168,18 +182,32 @@ class MessageLookup extends MessageLookupByLibrary {
         "system_setting":
             MessageLookupByLibrary.simpleMessage("إعدادات النظام"),
         "tap_statrt": MessageLookupByLibrary.simpleMessage("انقر علي الشاشة"),
-        "unavailable": MessageLookupByLibrary.simpleMessage(
-            "خدمة Firestore غير متاحة حاليًا."),
+        "unavailable":
+            MessageLookupByLibrary.simpleMessage("خدمة غير متاحة حالياً."),
         "underwear": MessageLookupByLibrary.simpleMessage("ملابس داخلية"),
+        "unexpectedAuthError":
+            MessageLookupByLibrary.simpleMessage("حدث خطأ غير متوقع"),
+        "unexpectedFirestoreError":
+            MessageLookupByLibrary.simpleMessage("حدث خطأ غير متوقع"),
+        "unknownError":
+            MessageLookupByLibrary.simpleMessage("حدث خطأ غير معروف"),
         "update_account": MessageLookupByLibrary.simpleMessage("تحديث الحساب"),
         "update_products":
             MessageLookupByLibrary.simpleMessage("تحديث المنتجات"),
         "upload_image": MessageLookupByLibrary.simpleMessage("تحميل الصورة"),
+        "userDisabled":
+            MessageLookupByLibrary.simpleMessage("تم تعطيل حساب المستخدم."),
+        "userNotFound": MessageLookupByLibrary.simpleMessage(
+            "لم يتم العثور على مستخدم بهذا البريد الإلكتروني."),
         "user_not_found": MessageLookupByLibrary.simpleMessage(
             "لم يتم العثور على مستخدم لهذا البريد الإلكتروني."),
         "usernameHint": MessageLookupByLibrary.simpleMessage("أدخل اسمك"),
+        "weakPassword":
+            MessageLookupByLibrary.simpleMessage("كلمة المرور ضعيفة جداً."),
         "weak_password": MessageLookupByLibrary.simpleMessage(
             "كلمة مرور ضعيفة يرجي استخدام بعض الحروف او الرموز"),
+        "wrongPassword":
+            MessageLookupByLibrary.simpleMessage("كلمة المرور غير صحيحة."),
         "wrong_password": MessageLookupByLibrary.simpleMessage(
             "تم تقديم كلمة مرور خاطئة لهذا المستخدم.")
       };

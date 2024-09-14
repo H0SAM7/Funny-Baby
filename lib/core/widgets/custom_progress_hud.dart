@@ -26,16 +26,7 @@ const CustomProgressHUD({super.key,
               alignment: indicatorAlignment,
               child: Container(
                 child: verify
-                    ? Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const CustomLoadingIndicator(),
-                          Text(
-                            S.of(context).check_inbox,
-                            style: const TextStyle(fontSize: 10),
-                          )
-                        ],
-                      )
+                    ? const CustomLoadingIndicator()
                     : const CustomLoadingIndicator(),
               ),
             ),

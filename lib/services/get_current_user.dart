@@ -19,8 +19,8 @@ Future<String?> getCurrentUserEmailFromFirestore() async {
         // Extract the email from the document
         String email = userDoc.get('email');
         String username = userDoc.get('username');
-        await SharedPreference().setString('currentEmail', email);
-        await SharedPreference().setString('currentUsername', username);
+        // await SharedPreference().setString('currentEmail', email);
+        // await SharedPreference().setString('currentUsername', username);
         log('Current user email: $email');
 
         return email;

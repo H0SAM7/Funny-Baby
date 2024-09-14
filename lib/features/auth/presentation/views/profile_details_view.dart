@@ -15,15 +15,15 @@ class _ProfileDetailsViewState extends State<ProfileDetailsView> {
   @override
   void initState() {
     super.initState();
-    loadEmail();
+   // loadEmail();
   }
 
-  Future<void> loadEmail() async {
-    String? storedEmail = await SharedPreference().getString('email');
-    setState(() {
-      email = storedEmail;
-    });
-  }
+  // Future<void> loadEmail() async {
+  //   String? storedEmail = await SharedPreference().getString('email');
+  //   setState(() {
+  //     email = storedEmail;
+  //   });
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

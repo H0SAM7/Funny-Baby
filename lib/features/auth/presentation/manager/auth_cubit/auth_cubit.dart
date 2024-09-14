@@ -3,6 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:funny_baby/core/errors/failure.dart';
 import 'package:funny_baby/core/helper/auth_helper.dart';
 import 'package:funny_baby/core/helper/shared_pref.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -19,6 +20,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> registerUser(
       String email, String password, String username) async {
+    emit(AuthLoading());
     try {
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(
         email: email,
@@ -40,27 +42,41 @@ class AuthCubit extends Cubit<AuthState> {
             'username': username,
             // Add other fields as needed
           });
-          await SharedPreference().setString('email', email);
-          await SharedPreference().setString('userName', username);
+          emit(AuthSuccess());
+          // await SharedPreference().setString('email', email);
+          // await SharedPreference().setString('userName', username);
           log('User account created successfully.');
         } else {
+          // If email verification fails, delete the user and throw an exception
           await user.delete();
-          log('Email verification failed. Please verify your email.');
+          emit(AuthFailure(errMessage: 'Email verification failed.'));
         }
       }
-    } catch (e) {}
+    } catch (e) {
+      emit(AuthFailure(
+          errMessage: FirebaseFailure.fromFirebaseException(e as Exception)
+              .errMessage
+              .toString()));
+    }
   }
 
   Future<void> loginUser(String email, String password) async {
+    emit(AuthLoading());
     try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-
+      emit(AuthSuccess());
       log('The Login Successful');
-    } catch (e) {}
+    } catch (e) {
+      emit(AuthFailure(
+          errMessage: FirebaseFailure.fromFirebaseException(e as Exception)
+              .errMessage
+              .toString()));
+    }
   }
 
   Future<void> deleteUser() async {
+    emit(AuthLoading());
     try {
       if (user != null) {
         await FirebaseFirestore.instance
@@ -69,21 +85,33 @@ class AuthCubit extends Cubit<AuthState> {
             .delete();
         log("Document with UID ${user!.uid} deleted successfully");
         await user!.delete();
+        emit(AuthSuccess());
         // Account deletion successful
         log("Account deleted successfully.");
+      } else {
+        emit(AuthFailure(errMessage: 'No user is currently signed in.'));
       }
+  
     } catch (e) {
-      // Handle errors here, like reauthentication requirements
-      log("Error deleting account: $e");
+      emit(AuthFailure(
+          errMessage: FirebaseFailure.fromFirebaseException(e as Exception)
+              .errMessage
+              .toString()));
     }
   }
 
   Future<void> logout() async {
+     emit(AuthLoading());
     try {
       await auth.signOut();
-      await SharedPreference().setBool("isLoggedIn", false);
+     // await SharedPreference().setBool("isLoggedIn", false);
+         emit(AuthSuccess());
       log("User logged out successfully.");
     } catch (e) {
+        emit(AuthFailure(
+          errMessage: FirebaseFailure.fromFirebaseException(e as Exception)
+              .errMessage
+              .toString()));
       log("Error logging out: $e");
     }
   }
@@ -118,37 +146,35 @@ class AuthCubit extends Cubit<AuthState> {
       // Handle errors, e.g., show a message to the user
     }
   }
-  
-  
+
   Future<void> forgotPassword({required String email}) async {
-  try {
-    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-        .collection('users')
-        .where('email', isEqualTo: email)
-        .get();
+    try {
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .where('email', isEqualTo: email)
+          .get();
 
-    // Check if the user with the given email exists
-    if (querySnapshot.docs.isNotEmpty) {
-      // If email is found, send the password reset email
-      await auth.sendPasswordResetEmail(email: email);
-    } else {
-      // If email is not found, throw an exception or handle it accordingly
-      throw Exception('No user found with this email');
+      // Check if the user with the given email exists
+      if (querySnapshot.docs.isNotEmpty) {
+        // If email is found, send the password reset email
+        await auth.sendPasswordResetEmail(email: email);
+      } else {
+        // If email is not found, throw an exception or handle it accordingly
+        throw Exception('No user found with this email');
+      }
+    } on FirebaseAuthException catch (err) {
+      // Handle FirebaseAuth specific errors
+      throw Exception(err.message.toString());
+    } catch (err) {
+      // Handle any other errors
+      throw Exception(err.toString());
     }
-  } on FirebaseAuthException catch (err) {
-    // Handle FirebaseAuth specific errors
-    throw Exception(err.message.toString());
-  } catch (err) {
-    // Handle any other errors
-    throw Exception(err.toString());
   }
-}
-
 
 // Future<ProductModel?> searchProductByName(String productName) async {
 //   try {
 //     QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-//         .collection('products') 
+//         .collection('products')
 //         .where('name', isEqualTo: productName)
 //         .get();
 
@@ -166,8 +192,8 @@ class AuthCubit extends Cubit<AuthState> {
 //   }
 // }
 
-
   Future<UserCredential> signInWithGoogle() async {
+    emit(AuthLoading());
     try {
       final GoogleSignIn googleSignIn = GoogleSignIn();
 
@@ -199,7 +225,7 @@ class AuthCubit extends Cubit<AuthState> {
 
       final String? email = userCredential.user?.email;
       final String? uid = userCredential.user?.uid;
-        await SharedPreference().setString('email', email!);
+   //   await SharedPreference().setString('email', email!);
 
       await firestore.collection('users').doc(uid).set({
         'uid': uid,
@@ -207,16 +233,16 @@ class AuthCubit extends Cubit<AuthState> {
 
         // Add other fields as needed
       });
+      emit(AuthSuccess());
       // Once signed in, return the UserCredential
       return userCredential;
     } catch (e) {
-      // Handle different types of exceptions
-      if (e is FirebaseAuthException) {
-        log('FirebaseAuthException: ${e.message}');
-      } else {
-        log('Exception: ${e.toString()}');
-      }
-      // Optionally rethrow or handle the error as needed
+      // Log and rethrow any other exceptions
+      log('Exception: ${e.toString()}');
+      emit(AuthFailure(
+          errMessage: FirebaseFailure.fromFirebaseException(e as Exception)
+              .errMessage
+              .toString()));
       rethrow;
     }
   }

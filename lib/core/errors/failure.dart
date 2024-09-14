@@ -8,6 +8,8 @@ abstract class Failure {
 
 class FirebaseFailure extends Failure {
   FirebaseFailure({super.errMessage});
+ 
+
   factory FirebaseFailure.fromFirebaseException(Exception exception) {
     if (exception is FirebaseAuthException) {
       return FirebaseFailure.fromAuthException(exception);
@@ -20,6 +22,7 @@ class FirebaseFailure extends Failure {
   
   factory FirebaseFailure.fromAuthException(FirebaseAuthException exception) {
     switch (exception.code) {
+      
       case 'invalid-email':
         return FirebaseFailure(errMessage: 'The email address is not valid.');
       case 'user-disabled':
@@ -34,6 +37,7 @@ class FirebaseFailure extends Failure {
         return FirebaseFailure(errMessage: 'The password is too weak.');
       case 'operation-not-allowed':
         return FirebaseFailure(errMessage: 'This operation is not allowed.');
+        
       default:
         return FirebaseFailure(errMessage: 'An unexpected Firebase Auth error occurred.');
     }

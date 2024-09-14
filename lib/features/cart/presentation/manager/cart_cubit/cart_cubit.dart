@@ -39,7 +39,7 @@ class CartCubit extends Cubit<CartState> {
     var cartBox = await Hive.openBox<ProductModel>('cart');
     
     await cartBox.clear(); // This clears all items from the box
-
+   await fetchAllItems();
   } catch (e) {
     log(e.toString());
   }

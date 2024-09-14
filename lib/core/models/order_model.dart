@@ -11,6 +11,7 @@ class OrderModel {
   String customerPhone;
   String customerAddressCenter;
 //String status;
+  DateTime orderTime; // New time field
 
   OrderModel({
     required this.orderId,
@@ -21,6 +22,7 @@ class OrderModel {
     required this.customerAddress,
     required this.customerAddressCenter,
     required this.customerPhone,
+    required this.orderTime,
     // required this.status,
   });
 
@@ -34,7 +36,7 @@ class OrderModel {
       'customerAddress': customerAddress,
       'customerAddressCenter': customerAddressCenter,
       'customerPhone': customerPhone,
-
+      'orderTime': Timestamp.fromDate(orderTime),
       // 'status': status,
     };
   }
@@ -43,15 +45,17 @@ class OrderModel {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     return OrderModel(
       orderId: doc.id,
-    products: (data['products'] as List<dynamic>)
-        .map((productData) => ProductModel.fromMap(productData as Map<String, dynamic>))
-        .toList(),
+      products: (data['products'] as List<dynamic>)
+          .map((productData) =>
+              ProductModel.fromMap(productData as Map<String, dynamic>))
+          .toList(),
       //totalPrice: data['totalPrice'],
       customerName: data['customerName'],
       customerEmail: data['customerEmail'],
       customerAddress: data['customerAddress'],
       customerAddressCenter: data['customerAddressCenter'],
       customerPhone: data['customerPhone'],
+      orderTime: (data['orderTime'] as Timestamp).toDate(),
       //status: data['status'],
     );
   }

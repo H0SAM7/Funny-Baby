@@ -37,9 +37,9 @@ Future<bool> readRelogin() async {
   if (querySnapshot.docs.isNotEmpty) {
     // Assuming you want to return the value from the first document
     DocumentSnapshot doc = querySnapshot.docs.first;
-    bool isCrashed = doc['relogin'];
-    log('Boolean reLogin value: $isCrashed');
-    return isCrashed;
+    bool reLogin = doc['relogin'];
+    log('Boolean reLogin value: $reLogin');
+    return reLogin;
   } else {
     // Handle the case where there are no documents
     log('No documents found in the collection.');

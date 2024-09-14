@@ -3,6 +3,7 @@ import 'package:funny_baby/features/admins/order_features/views/widgets/order_de
 import 'package:funny_baby/features/admins/presentation/views/add_discount_view.dart';
 import 'package:funny_baby/features/admins/order_features/views/orders_view.dart';
 import 'package:funny_baby/features/auth/presentation/views/profile_details_view.dart';
+import 'package:funny_baby/features/auth/presentation/views/verifications_view.dart';
 import 'package:funny_baby/features/cart/presentation/views/cart_view.dart';
 import 'package:funny_baby/features/home/presentation/views/profile_view.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/technical_support_view.dart';
@@ -102,11 +103,7 @@ abstract class AppGoRoutes {
         name: ProfileView.id,
         builder: (context, state) => const ProfileView(),
       ),
-      GoRoute(
-        path: '/${UserName.id}',
-        name: UserName.id,
-        builder: (context, state) => const UserName(),
-      ),
+
       GoRoute(
         path: '/${SearchPage.id}',
         name: SearchPage.id,
@@ -155,6 +152,11 @@ abstract class AppGoRoutes {
         path: '/${OrderDetails.id}',
         name: OrderDetails.id,
         builder: (context, state) =>  OrderDetails(products: state.extra as List<ProductModel>,),
+      ),
+           GoRoute(
+        path: '/${VerificationView.id}',
+        name: VerificationView.id,
+        builder: (context, state) => const VerificationView(),
       ),
     ],
   );

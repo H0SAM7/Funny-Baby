@@ -49,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_products": MessageLookupByLibrary.simpleMessage("Add products"),
         "add_sale": MessageLookupByLibrary.simpleMessage("Add Sale"),
         "admin_setting": MessageLookupByLibrary.simpleMessage("Admin Setting"),
+        "alreadyExists": MessageLookupByLibrary.simpleMessage(
+            "Document already exists in Firestore."),
         "alreadyHaveAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "appBarTitle": MessageLookupByLibrary.simpleMessage("Delete Product"),
@@ -71,6 +73,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Delete Account"),
         "count": MessageLookupByLibrary.simpleMessage("Count"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+        "deadlineExceeded": MessageLookupByLibrary.simpleMessage(
+            "Firestore operation timed out."),
         "deleteSuccess":
             MessageLookupByLibrary.simpleMessage("Delete product Done"),
         "delete_my_account":
@@ -81,6 +85,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "details_page": MessageLookupByLibrary.simpleMessage("details_page"),
         "discount": MessageLookupByLibrary.simpleMessage("Discount"),
         "dresses": MessageLookupByLibrary.simpleMessage("Dresses"),
+        "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
+            "The email is already in use."),
         "emailHint": MessageLookupByLibrary.simpleMessage("Enter your email"),
         "emailLabel": MessageLookupByLibrary.simpleMessage("Email"),
         "email_already_in_use": MessageLookupByLibrary.simpleMessage(
@@ -110,6 +116,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "funny": MessageLookupByLibrary.simpleMessage("Funny"),
         "gender": MessageLookupByLibrary.simpleMessage("Gender"),
         "girls": MessageLookupByLibrary.simpleMessage("Girls"),
+        "invalidEmail": MessageLookupByLibrary.simpleMessage(
+            "The email address is not valid."),
         "invalid_email": MessageLookupByLibrary.simpleMessage(
             "The email address is not valid."),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
@@ -122,14 +130,20 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter Old Password"),
         "no_discounts":
             MessageLookupByLibrary.simpleMessage("No discounts available yet"),
+        "notFound": MessageLookupByLibrary.simpleMessage(
+            "Document not found in Firestore."),
         "old_password": MessageLookupByLibrary.simpleMessage("Old Password"),
         "old_password_hint":
             MessageLookupByLibrary.simpleMessage("Enter Old Password"),
+        "operationNotAllowed": MessageLookupByLibrary.simpleMessage(
+            "This operation is not allowed."),
         "pajamas": MessageLookupByLibrary.simpleMessage("Pajamas"),
         "passwordHint":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "passwordLabel": MessageLookupByLibrary.simpleMessage("Password"),
         "pay_now": MessageLookupByLibrary.simpleMessage("Pay Now"),
+        "permissionDenied": MessageLookupByLibrary.simpleMessage(
+            "Permission denied to access Firestore."),
         "please_fill_all_fields":
             MessageLookupByLibrary.simpleMessage("Please fill all fields"),
         "please_upload_image":
@@ -153,6 +167,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Register With Google"),
         "reset_password":
             MessageLookupByLibrary.simpleMessage("Forget Password "),
+        "resourceExhausted": MessageLookupByLibrary.simpleMessage(
+            "Firestore resource exhausted."),
         "sale_desc": MessageLookupByLibrary.simpleMessage("Sale Description"),
         "sales_page": MessageLookupByLibrary.simpleMessage("sales_page"),
         "search_hint": MessageLookupByLibrary.simpleMessage("Search..."),
@@ -171,16 +187,30 @@ class MessageLookup extends MessageLookupByLibrary {
         "unavailable": MessageLookupByLibrary.simpleMessage(
             "Firestore service is currently unavailable."),
         "underwear": MessageLookupByLibrary.simpleMessage("Underwear"),
+        "unexpectedAuthError": MessageLookupByLibrary.simpleMessage(
+            "An unexpected Firebase Auth error occurred."),
+        "unexpectedFirestoreError": MessageLookupByLibrary.simpleMessage(
+            "An unexpected Firestore error occurred."),
+        "unknownError": MessageLookupByLibrary.simpleMessage(
+            "An unknown Firebase error occurred."),
         "update_account":
             MessageLookupByLibrary.simpleMessage("Update Account"),
         "update_products":
             MessageLookupByLibrary.simpleMessage("Update products"),
         "upload_image": MessageLookupByLibrary.simpleMessage("Upload Image"),
+        "userDisabled": MessageLookupByLibrary.simpleMessage(
+            "The user account has been disabled."),
+        "userNotFound": MessageLookupByLibrary.simpleMessage(
+            "No user found with this email."),
         "user_not_found": MessageLookupByLibrary.simpleMessage(
             "No user found for that email."),
         "usernameHint": MessageLookupByLibrary.simpleMessage("Enter your name"),
+        "weakPassword":
+            MessageLookupByLibrary.simpleMessage("The password is too weak."),
         "weak_password": MessageLookupByLibrary.simpleMessage(
             "The password is weak, please add some chars (!@#%)"),
+        "wrongPassword":
+            MessageLookupByLibrary.simpleMessage("Incorrect password."),
         "wrong_password": MessageLookupByLibrary.simpleMessage(
             "Wrong password provided for that user.")
       };

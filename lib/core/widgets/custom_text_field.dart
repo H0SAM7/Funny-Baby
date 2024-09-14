@@ -68,7 +68,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     icon: Icon(
                       Icons.visibility,
                       color: blueColor,
-                    ))
+                    ),)
                 : widget.passicon
                     ? IconButton(
                         onPressed: () {

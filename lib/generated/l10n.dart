@@ -1239,6 +1239,156 @@ class S {
       args: [],
     );
   }
+
+  /// `An unknown Firebase error occurred.`
+  String get unknownError {
+    return Intl.message(
+      'An unknown Firebase error occurred.',
+      name: 'unknownError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permission denied to access Firestore.`
+  String get permissionDenied {
+    return Intl.message(
+      'Permission denied to access Firestore.',
+      name: 'permissionDenied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Document not found in Firestore.`
+  String get notFound {
+    return Intl.message(
+      'Document not found in Firestore.',
+      name: 'notFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Document already exists in Firestore.`
+  String get alreadyExists {
+    return Intl.message(
+      'Document already exists in Firestore.',
+      name: 'alreadyExists',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Firestore resource exhausted.`
+  String get resourceExhausted {
+    return Intl.message(
+      'Firestore resource exhausted.',
+      name: 'resourceExhausted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Firestore operation timed out.`
+  String get deadlineExceeded {
+    return Intl.message(
+      'Firestore operation timed out.',
+      name: 'deadlineExceeded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unexpected Firestore error occurred.`
+  String get unexpectedFirestoreError {
+    return Intl.message(
+      'An unexpected Firestore error occurred.',
+      name: 'unexpectedFirestoreError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The email address is not valid.`
+  String get invalidEmail {
+    return Intl.message(
+      'The email address is not valid.',
+      name: 'invalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The user account has been disabled.`
+  String get userDisabled {
+    return Intl.message(
+      'The user account has been disabled.',
+      name: 'userDisabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No user found with this email.`
+  String get userNotFound {
+    return Intl.message(
+      'No user found with this email.',
+      name: 'userNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Incorrect password.`
+  String get wrongPassword {
+    return Intl.message(
+      'Incorrect password.',
+      name: 'wrongPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The email is already in use.`
+  String get emailAlreadyInUse {
+    return Intl.message(
+      'The email is already in use.',
+      name: 'emailAlreadyInUse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The password is too weak.`
+  String get weakPassword {
+    return Intl.message(
+      'The password is too weak.',
+      name: 'weakPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This operation is not allowed.`
+  String get operationNotAllowed {
+    return Intl.message(
+      'This operation is not allowed.',
+      name: 'operationNotAllowed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unexpected Firebase Auth error occurred.`
+  String get unexpectedAuthError {
+    return Intl.message(
+      'An unexpected Firebase Auth error occurred.',
+      name: 'unexpectedAuthError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

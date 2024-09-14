@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funny_baby/core/utils/app_go_routes.dart';
@@ -52,14 +51,10 @@ class ProfileSettings extends StatelessWidget {
             title: s.log_out,
             prefixIcon: Icons.logout,
             onTap: () async {
-              
-             await BlocProvider.of<AuthCubit>(context).logout();
+              await BlocProvider.of<AuthCubit>(context).logout();
               log('logout done');
-              // Navigator.of(context).pushAndRemoveUntil(
-              //   MaterialPageRoute(builder: (context) => const LoginPage()),
-              //   (Route<dynamic> route) => false,
-              // );
-              GoRouter.of(context).clearStackAndNavigate('/${LoginPage.id}');
+    
+             GoRouter.of(context).clearStackAndNavigate('/${LoginPage.id}');
             },
             suffixIcon: Container()),
       ],

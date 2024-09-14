@@ -10,7 +10,7 @@ void showSnackbar(
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     content: Text(
       massage.replaceAll('-', ''),
-      style: TextStyle(
+      style: const TextStyle(
           color:
                Colors.white ), // Set the text color here
     ),

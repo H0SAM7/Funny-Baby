@@ -93,6 +93,7 @@ class _TechnicalSupportViewState extends State<TechnicalSupportView> {
                   String content = contentController.text.trim();
 
                   await TechnicalSupportMessages().technicalSupportMessage(
+                    context: context,
                       title: title, content: content, phoneNumber: phone);
                   phoneController.clear();
                   titleController.clear();

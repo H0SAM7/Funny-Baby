@@ -1,7 +1,12 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:funny_baby/core/helper/shared_pref.dart';
 import 'package:funny_baby/core/widgets/custom_show_dialog2.dart';
 import 'package:funny_baby/features/auth/presentation/views/login_view.dart';
+import 'package:funny_baby/features/auth/presentation/views/register_view.dart';
+import 'package:funny_baby/features/auth/presentation/views/verifications_view.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/bottom_navigation_bar.dart';
 import 'package:funny_baby/features/splash/presentation/views/widgets/read_crash_value.dart';
 import 'package:funny_baby/generated/l10n.dart';
@@ -23,10 +28,9 @@ class SplashView extends StatelessWidget {
       body: GestureDetector(
         onTap: () async {
           bool isCrashed = await readCrash();
-            bool relogin = await readRelogin();
+          bool relogin = await readRelogin();
           if (isCrashed) {
             showDialog(
-
               context: context,
               builder: (BuildContext context) {
                 return ConfirmationDialog2(
@@ -41,16 +45,34 @@ class SplashView extends StatelessWidget {
               },
             );
           } else {
-            bool isLoggedIn =
-                await SharedPreference().getBool("isLoggedIn") ?? false;
-            if (isLoggedIn &&!relogin ) {
-              
-              GoRouter.of(context).push('/${MyHome.id}');
-            } else {
-          
-              GoRouter.of(context).push('/${LoginPage.id}');
-            }
+            FirebaseAuth.instance.authStateChanges().listen((User? user) {
+              if (user == null) {
+                 GoRouter.of(context).push('/${RegisterPage.id}');
+                log('User is currently signed out!');
+              } else {
+                if (user.emailVerified) {
+                  GoRouter.of(context).push('/${MyHome.id}');
+                  log('User is signed in!');
+                } else if (!user.emailVerified) {
+                 GoRouter.of(context).push('/${VerificationView.id}');
+                } else {
+                  GoRouter.of(context).push('/${LoginPage.id}');
+                }
+              }
+            });
           }
+
+          //  else {
+          //   bool isLoggedIn =
+          //       await SharedPreference().getBool("isLoggedIn") ?? false;
+          //   if (isLoggedIn &&relogin==false ) {
+
+          //     GoRouter.of(context).push('/${MyHome.id}');
+          //   } else {
+
+          //     GoRouter.of(context).push('/${LoginPage.id}');
+          //   }
+          // }
         },
         child: SplashviewBody(size: size, s: s),
       ),

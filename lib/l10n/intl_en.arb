@@ -133,8 +133,22 @@
   "unknown-error": "An unknown Firebase error occurred.",
   "unexpected-auth-error": "An unexpected Firebase Auth error occurred.",
   "unexpected-firestore-error": "An unexpected Firestore error occurred.",
-    "cart":"cart"
-     
+    "cart":"cart",
+     "unknownError": "An unknown Firebase error occurred.",
+  "permissionDenied": "Permission denied to access Firestore.",
+  "notFound": "Document not found in Firestore.",
+  "alreadyExists": "Document already exists in Firestore.",
+  "resourceExhausted": "Firestore resource exhausted.",
+  "deadlineExceeded": "Firestore operation timed out.",
+  "unexpectedFirestoreError": "An unexpected Firestore error occurred.",
+  "invalidEmail": "The email address is not valid.",
+  "userDisabled": "The user account has been disabled.",
+  "userNotFound": "No user found with this email.",
+  "wrongPassword": "Incorrect password.",
+  "emailAlreadyInUse": "The email is already in use.",
+  "weakPassword": "The password is too weak.",
+  "operationNotAllowed": "This operation is not allowed.",
+  "unexpectedAuthError": "An unexpected Firebase Auth error occurred."
       
   
 
