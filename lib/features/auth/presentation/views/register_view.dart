@@ -4,9 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/core/errors/translate_failures.dart';
 import 'package:funny_baby/core/helper/helper_functions.dart';
-import 'package:funny_baby/core/helper/shared_pref.dart';
+import 'package:funny_baby/core/utils/assets.dart';
 import 'package:funny_baby/core/widgets/custom_title.dart';
 import 'package:funny_baby/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
+import 'package:funny_baby/features/auth/presentation/views/login_view.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/bottom_navigation_bar.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/core/widgets/custom_button.dart';
@@ -54,14 +55,24 @@ class _RegisterPageState extends State<RegisterPage> {
           verify: true,
           inAsyncCall: isLoading,
           child: Scaffold(
-            appBar: AppBar(title: CustomTitle(isarabic: isarabic, s: s)),
+            appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+            ),
             body: SingleChildScrollView(
               child: Form(
                 key: fromKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: size.height * 0.2),
+                    //SizedBox(height: size.height * 0.2),
+                    Container(
+                      height: size.height * .35,
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                        image: AssetImage(Assets.imagesFunnyLogo),
+                      )),
+                    ),
                     Padding(
                       padding: EdgeInsets.only(
                         left: isarabic ? size.width * .5 : 0,
@@ -73,7 +84,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             fontSize: 22,
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.bold,
-                            color: blueColor),
+                            color: funnyBlueColor),
                       ),
                     ),
                     const Padding(
@@ -87,7 +98,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       hint: s.usernameHint,
                       icon: Icon(
                         FontAwesomeIcons.user,
-                        color: blueColor,
+                        color: funnyBlueColor,
                       ),
                       onchage: (data) {
                         username = data;
@@ -98,7 +109,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       hint: s.emailHint,
                       icon: Icon(
                         Icons.email,
-                        color: blueColor,
+                        color: funnyBlueColor,
                       ),
                       onchage: (data) {
                         email = data;
@@ -109,7 +120,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       label: s.passwordLabel,
                       hint: s.passwordHint,
                       passicon: true,
-                      icon: Icon(Icons.lock, color: blueColor),
+                      icon: Icon(Icons.lock, color: funnyBlueColor),
                       onchage: (data) {
                         password = data;
                       },
@@ -118,7 +129,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       padding:
                           const EdgeInsets.only(top: 10, right: 8, left: 8),
                       child: CustomButton(
-                        color: blueColor,
+                        color: funnyPinkColor,
                         onTap: () async {
                           if (fromKey.currentState!.validate()) {
                             await BlocProvider.of<AuthCubit>(context)
@@ -161,7 +172,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             )),
                         TextButton(
                             onPressed: () {
-                              GoRouter.of(context).pop();
+          GoRouter.of(context).push('/${LoginPage.id}');
                             },
                             child: Text(s.loginButton,
                                 style: TextStyle(

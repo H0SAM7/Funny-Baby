@@ -6,6 +6,7 @@ import 'package:funny_baby/core/helper/shared_pref.dart';
 import 'package:funny_baby/core/widgets/custom_show_dialog2.dart';
 import 'package:funny_baby/features/auth/presentation/views/login_view.dart';
 import 'package:funny_baby/features/auth/presentation/views/register_view.dart';
+import 'package:funny_baby/features/auth/presentation/views/start_view.dart';
 import 'package:funny_baby/features/auth/presentation/views/verifications_view.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/bottom_navigation_bar.dart';
 import 'package:funny_baby/features/splash/presentation/views/widgets/read_crash_value.dart';
@@ -47,7 +48,7 @@ class SplashView extends StatelessWidget {
           } else {
             FirebaseAuth.instance.authStateChanges().listen((User? user) {
               if (user == null) {
-                 GoRouter.of(context).push('/${RegisterPage.id}');
+                 GoRouter.of(context).push('/${StartView.id}');
                 log('User is currently signed out!');
               } else {
                 if (user.emailVerified) {
@@ -56,11 +57,29 @@ class SplashView extends StatelessWidget {
                 } else if (!user.emailVerified) {
                  GoRouter.of(context).push('/${VerificationView.id}');
                 } else {
-                  GoRouter.of(context).push('/${LoginPage.id}');
+                  GoRouter.of(context).push('/${StartView.id}');
                 }
               }
             });
           }
+
+  // FirebaseAuth.instance.authStateChanges().listen((User? user) {
+            //   if (user == null) {
+            //      GoRouter.of(context).push('/${RegisterPage.id}');
+            //     log('User is currently signed out!');
+            //   } else {
+            //     if (user.emailVerified) {
+            //       GoRouter.of(context).push('/${MyHome.id}');
+            //       log('User is signed in!');
+            //     } else if (!user.emailVerified) {
+            //      GoRouter.of(context).push('/${VerificationView.id}');
+            //     } else {
+            //       GoRouter.of(context).push('/${LoginPage.id}');
+            //     }
+            //   }
+            // });
+
+
 
           //  else {
           //   bool isLoggedIn =

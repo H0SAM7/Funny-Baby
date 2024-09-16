@@ -14,6 +14,9 @@ List<Color> background = [
 ];
 
 Color mainColor = const Color.fromARGB(255, 222, 74, 123);
+Color funnyBlueColor = const Color(0xff81b4c2);
+Color funnyPinkColor= const Color.fromARGB(255, 229, 127, 125);
+
 Color moveColor = const Color.fromARGB(255, 247, 109, 233);
 Color blueColor = const Color.fromARGB(255, 38, 70, 83);
 Color blueWhiteColor = const Color(0xFFCAF0F8);

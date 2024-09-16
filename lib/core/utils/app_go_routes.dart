@@ -3,6 +3,7 @@ import 'package:funny_baby/features/admins/order_features/views/widgets/order_de
 import 'package:funny_baby/features/admins/presentation/views/add_discount_view.dart';
 import 'package:funny_baby/features/admins/order_features/views/orders_view.dart';
 import 'package:funny_baby/features/auth/presentation/views/profile_details_view.dart';
+import 'package:funny_baby/features/auth/presentation/views/start_view.dart';
 import 'package:funny_baby/features/auth/presentation/views/verifications_view.dart';
 import 'package:funny_baby/features/cart/presentation/views/cart_view.dart';
 import 'package:funny_baby/features/home/presentation/views/profile_view.dart';
@@ -157,6 +158,11 @@ abstract class AppGoRoutes {
         path: '/${VerificationView.id}',
         name: VerificationView.id,
         builder: (context, state) => const VerificationView(),
+      ),
+       GoRoute(
+        path: '/${StartView.id}',
+        name: StartView.id,
+        builder: (context, state) => const StartView(),
       ),
     ],
   );

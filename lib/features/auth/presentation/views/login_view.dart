@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/core/errors/translate_failures.dart';
-import 'package:funny_baby/core/helper/shared_pref.dart';
+import 'package:funny_baby/core/utils/assets.dart';
+
 import 'package:funny_baby/core/widgets/custom_title.dart';
 import 'package:funny_baby/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:funny_baby/features/auth/presentation/views/forget_password_view.dart';
@@ -57,16 +58,22 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                      height: hi * .2,
+                      height: hi * .1,
                     ),
-                    CustomTitle(isarabic: isarabic, s: s),
-                    SizedBox(height: hi * 0.1),
+                    // CustomTitle(isarabic: isarabic, s: s),
+                    Container(
+                      height: hi * .35,
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                        image: AssetImage(Assets.imagesFunnyLogo),
+                      )),
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: CustomTextField(
                         icon: Icon(
                           Icons.email,
-                          color: blueColor,
+                          color: funnyBlueColor,
                         ),
                         label: s.emailLabel,
                         hint: s.emailHint,
@@ -80,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: CustomTextField(
                         icon: Icon(
                           Icons.lock,
-                          color: blueColor,
+                          color: funnyBlueColor,
                         ),
                         hide: true,
                         passicon: true,
@@ -103,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: Text(
                             s.forget_password,
                             style: TextStyle(
-                                color: !isDarkMode ? blueColor : Colors.white,
+                                color: !isDarkMode ? funnyBlueColor : Colors.white,
                                 fontWeight: FontWeight.bold),
                           )),
                     ),
@@ -113,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: CustomButton(
                         buttonName: s.loginButton,
                         txtcolor: Colors.white,
-                        color: const Color.fromARGB(255, 38, 70, 83),
+                        color: funnyPinkColor,
                         onTap: () async {
                           if (fromKey.currentState!.validate()) {
                             await BlocProvider.of<AuthCubit>(context)
@@ -134,12 +141,12 @@ class _LoginPageState extends State<LoginPage> {
                         image:
                             'http://pngimg.com/uploads/google/google_PNG19635.png',
                         buttonName: s.Login_with_google,
-                        txtcolor: blueColor,
-                        color: Colors.white,
+                        txtcolor: Colors.white,
+                        color: funnyBlueColor,
                         onTap: () async {
                           await BlocProvider.of<AuthCubit>(context)
                               .signInWithGoogle();
-                        //  await SharedPreference().setBool("isLoggedIn", true);
+                          //  await SharedPreference().setBool("isLoggedIn", true);
                         },
                       ),
                     ),
@@ -149,7 +156,7 @@ class _LoginPageState extends State<LoginPage> {
                             const EdgeInsets.only(top: 10, right: 8, left: 8),
                         child: CustomButton(
                           buttonName: s.registerButton,
-                          txtcolor: isDarkMode ? Colors.white : blueColor,
+                          txtcolor: isDarkMode ? Colors.white : funnyPinkColor,
                           border: true,
                           onTap: () =>
                               //     Navigator.pushNamed(context, RegisterPage.id),

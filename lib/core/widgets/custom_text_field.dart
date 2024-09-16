@@ -67,7 +67,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     },
                     icon: Icon(
                       Icons.visibility,
-                      color: blueColor,
+                      color: funnyBlueColor,
                     ),)
                 : widget.passicon
                     ? IconButton(
@@ -81,7 +81,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             label: Text(
               widget.label,
               style: TextStyle(
-                color: !isDarkMode ? blueColor : moveColor,
+                color: !isDarkMode ? funnyPinkColor : funnyBlueColor,
                 fontFamily: 'Inter',
               ),
             ),
@@ -101,6 +101,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
 }
 
 final outlineInputBorder = OutlineInputBorder(
-  borderSide: BorderSide(color: blueColor),
+  borderSide: BorderSide(color: funnyBlueColor),
   borderRadius: const BorderRadius.all(Radius.circular(16)),
 );

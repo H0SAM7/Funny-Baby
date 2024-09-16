@@ -21,7 +21,7 @@ class TitleAppBar extends StatelessWidget {
         Text(
           !isarabic ? s.funny : s.baby,
           style: TextStyle(
-              color: blueColor,
+              color: funnyPinkColor,
               fontWeight: FontWeight.bold,
               fontFamily: 'Inter',
               fontSize: 28),
@@ -31,8 +31,8 @@ class TitleAppBar extends StatelessWidget {
         ),
         Text(
           isarabic ? s.funny : s.baby,
-          style: const TextStyle(
-              color: Color.fromARGB(255, 247, 109, 233),
+          style:  TextStyle(
+              color: funnyBlueColor,
               fontWeight: FontWeight.bold,
               fontFamily: 'Inter',
               fontSize: 28),

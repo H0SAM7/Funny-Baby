@@ -1,5 +1,6 @@
-
 import 'package:flutter/material.dart';
+import 'package:funny_baby/constants.dart';
+import 'package:funny_baby/core/utils/assets.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,39 +19,18 @@ class SplashviewBody extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          width: size.width,
+          clipBehavior: Clip.none,
           height: size.height,
+          width: size.width,
           decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/Images/start.jpg'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                s.funny,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: GoogleFonts.lalezar().fontFamily,
-                  fontSize: 50,
-                ),
+              // image: DecorationImage(
+              //   image: AssetImage(Assets.imagesStartLogo2),
+              //   fit: BoxFit.contain,
+              // ),
               ),
-              const SizedBox(height: 5), // Use `height` for vertical spacing
-              Text(
-                s.baby,
-                style: TextStyle(
-                  color: const Color.fromARGB(255, 247, 109, 233),
-                  fontWeight: FontWeight.bold,
-                  fontFamily: GoogleFonts.lalezar().fontFamily,
-                  fontSize: 50,
-                ),
-              ),
-            ],
+          child: Image.asset(
+            Assets.imagesStartLogo2,
+            fit: BoxFit.contain,
           ),
         ),
         Positioned(
@@ -58,10 +38,10 @@ class SplashviewBody extends StatelessWidget {
           left: 0,
           right: 0,
           child: Text(
-           s.tap_statrt,
+            s.tap_statrt,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.white,
+              color: funnyBlueColor,
               fontFamily: GoogleFonts.lalezar().fontFamily,
               fontSize: 20,
               fontWeight: FontWeight.bold,
