@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:funny_baby/features/Notifications/services/send_notifications_view.dart';
 import 'package:funny_baby/features/admins/presentation/views/add_discount_view.dart';
 import 'package:funny_baby/features/admins/order_features/views/orders_view.dart';
 import 'package:funny_baby/generated/l10n.dart';
@@ -29,16 +30,16 @@ class AdminSettings extends StatelessWidget {
           endIndent: 20,
           thickness: .3,
         ),
-        ItemSetting(
-            onTap: () {},
-            title: s.update_products,
-            prefixIcon: Icons.update,
-            suffixIcon: Container()),
-        const Divider(
-          indent: 20,
-          endIndent: 20,
-          thickness: .3,
-        ),
+        // ItemSetting(
+        //     onTap: () {},
+        //     title: s.update_products,
+        //     prefixIcon: Icons.update,
+        //     suffixIcon: Container()),
+        // const Divider(
+        //   indent: 20,
+        //   endIndent: 20,
+        //   thickness: .3,
+        // ),
         ItemSetting(
             onTap: () {
               //Navigator.pushNamed(context, AddSales.id);
@@ -60,18 +61,31 @@ class AdminSettings extends StatelessWidget {
             title: s.delete_products,
             prefixIcon: Icons.delete_forever,
             suffixIcon: Container()),
-             const Divider(
+        const Divider(
           indent: 20,
           endIndent: 20,
           thickness: .3,
         ),
+        // ItemSetting(
+        //     onTap: () {
+        //       GoRouter.of(context).push('/${OrdersView.id}');
+        //     },
+        //     title: 'قائمة الاوردارت',
+        //     prefixIcon: FontAwesomeIcons.cartShopping,
+        //     suffixIcon: Container()),
+        // const Divider(
+        //   indent: 20,
+        //   endIndent: 20,
+        //   thickness: .3,
+        // ),
         ItemSetting(
             onTap: () {
-              GoRouter.of(context).push('/${OrdersView.id}');
+              GoRouter.of(context).push('/${NotifactionsSendView.id}');
             },
-            title: 'قائمة الاوردارت',
-            prefixIcon: FontAwesomeIcons.cartShopping,
-            suffixIcon: Container()),
+            title: "ارسال اشعار",
+            prefixIcon: Icons.notification_add,
+            suffixIcon: Container(),
+            ),
       ],
     );
   }

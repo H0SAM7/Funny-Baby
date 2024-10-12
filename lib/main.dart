@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,9 +20,12 @@ import 'package:funny_baby/core/helper/theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 
 void main() async {
- await Hive.initFlutter();
+  await Hive.initFlutter();
   Hive.registerAdapter(ProductModelAdapter());
   await Hive.openBox<ProductModel>('cart');
   Bloc.observer = SimpleBlocObserever();
@@ -28,10 +33,24 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+  NotificationSettings settings = await messaging.requestPermission(
+    alert: true,
+    badge: true,
+    sound: true,
+  );
+      FlutterError.onError = (errorDetails) {
+      FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+    };
+    // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
+    PlatformDispatcher.instance.onError = (error, stack) {
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      return true;
+    };
   runApp(
     const FunnyBaby(),
   );
-  //runApp(DevicePreview(enabled: true, builder: (context) => const FunnyBaby()));
+  //runApp(DevicePreview(enabled: true, builder: (context) => const FunnyBaby(),),);
 }
 
 class FunnyBaby extends StatelessWidget {
@@ -59,16 +78,15 @@ class FunnyBaby extends StatelessWidget {
         BlocProvider(
           create: (context) => ThemeCubit(),
         ),
-             BlocProvider(
+        BlocProvider(
           create: (context) => CartCubit(),
         ),
-           BlocProvider(
+        BlocProvider(
           create: (context) => AddOrderCubit(),
         ),
-           BlocProvider(
+        BlocProvider(
           create: (context) => SearchCubit(),
         ),
-       
       ],
       child: BlocBuilder<ThemeCubit, ThemeModeState>(
         builder: (context, themeModeState) {

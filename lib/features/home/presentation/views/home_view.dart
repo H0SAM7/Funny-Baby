@@ -6,8 +6,8 @@ import 'package:funny_baby/features/home/presentation/views/widgets/products_lis
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/core/widgets/custom_loading_indecator.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             clipBehavior: Clip.none,
             slivers: [
-              SliverToBoxAdapter(child: CustomAdvWidget(size: size)),
+          //    SliverToBoxAdapter(child: CustomAdvWidget(size: size)),
               ProductsListView(
                   size: size,
                   childAspectRatio: childAspectRatio,

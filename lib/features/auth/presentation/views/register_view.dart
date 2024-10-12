@@ -8,7 +8,7 @@ import 'package:funny_baby/core/utils/assets.dart';
 import 'package:funny_baby/core/widgets/custom_title.dart';
 import 'package:funny_baby/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:funny_baby/features/auth/presentation/views/login_view.dart';
-import 'package:funny_baby/features/home/presentation/views/widgets/bottom_navigation_bar.dart';
+import 'package:funny_baby/bottom_navigation_bar.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/core/widgets/custom_button.dart';
 import 'package:funny_baby/core/widgets/custom_progress_hud.dart';
@@ -45,7 +45,7 @@ class _RegisterPageState extends State<RegisterPage> {
         if (state is AuthFailure) {
           showErrorSnackbar(context, state.errMessage);
         } else if (state is AuthSuccess) {
-          GoRouter.of(context).push('/${MyHome.id}');
+          GoRouter.of(context).push('/${BottomNavi.id}');
         }
       },
       builder: (context, state) {

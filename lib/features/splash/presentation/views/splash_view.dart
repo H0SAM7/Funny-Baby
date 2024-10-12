@@ -8,7 +8,7 @@ import 'package:funny_baby/features/auth/presentation/views/login_view.dart';
 import 'package:funny_baby/features/auth/presentation/views/register_view.dart';
 import 'package:funny_baby/features/auth/presentation/views/start_view.dart';
 import 'package:funny_baby/features/auth/presentation/views/verifications_view.dart';
-import 'package:funny_baby/features/home/presentation/views/widgets/bottom_navigation_bar.dart';
+import 'package:funny_baby/bottom_navigation_bar.dart';
 import 'package:funny_baby/features/splash/presentation/views/widgets/read_crash_value.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:funny_baby/features/splash/presentation/views/widgets/splash_view_body.dart';
@@ -26,6 +26,7 @@ class SplashView extends StatelessWidget {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
+    //  backgroundColor: Color(0xff424250),
       body: GestureDetector(
         onTap: () async {
           bool isCrashed = await readCrash();
@@ -52,7 +53,7 @@ class SplashView extends StatelessWidget {
                 log('User is currently signed out!');
               } else {
                 if (user.emailVerified) {
-                  GoRouter.of(context).push('/${MyHome.id}');
+                  GoRouter.of(context).push('/${BottomNavi.id}');
                   log('User is signed in!');
                 } else if (!user.emailVerified) {
                  GoRouter.of(context).push('/${VerificationView.id}');

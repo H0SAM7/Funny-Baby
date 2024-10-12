@@ -13,6 +13,7 @@ class DetailsPage extends StatelessWidget {
     final s = S.of(context);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: ProductDetailsBody(productModel: productModel, s: s),
     );
   }

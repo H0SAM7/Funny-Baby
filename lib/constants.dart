@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:funny_baby/features/cart/presentation/views/cart_view.dart';
-import 'package:funny_baby/features/home/presentation/views/categories_view.dart';
-import 'package:funny_baby/features/home/presentation/views/home_view.dart';
-import 'package:funny_baby/features/home/presentation/views/discounts_view.dart';
-import 'package:funny_baby/features/home/presentation/views/profile_view.dart';
+
 
 List<Color> background = [
   const Color(0xFFCAF0F8), // rgb(246, 245, 242)
@@ -24,21 +20,10 @@ Color blueWhiteColor = const Color(0xFFCAF0F8);
 // Color mainColor=Color.fromARGB(255, 244, 204, 212);
 
 List<String> categoriesAR = const [
-  "اولادي",
-  "بناتي",
-  "حديثي الولادة",
-  "ملابس داخلية",
-  "بيجامة",
-  "اكسسوارات",
-  "مصيف",
-  "احذية",
-  "سواريه",
+  "داخلي",
+  "بيبي",
+  "خروج",
+  "اكسسورات",
+ 
 ];
 
-final List<Widget> widgetOptions = <Widget>[
-  const HomePage(),
-  const CartView(),
-  const DiscountsView(),
-  const CategoriesView(),
-  ProfileView(),
-];

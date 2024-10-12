@@ -8,7 +8,7 @@ import 'package:funny_baby/core/widgets/custom_show_dialog2.dart';
 import 'package:funny_baby/core/widgets/custom_text_field.dart';
 import 'package:funny_baby/core/widgets/custom_widgets.dart';
 import 'package:funny_baby/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
-import 'package:funny_baby/features/home/presentation/views/widgets/bottom_navigation_bar.dart';
+import 'package:funny_baby/bottom_navigation_bar.dart';
 import 'package:funny_baby/generated/l10n.dart';
 import 'package:go_router/go_router.dart';
 
@@ -67,7 +67,7 @@ class ForgetPassword extends StatelessWidget {
                                   onConfirm: () {},
                                   action: '');
                             });
-                        GoRouter.of(context).push('/${MyHome.id}');
+                        GoRouter.of(context).push('/${BottomNavi.id}');
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'user-not-found') {
                           showSnackbar(context, s.user_not_found);

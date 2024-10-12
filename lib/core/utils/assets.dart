@@ -8,14 +8,16 @@ class Assets {
 
   static const String imagesLogin = "assets/Images/login.png";
 
+  static const String imagesLogintest = "assets/Images/logintest.png";
+
+  static const String imagesNotifications = "assets/Images/notifications.png";
+
   static const String imagesOffer = "assets/Images/offer.jpg";
+
+  static const String imagesSplash = "assets/Images/splash.png";
 
   static const String imagesStart = "assets/Images/start.jpg";
 
-  static const String imagesStartLogo1 = "assets/Images/startLogo1.png";
 
-  static const String imagesStartLogo2 = "assets/Images/startLogo2.png";
-
-  static const String imagesTest = "assets/Images/test.png";
 }
 

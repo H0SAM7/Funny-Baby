@@ -29,8 +29,8 @@ class SplashviewBody extends StatelessWidget {
               // ),
               ),
           child: Image.asset(
-            Assets.imagesStartLogo2,
-            fit: BoxFit.contain,
+            Assets.imagesSplash,
+            fit: BoxFit.fill,
           ),
         ),
         Positioned(

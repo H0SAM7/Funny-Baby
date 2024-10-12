@@ -7,17 +7,30 @@ import 'package:funny_baby/core/widgets/custom_title_appbar.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/drawer.dart';
 import 'package:funny_baby/features/home/presentation/views/search_view.dart';
 import 'package:go_router/go_router.dart';
-
-class MyHome extends StatefulWidget {
-  const MyHome({super.key});
+import 'package:funny_baby/features/cart/presentation/views/cart_view.dart';
+import 'package:funny_baby/features/home/presentation/views/categories_view.dart';
+import 'package:funny_baby/features/home/presentation/views/home_view.dart';
+import 'package:funny_baby/features/home/presentation/views/discounts_view.dart';
+import 'package:funny_baby/features/home/presentation/views/settings_view.dart';
+class BottomNavi extends StatefulWidget {
+  const BottomNavi({super.key});
   static String id = 'MyHome';
 
   @override
-  State<MyHome> createState() => _MyHomeState();
+  State<BottomNavi> createState() => _BottomNaviState();
 }
 
-class _MyHomeState extends State<MyHome> {
+class _BottomNaviState extends State<BottomNavi> {
+
+
   int _selectedIndex = 0;
+final List<Widget> widgetOptions = <Widget>[
+  const HomeView(),
+  const CartView(),
+  const DiscountsView(),
+  const CategoriesView(),
+  const ProfileView(),
+];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -70,7 +83,7 @@ class _MyHomeState extends State<MyHome> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home,
+              Icons.home_outlined,
               color: blueColor,
             ),
             label: S.of(context).Home,

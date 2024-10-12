@@ -27,7 +27,7 @@ class ProductDetailsBody extends StatelessWidget {
               },
               icon: const Icon(Icons.arrow_back)),
           ImageProductDetails(productModel: productModel),
-          const Divider(thickness: .5,),
+         // const Divider(thickness: .5,),
           ProductDetails(productModel: productModel, s: s),
         ],
       ),

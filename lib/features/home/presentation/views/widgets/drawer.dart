@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:funny_baby/constants.dart';
 import 'package:funny_baby/core/helper/helper_functions.dart';
+import 'package:funny_baby/core/utils/assets.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/technical_support_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -35,9 +36,8 @@ class DrawerListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        Container(
-          height: 60,
-        ),
+        Image.asset(Assets.imagesFunnyLogo),
+        const Divider(),
         ListTile(
             textColor: textColor,
             leading: const Icon(

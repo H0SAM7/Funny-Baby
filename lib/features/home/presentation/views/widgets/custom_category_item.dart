@@ -22,7 +22,7 @@ class CustomCategoryItem extends StatelessWidget {
           decoration: BoxDecoration(
               color: mainColor,
               image: DecorationImage(
-                  image: AssetImage("assets/Images/$name.jpg"),
+                  image: AssetImage("assets/Images/$name.png"),
                   fit: BoxFit.fill)),
         ),
       ),

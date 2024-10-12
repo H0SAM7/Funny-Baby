@@ -87,7 +87,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
             hintText: widget.hint,
             fillColor: blueColor,
-            hoverColor: blueColor,
+            
             hintStyle: const TextStyle(
               color: Colors.grey,
               fontFamily: 'Inter',

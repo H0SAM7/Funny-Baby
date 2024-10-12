@@ -15,10 +15,11 @@ class StartView extends StatelessWidget {
     final s = S.of(context);
 
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 179, 92, 90),
         body: Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(Assets.imagesLogin),
+          image: AssetImage(Assets.imagesLogintest),
         ),
       ),
       child: Column(

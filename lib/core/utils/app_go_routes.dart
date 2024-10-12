@@ -1,4 +1,5 @@
 import 'package:funny_baby/core/models/product_model.dart';
+import 'package:funny_baby/features/Notifications/services/send_notifications_view.dart';
 import 'package:funny_baby/features/admins/order_features/views/widgets/order_details.dart';
 import 'package:funny_baby/features/admins/presentation/views/add_discount_view.dart';
 import 'package:funny_baby/features/admins/order_features/views/orders_view.dart';
@@ -6,7 +7,7 @@ import 'package:funny_baby/features/auth/presentation/views/profile_details_view
 import 'package:funny_baby/features/auth/presentation/views/start_view.dart';
 import 'package:funny_baby/features/auth/presentation/views/verifications_view.dart';
 import 'package:funny_baby/features/cart/presentation/views/cart_view.dart';
-import 'package:funny_baby/features/home/presentation/views/profile_view.dart';
+import 'package:funny_baby/features/home/presentation/views/settings_view.dart';
 import 'package:funny_baby/features/home/presentation/views/widgets/technical_support_view.dart';
 import 'package:funny_baby/features/payment/presentation/views/add_order_view.dart';
 import 'package:funny_baby/features/payment/presentation/views/payment_option_view.dart';
@@ -20,7 +21,7 @@ import 'package:funny_baby/features/auth/presentation/views/update_profile.dart'
 import 'package:funny_baby/features/home/presentation/views/categories_view.dart';
 import 'package:funny_baby/features/home/presentation/views/category_products_view.dart';
 import 'package:funny_baby/features/home/presentation/views/product_details_view.dart';
-import 'package:funny_baby/features/home/presentation/views/widgets/bottom_navigation_bar.dart';
+import 'package:funny_baby/bottom_navigation_bar.dart';
 import 'package:funny_baby/features/admins/presentation/views/add_products_view.dart';
 import 'package:funny_baby/features/admins/presentation/views/delete_product_view.dart';
 import 'package:funny_baby/features/admins/presentation/views/update_product_view.dart';
@@ -28,7 +29,7 @@ import 'package:funny_baby/features/splash/presentation/views/splash_view.dart';
 
 abstract class AppGoRoutes {
   static final GoRouter router = GoRouter(
-    initialLocation: '/${SplashView.id}', // Set LoginPage as the initial route
+    initialLocation: '/${SplashView.id}', 
     routes: [
       GoRoute(
         path: '/${LoginPage.id}',
@@ -36,9 +37,9 @@ abstract class AppGoRoutes {
         builder: (context, state) => const LoginPage(),
       ),
       GoRoute(
-        path: '/${MyHome.id}',
-        name: MyHome.id,
-        builder: (context, state) => const MyHome(),
+        path: '/${BottomNavi.id}',
+        name: BottomNavi.id,
+        builder: (context, state) => const BottomNavi(),
       ),
       GoRoute(
         path: '/${UpdateProfilePage.id}',
@@ -163,6 +164,11 @@ abstract class AppGoRoutes {
         path: '/${StartView.id}',
         name: StartView.id,
         builder: (context, state) => const StartView(),
+      ),
+       GoRoute(
+        path: '/${NotifactionsSendView.id}',
+        name: NotifactionsSendView.id,
+        builder: (context, state) => const NotifactionsSendView(),
       ),
     ],
   );
